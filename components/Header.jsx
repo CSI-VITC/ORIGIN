@@ -1,4 +1,5 @@
-<header>
+export default function Header() {
+  const content = `<header>
                 <div class="back"></div>
                 <div class="wrapper">
                     <div class="left"><span><a aria-current="page" href="/"
@@ -13,4 +14,7 @@
                         <div class="font-14-dark">Menu</div>
                     </div>
                 </div>
-            
+            `;
+  // header is its own root tag, so we can strip it and attach innerHTML, OR we just use a fragment? No, we can't.
+  // Actually, let's just make the entire page one component to guarantee 0 wrapper bugs.
+}
