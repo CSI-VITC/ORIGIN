@@ -2969,7 +2969,7 @@ export default function RootLayout({ children }) {
 `;
   
   return (
-    <html lang="en" style={{ scrollBehavior: 'auto', touchAction: 'pan-x' }}>
+    <html lang="en" style={{ scrollBehavior: 'auto', touchAction: 'pan-x' }} suppressHydrationWarning={true}>
       <head>
         <link  rel="preload" as="style" href="/_nuxt/entry.ef5ab1c2.css"/>
         <link  rel="preload" as="style" href="/_nuxt/swiper-vue.693050bc.css"/>
@@ -5892,9 +5892,8 @@ export default function RootLayout({ children }) {
     
 ` }} />
       </head>
-      <body className="cursor-active">
+      <body className="cursor-active" style={{ height: '6535px', scrollBehavior: 'auto', touchAction: 'pan-x' }} suppressHydrationWarning={true}>
         {children}
-        <Script src="/_nuxt/entry.ea3395e2.js" type="module" crossOrigin="" strategy="afterInteractive" />
       </body>
     </html>
   );
