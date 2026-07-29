@@ -5892,7 +5892,7 @@ export default function RootLayout({ children }) {
     
 ` }} />
       </head>
-      <body className="cursor-active" style={{ height: '6535px', scrollBehavior: 'auto', touchAction: 'pan-x' }} suppressHydrationWarning={true}>
+      <body className="cursor-active" suppressHydrationWarning={true}>
         {children}
       </body>
     </html>
