@@ -1,0 +1,366 @@
+/* ==============================
+   BASE / RESET
+   ============================== */
+
+body {
+    background-color: #c9d2e7
+}
+
+body.cursor-active {
+    cursor: pointer
+}
+
+/* Nuxt debug overlays (hidden by default) */
+.camera-params {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    left: 0;
+    padding-right: 200px;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 4
+}
+
+.camera-params p {
+    font-size: 14px
+}
+
+.controls-param {
+    display: flex;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 4
+}
+
+.controls-param p {
+    font-size: 14px
+}
+
+.background-config {
+    display: none;
+    left: 0;
+    padding-left: 30px;
+    position: fixed;
+    top: 200px;
+    z-index: 100
+}
+
+/* ==============================
+   FONTS
+   ============================== */
+
+@font-face {
+    font-display: swap;
+    font-family: NeueRoman;
+    font-style: normal;
+    src: url(/_nuxt/NeueHaasDisplayRoman.d8850e5c.ttf)
+}
+
+@font-face {
+    font-display: swap;
+    font-family: NeueLight;
+    font-style: normal;
+    src: url(/_nuxt/NeueHaasDisplayRoman.d8850e5c.ttf)
+}
+
+@font-face {
+    font-display: swap;
+    font-family: NeueMachina;
+    font-style: normal;
+    src: url(/_nuxt/NeueMachina-Regular.e896c98c.otf)
+}
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    font-family: Source Sans Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+    font-size: 16px;
+    height: -webkit-fill-available;
+    word-spacing: 1px
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+    margin: 0
+}
+
+a {
+    text-decoration: none
+}
+
+/* ==============================
+   TYPOGRAPHY UTILITIES
+   ============================== */
+
+.font-neue-roman-14-bold {
+    font-weight: 600;
+    letter-spacing: .02em;
+    line-height: 20px;
+    text-transform: uppercase
+}
+
+.font-neue-roman-14-500,
+.font-neue-roman-14-bold {
+    color: #181520;
+    font-family: NeueRoman;
+    font-size: 14px;
+    font-style: normal
+}
+
+.font-neue-roman-14-500 {
+    font-weight: 500;
+    line-height: 120%
+}
+
+.font-neue-roman-16,
+.font-neue-roman-18 {
+    font-size: 16px
+}
+
+.font-neue-roman-16,
+.font-neue-roman-18,
+.font-neue-roman-20 {
+    color: #181520;
+    font-family: NeueRoman;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%
+}
+
+.font-neue-roman-20 {
+    font-size: 20px
+}
+
+.font-neue-roman-24 {
+    color: #181520;
+    font-family: NeueRoman;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%
+}
+
+.font-neue-roman-28 {
+    font-size: 28px
+}
+
+.font-neue-roman-28,
+.font-neue-roman-36 {
+    color: #181520;
+    font-family: NeueRoman;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%
+}
+
+.font-neue-roman-36 {
+    font-size: 36px
+}
+
+.font-neue-roman-40 {
+    font-size: 40px
+}
+
+.font-neue-roman-40,
+.font-neue-roman-55 {
+    color: #181520;
+    font-family: NeueRoman;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%
+}
+
+.font-neue-roman-55 {
+    font-size: 55px
+}
+
+.font-nueu-roman-80 {
+    color: #181520;
+    font-family: NeueRoman;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%
+}
+
+.font-machina-30 {
+    font-size: 30px
+}
+
+.font-machina-30,
+.font-machina-54 {
+    align-items: center;
+    color: #181520;
+    font-family: NeueMachina;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: uppercase
+}
+
+.font-machina-54 {
+    font-size: 54px
+}
+
+.font-machina-60 {
+    align-items: center;
+    display: flex;
+    font-size: 60px
+}
+
+.font-machina-60,
+.font-machina-90 {
+    color: #181520;
+    font-family: NeueMachina;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: uppercase
+}
+
+.font-machina-90 {
+    font-size: 90px
+}
+
+.font-machina-100 {
+    font-size: 100px
+}
+
+.font-machina-100,
+.font-machina-120 {
+    color: #181520;
+    font-family: NeueMachina;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: uppercase
+}
+
+.font-machina-120 {
+    font-size: 120px
+}
+
+.font-10-black {
+    font-size: 10px;
+    font-weight: 400
+}
+
+.font-10-black,
+.font-12-dark {
+    color: #181520;
+    font-family: NeueRoman;
+    font-style: normal;
+    line-height: 1
+}
+
+.font-12-dark {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    text-transform: uppercase
+}
+
+.font-14-dark {
+    color: #181520;
+    font-family: NeueRoman;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 140%
+}
+
+.font-14-dark,
+.view-project-link {
+    font-weight: 400;
+    text-align: center
+}
+
+/* ==============================
+   SHARED UI — PROJECT LINK BUTTON
+   ============================== */
+
+.view-project-link {
+    align-content: center;
+    align-items: center;
+    background: #181520;
+    border-radius: 100px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-family: NeueMachina;
+    font-size: 12px;
+    height: 43px;
+    justify-content: center;
+    line-height: 100%;
+    overflow: hidden;
+    position: relative;
+    text-transform: uppercase;
+    transition: .3s ease-in-out;
+    transition-delay: .1s;
+    width: 148px
+}
+
+.view-project-link .its-mac {
+    position: relative;
+    top: 1px
+}
+
+@media (max-width:1024px) {
+    .view-project-link .its-mac {
+        top: 1px
+    }
+}
+
+.view-project-link .arrow {
+    margin-left: 12px;
+    transition: .3s ease-in-out
+}
+
+.view-project-link:hover {
+    background: rgba(24, 21, 32, 0)
+}
+
+.view-project-link:hover .hover-mask {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+    opacity: 1
+}
+
+.view-project-link .hover-mask {
+    align-content: center;
+    align-items: center;
+    background: #dae2f2;
+    border-radius: 100px;
+    color: #181520;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: -3px;
+    -webkit-mask: url(/icons/hover.png);
+    mask: url(/icons/hover.png);
+    -webkit-mask-position: 350% 0;
+    mask-position: 350% 0;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 140% 100%;
+    mask-size: 140% 100%;
+    opacity: 1;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transition: .6s ease-in-out;
+    width: calc(100% + 10px)
+}
