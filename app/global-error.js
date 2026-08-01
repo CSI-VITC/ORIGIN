@@ -13,7 +13,7 @@ export default function GlobalError({ error, unstable_retry }) {
         <style>{`
           .error-page {
             align-items: center;
-            background-color: #c9d2e7;
+            background-color: #05070D;
             display: flex;
             justify-content: center;
             min-height: 100vh;
@@ -24,7 +24,7 @@ export default function GlobalError({ error, unstable_retry }) {
             text-align: center;
             font-family: NeueMachina, sans-serif;
             font-size: 2.5rem;
-            color: #181520;
+            color: #FFFFFF;
             margin: 0 0 10px 0;
           }
           .error-page button {
@@ -36,7 +36,7 @@ export default function GlobalError({ error, unstable_retry }) {
             font-size: 16px;
             margin: 40px auto 0;
             text-transform: uppercase;
-            color: #181520;
+            color: #FFFFFF;
           }
           .error-page button span {
             display: inline-block;
@@ -49,13 +49,13 @@ export default function GlobalError({ error, unstable_retry }) {
         <div className="error-page">
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
             <h1>Something went wrong globally!</h1>
-            <p style={{ fontFamily: 'NeueRoman, sans-serif', color: '#181520', fontSize: '16px', maxWidth: '600px', textAlign: 'center' }}>
+            <p style={{ fontFamily: 'NeueRoman, sans-serif', color: '#FFFFFF', fontSize: '16px', maxWidth: '600px', textAlign: 'center' }}>
               {error?.message || 'A critical error occurred in the application root.'}
             </p>
             {error?.stack && (
               <pre style={{
                 textAlign: 'left',
-                backgroundColor: 'rgba(0, 0, 0, 0.05)',
+                backgroundColor: 'rgba(255, 255, 255, 0.05)',
                 padding: '15px',
                 borderRadius: '4px',
                 maxWidth: '600px',

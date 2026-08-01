@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className="footer-section" style={{
-      backgroundColor: '#1a1a1a',
+      backgroundColor: '#0B1F3A',
       color: '#ffffff',
       padding: '80px 40px 40px',
       position: 'relative',
@@ -29,7 +29,7 @@ export default function Footer() {
           <Link href="/connect" className="contact-cta font-neue-roman-16">
             Let's work together
           </Link>
-          <p className="font-neue-roman-16" style={{ marginTop: '40px', color: '#b3b3b3' }}>
+          <p className="font-neue-roman-16" style={{ marginTop: '40px', color: '#8FA3C0' }}>
             hello@noomoagency.com
           </p>
         </div>
@@ -62,11 +62,11 @@ export default function Footer() {
         maxWidth: '1200px',
         margin: '80px auto 0 auto',
         paddingTop: '30px',
-        borderTop: '1px solid #333333',
+        borderTop: '1px solid rgba(255,255,255,0.15)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        color: '#808080',
+        color: '#8FA3C0',
         fontSize: '14px'
       }}>
         <p className="font-neue-roman-14">© 2026 Noomo Agency. All rights reserved.</p>
@@ -75,7 +75,7 @@ export default function Footer() {
 
       <style jsx>{`
         .footer-tag {
-          color: #808080;
+          color: #8FA3C0;
           text-transform: uppercase;
           letter-spacing: 1px;
         }
@@ -85,7 +85,7 @@ export default function Footer() {
           transition: color 0.3s ease;
         }
         .footer-link:hover {
-          color: #c9d2e7;
+          color: #4DA3FF;
         }
         .contact-cta {
           display: inline-block;
@@ -99,7 +99,7 @@ export default function Footer() {
         }
         .contact-cta:hover {
           background-color: #ffffff;
-          color: #1a1a1a;
+          color: #1E5EFF;
         }
         @media (max-width: 768px) {
           footer {

@@ -22,7 +22,7 @@ export default function Error({ error, unstable_retry }) {
         {error?.stack && (
           <pre style={{
             textAlign: 'left',
-            backgroundColor: 'rgba(0, 0, 0, 0.05)',
+            backgroundColor: 'rgba(255, 255, 255, 0.05)',
             padding: '15px',
             borderRadius: '4px',
             maxWidth: '600px',

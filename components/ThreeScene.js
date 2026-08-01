@@ -24,7 +24,7 @@ export default function ThreeScene({ onLoaded, onProgress }) {
     const height = window.innerHeight;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#c9d2e7');
+    scene.background = new THREE.Color('#05070D');
     sceneRef.current = scene;
 
     const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
@@ -75,7 +75,7 @@ export default function ThreeScene({ onLoaded, onProgress }) {
 
     let loadedCount = 0;
     const glassMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xffffff,
+      color: 0xB8E8FF,
       roughness: 0.2,
       transmission: 1.0,
       thickness: 0.5,

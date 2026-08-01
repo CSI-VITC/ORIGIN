@@ -22,7 +22,7 @@ export default function Header() {
       }}>
         {/* Logo */}
         <Link href="/" className="logo font-machina-24" style={{
-          color: '#1a1a1a',
+          color: '#FFFFFF',
           textDecoration: 'none',
           fontWeight: 'bold',
           textTransform: 'uppercase',
@@ -33,11 +33,11 @@ export default function Header() {
 
         {/* Desktop Links */}
         <nav className="hide-m" style={{ display: 'flex', gap: '30px' }}>
-          <Link href="/work" className="font-neue-roman-14 menu-link">Work</Link>
-          <Link href="/our-story" className="font-neue-roman-14 menu-link">Our Story</Link>
-          <a href="https://labs.noomoagency.com/" target="_blank" rel="noreferrer" className="font-neue-roman-14 menu-link">Labs</a>
-          <Link href="/insights" className="font-neue-roman-14 menu-link">Insights</Link>
-          <Link href="/connect" className="font-neue-roman-14 menu-link">Connect</Link>
+          <Link href="/work" className="font-neue-roman-14 menu-link">The Origin</Link>
+          <Link href="/our-story" className="font-neue-roman-14 menu-link">The Journey</Link>
+          <Link href="/arena" className="font-neue-roman-14 menu-link">The Arena</Link>
+          <Link href="/insights" className="font-neue-roman-14 menu-link">The Rewards</Link>
+          <Link href="/connect" className="font-neue-roman-14 menu-link">Launch</Link>
         </nav>
 
         {/* Let's Work Button */}
@@ -67,7 +67,7 @@ export default function Header() {
             display: 'block',
             width: '25px',
             height: '2px',
-            backgroundColor: '#1a1a1a',
+            backgroundColor: '#FFFFFF',
             transform: menuOpen ? 'rotate(45deg) translate(5px, 6px)' : 'none',
             transition: 'transform 0.3s ease'
           }} />
@@ -75,7 +75,7 @@ export default function Header() {
             display: 'block',
             width: '25px',
             height: '2px',
-            backgroundColor: '#1a1a1a',
+            backgroundColor: '#FFFFFF',
             opacity: menuOpen ? 0 : 1,
             transition: 'opacity 0.3s ease'
           }} />
@@ -83,7 +83,7 @@ export default function Header() {
             display: 'block',
             width: '25px',
             height: '2px',
-            backgroundColor: '#1a1a1a',
+            backgroundColor: '#FFFFFF',
             transform: menuOpen ? 'rotate(-45deg) translate(5px, -6px)' : 'none',
             transition: 'transform 0.3s ease'
           }} />
@@ -99,7 +99,7 @@ export default function Header() {
           left: 0,
           width: '100%',
           height: '100vh',
-          backgroundColor: '#c9d2e7',
+          backgroundColor: '#0B1F3A',
           zIndex: 99,
           display: 'flex',
           flexDirection: 'column',
@@ -111,11 +111,11 @@ export default function Header() {
           pointerEvents: menuOpen ? 'auto' : 'none'
         }}
       >
-        <Link href="/work" onClick={() => setMenuOpen(false)} className="font-machina-36 mobile-menu-link">Work</Link>
-        <Link href="/our-story" onClick={() => setMenuOpen(false)} className="font-machina-36 mobile-menu-link">Our Story</Link>
-        <a href="https://labs.noomoagency.com/" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)} className="font-machina-36 mobile-menu-link">Labs</a>
-        <Link href="/insights" onClick={() => setMenuOpen(false)} className="font-machina-36 mobile-menu-link">Insights</Link>
-        <Link href="/connect" onClick={() => setMenuOpen(false)} className="font-machina-36 mobile-menu-link">Connect</Link>
+        <Link href="/work" onClick={() => setMenuOpen(false)} className="font-machina-36 mobile-menu-link">The Origin</Link>
+        <Link href="/our-story" onClick={() => setMenuOpen(false)} className="font-machina-36 mobile-menu-link">The Journey</Link>
+        <Link href="/arena" onClick={() => setMenuOpen(false)} className="font-machina-36 mobile-menu-link">The Arena</Link>
+        <Link href="/insights" onClick={() => setMenuOpen(false)} className="font-machina-36 mobile-menu-link">The Rewards</Link>
+        <Link href="/connect" onClick={() => setMenuOpen(false)} className="font-machina-36 mobile-menu-link">Launch</Link>
         <Link href="/connect" onClick={() => setMenuOpen(false)} className="lets-work-mobile font-neue-roman-16" style={{ marginTop: '20px' }}>
           Let's work together
         </Link>
@@ -123,7 +123,7 @@ export default function Header() {
 
       <style jsx global>{`
         .menu-link {
-          color: #1a1a1a;
+          color: #FFFFFF;
           text-decoration: none;
           position: relative;
           padding-bottom: 4px;
@@ -135,14 +135,14 @@ export default function Header() {
           left: 0;
           width: 0;
           height: 1px;
-          background-color: #1a1a1a;
+          background-color: #FFFFFF;
           transition: width 0.3s ease;
         }
         .menu-link:hover::after {
           width: 100%;
         }
         .lets-work-link {
-          background-color: #1a1a1a;
+          background-color: #1E5EFF;
           color: #ffffff;
           padding: 12px 24px;
           border-radius: 30px;
@@ -151,16 +151,16 @@ export default function Header() {
           display: inline-block;
         }
         .lets-work-link:hover {
-          background-color: #333333;
+          background-color: #4DA3FF;
           transform: translateY(-2px);
         }
         .mobile-menu-link {
-          color: #1a1a1a;
+          color: #FFFFFF;
           text-decoration: none;
           font-weight: bold;
         }
         .lets-work-mobile {
-          background-color: #1a1a1a;
+          background-color: #1E5EFF;
           color: #ffffff;
           padding: 15px 30px;
           border-radius: 30px;
