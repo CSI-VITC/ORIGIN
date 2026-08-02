@@ -393,3 +393,97 @@ header .right a {
     visibility: hidden !important;
     pointer-events: none !important;
 }
+
+/* Global Floating Timer Widget (minimized countdown) */
+.global-floating-timer {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+}
+
+.global-floating-timer .minimized-pill {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 50px !important;
+    padding: 12px 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    font-family: NeueRoman, sans-serif !important;
+    color: #1a1a1a !important;
+}
+
+.global-floating-timer .minimized-pill:hover {
+    transform: translateY(-2px) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+.global-floating-timer .pill-dot {
+    width: 8px !important;
+    height: 8px !important;
+    background: #181520 !important;
+    border-radius: 50% !important;
+    display: inline-block !important;
+    animation: pulse-dot 2s infinite !important;
+}
+
+@keyframes pulse-dot {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(24, 21, 32, 0.5);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(24, 21, 32, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(24, 21, 32, 0);
+    }
+}
+
+.global-floating-timer .pill-text {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+}
+
+/* Expanded Card override styling */
+.global-floating-timer .glass-countdown-container.expanded {
+    position: relative !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+    width: 380px !important;
+}
+
+.global-floating-timer .close-btn {
+    position: absolute !important;
+    top: 14px !important;
+    right: 14px !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    color: rgba(24, 21, 32, 0.6) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px !important;
+    border-radius: 50% !important;
+    transition: background-color 0.2s !important;
+}
+
+.global-floating-timer .close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: #181520 !important;
+}

@@ -1,4 +1,5 @@
 import NuxtHead from './NuxtHead';
+import GlobalTimer from '../components/GlobalTimer';
 
 // Base / global styles
 import './styles/globals.css';
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
       </head>
       <body suppressHydrationWarning={true}>
         {children}
+        <GlobalTimer />
       </body>
     </html>
   );

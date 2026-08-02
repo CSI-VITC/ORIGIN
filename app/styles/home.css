@@ -1060,3 +1060,159 @@
 }
 
 .home-mobile-cases .wrapper .case a[data-v-7abacc29] { margin: 33px auto 0 }
+
+/* Show HTML headline on desktop since we hide the 3D SVG text */
+@media (min-width: 1025px) {
+    .hero-text {
+        position: fixed !important;
+        height: 100vh !important;
+        width: 100% !important;
+        opacity: 1 !important;
+        pointer-events: none !important;
+        display: block !important;
+    }
+
+    .hero-text h1 {
+        display: block !important;
+        font-family: NeueMachina, sans-serif;
+        font-size: 100px;
+        font-weight: 400;
+        line-height: 95%;
+        max-width: 1300px;
+        padding: 240px 80px 0;
+        position: relative;
+        text-align: left;
+        text-transform: uppercase;
+        color: #181520;
+        pointer-events: none;
+        z-index: 1;
+    }
+}
+
+/* Glassmorphism Countdown Timer styling */
+.glass-countdown-container {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 24px !important;
+    padding: 24px 32px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 16px !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15) !important;
+    width: 380px !important;
+    max-width: 100% !important;
+    pointer-events: auto !important;
+    position: absolute !important;
+    bottom: 128px !important;
+    right: 86px !important;
+    z-index: 10 !important;
+}
+
+.countdown-title {
+    font-family: NeueRoman, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: rgba(24, 21, 32, 0.6) !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+}
+
+.countdown-cards {
+    display: flex !important;
+    gap: 16px !important;
+    width: 100% !important;
+    justify-content: center !important;
+}
+
+.countdown-card {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
+    min-width: 85px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important;
+    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.1) !important;
+}
+
+.card-number {
+    font-family: NeueMachina, sans-serif !important;
+    font-size: 36px !important;
+    font-weight: 700 !important;
+    color: #181520 !important;
+    line-height: 1 !important;
+}
+
+.card-label {
+    font-family: NeueRoman, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    color: rgba(24, 21, 32, 0.5) !important;
+    letter-spacing: 0.1em !important;
+}
+
+@media (max-width:1024px) {
+    .glass-countdown-container {
+        position: relative !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        margin: 40px auto 0 !important;
+        width: calc(100% - 40px) !important;
+        max-width: 380px !important;
+    }
+}
+
+/* Stacking context configuration to render HTML text in front of canvas background */
+#main-scene {
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+.hero-text {
+    z-index: 3 !important;
+}
+
+#smooth-content {
+    position: relative !important;
+    z-index: 4 !important;
+}
+
+.testimonails-text {
+    z-index: 4 !important;
+}
+
+/* Headline Gap for the floating WebGL shapes */
+.hero-text h1 .headline-gap,
+.mobile-hero h1 .headline-gap {
+    display: inline-block !important;
+    width: 210px !important;
+}
+
+@media (max-width: 1024px) {
+    .hero-text {
+        display: none !important;
+    }
+    .hero-text h1 .headline-gap,
+    .mobile-hero h1 .headline-gap {
+        width: 110px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-text h1 .headline-gap,
+    .mobile-hero h1 .headline-gap {
+        width: 70px !important;
+    }
+}
+
+/* Force Singular Hero Section Visibility per viewport */
+@media (min-width: 1025px) {
+    .mobile-hero {
+        display: none !important;
+    }
+}

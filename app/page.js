@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from 'react';
 
+// Configurable event start date/time (e.g. March 26, 2027 at 09:00 AM IST)
+const EVENT_START_DATE = '2027-03-26T09:00:00+05:30';
+
 export default function Home() {
   const [mounted, setMounted] = useState(false);
 
@@ -79,6 +82,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    // 1. Header Synchronization
     const customHeader = document.getElementById('custom-header');
     
     const syncHeaderClasses = () => {
@@ -88,20 +92,183 @@ export default function Home() {
       }
     };
 
-    // Run sync initially
     syncHeaderClasses();
 
-    // Observe changes to #__nuxt header's classes
-    const observer = new MutationObserver(() => {
+    // 2. Hero and Countdown Patching
+    const calculateTimeLeft = () => {
+      const difference = +new Date(EVENT_START_DATE) - +new Date();
+      let days = '00', hours = '00', minutes = '00';
+      if (difference > 0) {
+        days = String(Math.floor(difference / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        hours = String(Math.floor((difference / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+        minutes = String(Math.floor((difference / 1000 / 60) % 60)).padStart(2, '0');
+      }
+      return { days, hours, minutes };
+    };
+
+    let observer;
+
+    const updateTimerAndHero = () => {
+      // Disconnect observer to avoid infinite loops when mutating DOM
+      if (observer) {
+        observer.disconnect();
+      }
+
       syncHeaderClasses();
+
+      // Check if we are on the landing page
+      const isLandingPage = window.location.pathname === '/';
+
+      const desktopHeroText = document.querySelector('.hero-text');
+      if (desktopHeroText) {
+        if (!isLandingPage) {
+          desktopHeroText.style.display = 'none';
+        } else {
+          desktopHeroText.style.display = 'block';
+        }
+      }
+
+      const mobileHero = document.querySelector('.mobile-hero');
+      if (mobileHero) {
+        if (!isLandingPage) {
+          mobileHero.style.display = 'none';
+        } else {
+          mobileHero.style.display = 'block';
+        }
+      }
+
+      if (!isLandingPage) {
+        // Reconnect observer and exit
+        if (observer) {
+          observer.observe(document.body, { childList: true, subtree: true });
+          const hiddenHeader = document.querySelector('#__nuxt header');
+          if (hiddenHeader) {
+            observer.observe(hiddenHeader, { attributes: true, attributeFilter: ['class'] });
+          }
+        }
+        return;
+      }
+
+      const time = calculateTimeLeft();
+
+      const countdownHTML = `
+        <div class="countdown-title">HACKATHON KICKS OFF IN</div>
+        <div class="countdown-cards">
+            <div class="countdown-card">
+                <span class="card-number">${time.days}</span>
+                <span class="card-label">DAYS</span>
+            </div>
+            <div class="countdown-card">
+                <span class="card-number">${time.hours}</span>
+                <span class="card-label">HOURS</span>
+            </div>
+            <div class="countdown-card">
+                <span class="card-number">${time.minutes}</span>
+                <span class="card-label">MINS</span>
+            </div>
+        </div>
+      `;
+
+      // Hide the 3D SVG text in the Three.js canvas (Z position is 20, X is -3)
+      if (window.scene) {
+        window.scene.children.forEach(child => {
+          if (child.position && child.position.z === 20 && child.position.x === -3) {
+            child.visible = false;
+          }
+        });
+      }
+
+      // Patch desktop headline
+      const desktopH1 = document.querySelector('.hero-text h1');
+      if (desktopH1) {
+        const targetHTML = '<span style="white-space: nowrap;">WHERE <span class="headline-gap"></span> IDEAS</span> <br/> FIND THEIR <br/> ORIGIN.';
+        if (desktopH1.innerHTML !== targetHTML) {
+          desktopH1.innerHTML = targetHTML;
+        }
+        desktopH1.style.display = 'block';
+      }
+
+      // Patch mobile headline
+      const mobileH1 = document.querySelector('.mobile-hero h1');
+      if (mobileH1) {
+        const targetHTML = '<span style="white-space: nowrap;">WHERE <span class="headline-gap"></span> IDEAS</span> <br/> FIND THEIR <br/> ORIGIN.';
+        if (mobileH1.innerHTML !== targetHTML) {
+          mobileH1.innerHTML = targetHTML;
+        }
+      }
+
+      // Patch desktop countdown wrapper
+      if (desktopHeroText) {
+        const originalP = desktopHeroText.querySelector('p');
+        if (originalP) {
+          originalP.style.display = 'none';
+        }
+
+        let desktopGlass = desktopHeroText.querySelector('.glass-countdown-container');
+        if (!desktopGlass) {
+          desktopGlass = document.createElement('div');
+          desktopGlass.className = 'glass-countdown-container';
+          desktopHeroText.appendChild(desktopGlass);
+        }
+        if (desktopGlass.innerHTML !== countdownHTML) {
+          desktopGlass.innerHTML = countdownHTML;
+        }
+      }
+
+      // Patch mobile countdown wrapper
+      const mobileHeroWrapper = document.querySelector('.mobile-hero .wrapper');
+      if (mobileHeroWrapper) {
+        const originalH2 = mobileHeroWrapper.querySelector('h2');
+        if (originalH2) {
+          originalH2.style.display = 'none';
+        }
+
+        let mobileGlass = mobileHeroWrapper.querySelector('.glass-countdown-container');
+        if (!mobileGlass) {
+          mobileGlass = document.createElement('div');
+          mobileGlass.className = 'glass-countdown-container';
+          mobileHeroWrapper.appendChild(mobileGlass);
+        }
+        if (mobileGlass.innerHTML !== countdownHTML) {
+          mobileGlass.innerHTML = countdownHTML;
+        }
+      }
+
+      // Reconnect observer
+      if (observer) {
+        observer.observe(document.body, { childList: true, subtree: true });
+        const hiddenHeader = document.querySelector('#__nuxt header');
+        if (hiddenHeader) {
+          observer.observe(hiddenHeader, { attributes: true, attributeFilter: ['class'] });
+        }
+      }
+    };
+
+    updateTimerAndHero();
+
+    observer = new MutationObserver(() => {
+      updateTimerAndHero();
     });
 
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Header class list observer
     const hiddenHeader = document.querySelector('#__nuxt header');
     if (hiddenHeader) {
       observer.observe(hiddenHeader, { attributes: true, attributeFilter: ['class'] });
     }
 
-    const interval = setInterval(syncHeaderClasses, 100);
+    const interval = setInterval(updateTimerAndHero, 200);
+
+    // Scroll synchronizer to translate fixed desktop hero-text upwards as we scroll down
+    const handleScroll = () => {
+      const desktopHeroText = document.querySelector('.hero-text');
+      if (desktopHeroText) {
+        desktopHeroText.style.transform = `translate3d(0, ${-window.scrollY}px, 0)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     // Forward click from custom burger to hidden Nuxt burger
     const customBurger = document.querySelector('#custom-header .burger');
@@ -119,6 +286,7 @@ export default function Home() {
     return () => {
       observer.disconnect();
       clearInterval(interval);
+      window.removeEventListener('scroll', handleScroll);
       if (customBurger) {
         customBurger.removeEventListener('click', onBurgerClick);
       }
@@ -192,8 +360,7 @@ export default function Home() {
                             <div data-v-1d267d81="" className="mobile-hero">
                                 <div data-v-1d267d81="" className="wrapper">
                                     <h1 data-v-1d267d81=""> Design that elevates your digital presence </h1>
-                                    <h2 data-v-1d267d81="">Award-winning design agency building websites, activations,
-                                        and experiences that make people stop scrolling.</h2>
+                                    <h2 data-v-1d267d81="">Award-winning design agency building websites, activations, and experiences that make people stop scrolling.</h2>
                                 </div>
                             </div>
                             <div data-v-7abacc29="" className="home-mobile-cases">
@@ -1206,13 +1373,12 @@ export default function Home() {
                         <div className="proxy-test-3"></div>
                         <div className="proxy-test-4"></div>
                     </div>
-                    <div className="background-config"></div>
-                    <div className="hero-text"
-                        style={{"translate":"none","rotate":"none","scale":"none","transform":"translate(0px, 0px)","opacity":"1"}}>
-                        <h1> Design that elevates your digital presence </h1>
-                        <p><span>Award-winning design agency building websites, activations, and experiences that make
-                                people stop scrolling.</span></p>
-                    </div>
+                     <div className="background-config"></div>
+                     <div className="hero-text"
+                          style={{"translate":"none","rotate":"none","scale":"none","transform":"translate(0px, 0px)","opacity":"1"}}>
+                          <h1> Design that elevates your digital presence </h1>
+                          <p><span>Award-winning design agency building websites, activations, and experiences that make people stop scrolling.</span></p>
+                      </div>
                     <div className="cases-texts">
                         <div className="item orcad-text" style={{"pointerEvents":"none"}}>
                             <div className="left">
