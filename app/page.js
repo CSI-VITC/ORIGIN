@@ -78,37 +78,108 @@ export default function Home() {
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    const customHeader = document.getElementById('custom-header');
+    
+    const syncHeaderClasses = () => {
+      const hiddenHeader = document.querySelector('#__nuxt header');
+      if (hiddenHeader && customHeader) {
+        customHeader.className = hiddenHeader.className;
+      }
+    };
+
+    // Run sync initially
+    syncHeaderClasses();
+
+    // Observe changes to #__nuxt header's classes
+    const observer = new MutationObserver(() => {
+      syncHeaderClasses();
+    });
+
+    const hiddenHeader = document.querySelector('#__nuxt header');
+    if (hiddenHeader) {
+      observer.observe(hiddenHeader, { attributes: true, attributeFilter: ['class'] });
+    }
+
+    const interval = setInterval(syncHeaderClasses, 100);
+
+    // Forward click from custom burger to hidden Nuxt burger
+    const customBurger = document.querySelector('#custom-header .burger');
+    const onBurgerClick = () => {
+      const hiddenBurger = document.querySelector('#__nuxt header .burger');
+      if (hiddenBurger) {
+        hiddenBurger.click();
+      }
+    };
+
+    if (customBurger) {
+      customBurger.addEventListener('click', onBurgerClick);
+    }
+
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+      if (customBurger) {
+        customBurger.removeEventListener('click', onBurgerClick);
+      }
+    };
+  }, []);
+
   if (!mounted) {
     return <div style={{ backgroundColor: '#c9d2e7', minHeight: '100vh' }} />;
   }
 
   return (
-    <div id="__nuxt">
-        <div className="index">
-            <header>
-                <div className="back"></div>
-                <div className="wrapper">
-                    <div className="left"><span><a aria-current="page" href="/"
-                                className="router-link-active router-link-exact-active for-logo"><img alt="netrix logo"
-                                    className="logo" src="/logos/noomoLogo1.png" /><img alt="netrix logo" className="logo"
-                                    src="/logos/noomoLogo2.png" /></a></span></div>
-                    <div className="right"><a href="/work" className="font-12-dark"> Work </a><a href="/our-story"
-                            className="font-12-dark"> Our Story </a><a target="_blank" className="font-12-dark"
-                            href="https://labs.noomoagency.com/"> Labs </a><a href="/insights" className="font-12-dark">
-                            Insights </a><a href="/connect" className="font-12-dark"> Connect </a></div>
-                    <div className="burger">
-                        <div className="font-14-dark">Menu</div>
-                    </div>
-                </div>
-            </header>
-            <div className="mobile-menu">
-                <div className="mobile-links"><a href="/work" className="font-12-dark"><span>Work</span></a><a
-                        href="/our-story" className="font-12-dark"><span>Our Story</span></a><a target="_blank"
-                        className="font-12-dark" href="https://labs.noomoagency.com/"><span>LABS</span></a><a
-                        href="/insights" className="font-12-dark"><span>Insights</span></a><a href="/connect"
-                        className="font-12-dark"><span>Connect</span></a></div>
-                <div className="lets"><a href="/connect" className=""><span>Let's work together</span></a></div>
-            </div>
+    <>
+      <header id="custom-header">
+          <div className="back"></div>
+          <div className="wrapper">
+              <div className="header-logos-center">
+                  <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '25px' }}>
+                      <img alt="vit chennai logo" className="partner-logo" src="/logos/vit_logo.webp" />
+                      <img alt="csi logo" className="partner-logo" src="/logos/csi_logo.png" />
+                  </a>
+              </div>
+              <div className="right">
+                  <a href="/work" className="font-12-dark"> Work </a>
+                  <a href="/our-story" className="font-12-dark"> Our Story </a>
+                  <a target="_blank" className="font-12-dark" href="https://labs.noomoagency.com/"> Labs </a>
+                  <a href="/insights" className="font-12-dark"> Insights </a>
+                  <a href="/connect" className="font-12-dark"> Connect </a>
+              </div>
+              <div className="burger">
+                  <div className="font-14-dark">Menu</div>
+              </div>
+          </div>
+      </header>
+
+      <div id="__nuxt">
+          <div className="index">
+              {/* Original header is kept here for Nuxt hydration, but is hidden by CSS */}
+              <header>
+                  <div className="back"></div>
+                  <div className="wrapper">
+                      <div className="left"><span><a aria-current="page" href="/"
+                                  className="router-link-active router-link-exact-active for-logo"><img alt="netrix logo"
+                                      className="logo" src="/logos/noomoLogo1.png" /><img alt="netrix logo" className="logo"
+                                      src="/logos/noomoLogo2.png" /></a></span></div>
+                      <div className="right"><a href="/work" className="font-12-dark"> Work </a><a href="/our-story"
+                              className="font-12-dark"> Our Story </a><a target="_blank" className="font-12-dark"
+                              href="https://labs.noomoagency.com/"> Labs </a><a href="/insights" className="font-12-dark">
+                              Insights </a><a href="/connect" className="font-12-dark"> Connect </a></div>
+                      <div className="burger">
+                          <div className="font-14-dark">Menu</div>
+                      </div>
+                  </div>
+              </header>
+              <div className="mobile-menu">
+                  <div className="mobile-links"><a href="/work" className="font-12-dark"><span>Work</span></a><a
+                          href="/our-story" className="font-12-dark"><span>Our Story</span></a><a target="_blank"
+                          className="font-12-dark" href="https://labs.noomoagency.com/"><span>LABS</span></a><a
+                          href="/insights" className="font-12-dark"><span>Insights</span></a><a href="/connect"
+                          className="font-12-dark"><span>Connect</span></a></div>
+                  <div className="lets"><a href="/connect" className=""><span>Let's work together</span></a></div>
+              </div>
             <div className="index-page">
                 <div className="on-touch home-page-wrapper" id="smooth-wrapper"
                     style={{"inset":"0px","width":"100%","height":"100%","position":"fixed","overflow":"hidden"}}>
@@ -1268,6 +1339,7 @@ export default function Home() {
             </div>
         </div>
     </div>
+    </>
     
     
     

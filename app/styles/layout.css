@@ -332,3 +332,64 @@ header .burger .line {
     top: 0;
     width: 100%
 }
+
+/* Partner Logos in Header */
+header .header-logos-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    height: 100%;
+    z-index: 10;
+}
+
+header .partner-logo {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+/* Ensure right navigation menu links stay aligned to the right */
+header .right {
+    margin-left: auto;
+}
+
+/* Adjust right navigation margins to prevent overlap on smaller desktop screens */
+header .right a {
+    margin-left: 40px !important;
+}
+
+@media (max-width: 1024px) {
+    header .partner-logo {
+        height: 60px;
+    }
+}
+
+@media (max-width: 767px) {
+    header .header-logos-center {
+        gap: 15px;
+    }
+    header .partner-logo {
+        height: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    header .header-logos-center {
+        gap: 10px;
+    }
+    header .partner-logo {
+        height: 40px;
+    }
+}
+
+/* Hide original Nuxt-managed header inside __nuxt */
+#__nuxt header {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}

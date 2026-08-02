@@ -20,16 +20,13 @@ export default function Header() {
         zIndex: 100,
         pointerEvents: 'auto'
       }}>
-        {/* Logo */}
-        <Link href="/" className="logo font-machina-24" style={{
-          color: '#1a1a1a',
-          textDecoration: 'none',
-          fontWeight: 'bold',
-          textTransform: 'uppercase',
-          letterSpacing: '1px'
-        }}>
-          Noomo
-        </Link>
+        {/* Centered Logos */}
+        <div className="header-logos-center">
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '25px', textDecoration: 'none' }}>
+            <img alt="vit chennai logo" className="partner-logo" src="/logos/vit_logo.webp" />
+            <img alt="csi logo" className="partner-logo" src="/logos/csi_logo.png" />
+          </Link>
+        </div>
 
         {/* Desktop Links */}
         <nav className="hide-m" style={{ display: 'flex', gap: '30px' }}>
