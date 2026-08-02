@@ -18,7 +18,7 @@
 }
 
 header {
-    height: 96px;
+    height: 140px;
     left: 0;
     padding: 0 40px;
     position: fixed;
@@ -29,14 +29,14 @@ header {
 
 @media (max-width:1024px) {
     header {
-        height: 80px;
+        height: 110px;
         padding: 0 40px
     }
 }
 
 @media (max-width:767px) {
     header {
-        height: 60px;
+        height: 85px;
         padding: 0 20px
     }
 }
@@ -346,7 +346,7 @@ header .header-logos-center {
 }
 
 header .partner-logo {
-    height: 80px;
+    height: 120px;
     width: auto;
     object-fit: contain;
     transition: all 0.3s ease;
@@ -364,7 +364,7 @@ header .right a {
 
 @media (max-width: 1024px) {
     header .partner-logo {
-        height: 60px;
+        height: 90px;
     }
 }
 
@@ -373,7 +373,7 @@ header .right a {
         gap: 15px;
     }
     header .partner-logo {
-        height: 48px;
+        height: 70px;
     }
 }
 
@@ -382,7 +382,7 @@ header .right a {
         gap: 10px;
     }
     header .partner-logo {
-        height: 40px;
+        height: 60px;
     }
 }
 
