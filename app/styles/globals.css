@@ -298,7 +298,8 @@ a {
     background: #181520;
     border-radius: 100px;
     color: #fff;
-    cursor: pointer;
+    cursor: pointer !important;
+    pointer-events: auto !important;
     display: flex;
     font-family: NeueMachina;
     font-size: 12px;

@@ -295,7 +295,8 @@
     height: 28vh;
     position: fixed;
     right: 0;
-    width: 100%
+    width: 100%;
+    pointer-events: auto !important;
 }
 
 @media (max-height:700px) {
@@ -312,7 +313,7 @@
     justify-content: space-between;
     opacity: 1;
     padding: 0 40px 65px;
-    pointer-events: none;
+    pointer-events: auto !important;
     position: absolute;
     width: 100%
 }

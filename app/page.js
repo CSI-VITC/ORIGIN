@@ -234,6 +234,262 @@ export default function Home() {
         }
       }
 
+      // Patch desktop cases/tracks text to override Vue hydration
+      const desktopCases = document.querySelectorAll('.cases-texts .item');
+      if (desktopCases.length >= 4) {
+        // Card 1: Fintech
+        const c1 = desktopCases[0];
+        const tag1 = c1.querySelector('.tags .tag');
+        if (tag1 && tag1.innerHTML !== 'Payments / Lending / Access') {
+          tag1.innerHTML = 'Payments / Lending / Access';
+        }
+        const name1 = c1.querySelector('.name strong');
+        if (name1 && name1.innerHTML !== 'FINTECH') {
+          name1.innerHTML = 'FINTECH';
+        }
+        const desc1 = c1.querySelector('.desc');
+        if (desc1 && desc1.innerHTML !== 'Reimagine payments, lending, and financial access with secure, scalable FinTech.') {
+          desc1.innerHTML = 'Reimagine payments, lending, and financial access with secure, scalable FinTech.';
+        }
+        const btn1Spans = c1.querySelectorAll('.view-project-link span');
+        btn1Spans.forEach(span => {
+          if (span.innerHTML.trim() !== 'View track') {
+            span.innerHTML = 'View track';
+          }
+        });
+        const btn1 = c1.querySelector('.view-project-link');
+        if (btn1) {
+          btn1.setAttribute('href', '/connect');
+          btn1.style.cursor = 'pointer';
+          btn1.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/connect';
+          };
+        }
+
+        // Card 2: Web3
+        const c2 = desktopCases[1];
+        const tag2 = c2.querySelector('.tags .tag');
+        if (tag2 && tag2.innerHTML !== 'Web3 / DApps / Solidity') {
+          tag2.innerHTML = 'Web3 / DApps / Solidity';
+        }
+        const name2 = c2.querySelector('.name strong');
+        if (name2 && name2.innerHTML !== 'WEB3 &amp; BLOCKCHAIN' && name2.innerHTML !== 'WEB3 & BLOCKCHAIN') {
+          name2.innerHTML = 'WEB3 &amp; BLOCKCHAIN';
+        }
+        const desc2 = c2.querySelector('.desc');
+        if (desc2 && desc2.innerHTML !== 'Build trustless apps with smart contracts, tokens, and decentralized rails.') {
+          desc2.innerHTML = 'Build trustless apps with smart contracts, tokens, and decentralized rails.';
+        }
+        const btn2Spans = c2.querySelectorAll('.view-project-link span');
+        btn2Spans.forEach(span => {
+          if (span.innerHTML.trim() !== 'View track') {
+            span.innerHTML = 'View track';
+          }
+        });
+        const btn2 = c2.querySelector('.view-project-link');
+        if (btn2) {
+          btn2.setAttribute('href', '/connect');
+          btn2.style.cursor = 'pointer';
+          btn2.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/connect';
+          };
+        }
+
+        // Card 3: Sustainability
+        const c3 = desktopCases[2];
+        const tag3 = c3.querySelector('.tags .tag');
+        if (tag3 && tag3.innerHTML !== 'Climate / IoT / Smart Tech') {
+          tag3.innerHTML = 'Climate / IoT / Smart Tech';
+        }
+        const name3 = c3.querySelector('.name strong');
+        if (name3 && name3.innerHTML !== 'SUSTAINABILITY &amp; EM-TECH' && name3.innerHTML !== 'SUSTAINABILITY & EM-TECH') {
+          name3.innerHTML = 'SUSTAINABILITY &amp; EM-TECH';
+        }
+        const desc3 = c3.querySelector('.desc');
+        if (desc3 && desc3.innerHTML !== 'Use tech to tackle climate challenges, design immersive AR/VR experiences, and prototype smart devices.') {
+          desc3.innerHTML = 'Use tech to tackle climate challenges, design immersive AR/VR experiences, and prototype smart devices.';
+        }
+        const btn3Spans = c3.querySelectorAll('.view-project-link span');
+        btn3Spans.forEach(span => {
+          if (span.innerHTML.trim() !== 'View track') {
+            span.innerHTML = 'View track';
+          }
+        });
+        const btn3 = c3.querySelector('.view-project-link');
+        if (btn3) {
+          btn3.setAttribute('href', '/connect');
+          btn3.style.cursor = 'pointer';
+          btn3.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/connect';
+          };
+        }
+
+        // Card 4: Open Innovation
+        const c4 = desktopCases[3];
+        const tag4 = c4.querySelector('.tags .tag');
+        if (tag4 && tag4.innerHTML !== 'Cross-Domain / Open-Ended') {
+          tag4.innerHTML = 'Cross-Domain / Open-Ended';
+        }
+        const name4 = c4.querySelector('.name strong');
+        if (name4 && name4.innerHTML !== 'OPEN INNOVATION') {
+          name4.innerHTML = 'OPEN INNOVATION';
+        }
+        const desc4 = c4.querySelector('.desc');
+        if (desc4 && desc4.innerHTML !== 'Solve any real-world problem with bold, cross-domain, open-ended ideas.') {
+          desc4.innerHTML = 'Solve any real-world problem with bold, cross-domain, open-ended ideas.';
+        }
+        const btn4Spans = c4.querySelectorAll('.view-project-link span');
+        btn4Spans.forEach(span => {
+          if (span.innerHTML.trim() !== 'View track') {
+            span.innerHTML = 'View track';
+          }
+        });
+        const btn4 = c4.querySelector('.view-project-link');
+        if (btn4) {
+          btn4.setAttribute('href', '/connect');
+          btn4.style.cursor = 'pointer';
+          btn4.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/connect';
+          };
+        }
+      }
+
+      // Patch mobile cases/tracks text to override Vue hydration
+      const mobileCases = document.querySelectorAll('.home-mobile-cases .case');
+      if (mobileCases.length >= 4) {
+        // Card 1
+        const mc1 = mobileCases[0];
+        const title1 = mc1.querySelector('.title');
+        if (title1 && title1.innerHTML !== 'FINTECH') {
+          title1.innerHTML = 'FINTECH';
+        }
+        const name1 = mc1.querySelector('.name');
+        if (name1 && name1.innerHTML !== 'FINTECH') {
+          name1.innerHTML = 'FINTECH';
+        }
+        const desc1 = mc1.querySelector('.desc');
+        if (desc1 && desc1.innerHTML !== 'Reimagine payments, lending, and financial access with secure, scalable FinTech.') {
+          desc1.innerHTML = 'Reimagine payments, lending, and financial access with secure, scalable FinTech.';
+        }
+        const btn1Spans = mc1.querySelectorAll('.view-project-link span');
+        btn1Spans.forEach(span => {
+          if (span.innerHTML.trim() !== 'View track') {
+            span.innerHTML = 'View track';
+          }
+        });
+        const mbtn1 = mc1.querySelector('.view-project-link');
+        if (mbtn1) {
+          mbtn1.setAttribute('href', '/connect');
+          mbtn1.style.cursor = 'pointer';
+          mbtn1.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/connect';
+          };
+        }
+
+        // Card 2
+        const mc2 = mobileCases[1];
+        const title2 = mc2.querySelector('.title');
+        if (title2 && title2.innerHTML !== 'WEB3') {
+          title2.innerHTML = 'WEB3';
+        }
+        const name2 = mc2.querySelector('.name');
+        if (name2 && name2.innerHTML !== 'WEB3 &amp; BLOCKCHAIN' && name2.innerHTML !== 'WEB3 & BLOCKCHAIN') {
+          name2.innerHTML = 'WEB3 &amp; BLOCKCHAIN';
+        }
+        const desc2 = mc2.querySelector('.desc');
+        if (desc2 && desc2.innerHTML !== 'Build trustless apps with smart contracts, tokens, and decentralized rails.') {
+          desc2.innerHTML = 'Build trustless apps with smart contracts, tokens, and decentralized rails.';
+        }
+        const btn2Spans = mc2.querySelectorAll('.view-project-link span');
+        btn2Spans.forEach(span => {
+          if (span.innerHTML.trim() !== 'View track') {
+            span.innerHTML = 'View track';
+          }
+        });
+        const mbtn2 = mc2.querySelector('.view-project-link');
+        if (mbtn2) {
+          mbtn2.setAttribute('href', '/connect');
+          mbtn2.style.cursor = 'pointer';
+          mbtn2.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/connect';
+          };
+        }
+
+        // Card 3
+        const mc3 = mobileCases[2];
+        const title3 = mc3.querySelector('.title');
+        if (title3 && title3.innerHTML !== 'EM-TECH') {
+          title3.innerHTML = 'EM-TECH';
+        }
+        const name3 = mc3.querySelector('.name');
+        if (name3 && name3.innerHTML !== 'SUSTAINABILITY &amp; EM-TECH' && name3.innerHTML !== 'SUSTAINABILITY & EM-TECH') {
+          name3.innerHTML = 'SUSTAINABILITY &amp; EM-TECH';
+        }
+        const desc3 = mc3.querySelector('.desc');
+        if (desc3 && desc3.innerHTML !== 'Use tech to tackle climate challenges, design immersive AR/VR experiences, and prototype smart devices.') {
+          desc3.innerHTML = 'Use tech to tackle climate challenges, design immersive AR/VR experiences, and prototype smart devices.';
+        }
+        const btn3Spans = mc3.querySelectorAll('.view-project-link span');
+        btn3Spans.forEach(span => {
+          if (span.innerHTML.trim() !== 'View track') {
+            span.innerHTML = 'View track';
+          }
+        });
+        const mbtn3 = mc3.querySelector('.view-project-link');
+        if (mbtn3) {
+          mbtn3.setAttribute('href', '/connect');
+          mbtn3.style.cursor = 'pointer';
+          mbtn3.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/connect';
+          };
+        }
+
+        // Card 4
+        const mc4 = mobileCases[3];
+        const title4 = mc4.querySelector('.title');
+        if (title4 && title4.innerHTML !== 'OPEN') {
+          title4.innerHTML = 'OPEN';
+        }
+        const name4 = mc4.querySelector('.name');
+        if (name4 && name4.innerHTML !== 'OPEN INNOVATION') {
+          name4.innerHTML = 'OPEN INNOVATION';
+        }
+        const desc4 = mc4.querySelector('.desc');
+        if (desc4 && desc4.innerHTML !== 'Solve any real-world problem with bold, cross-domain, open-ended ideas.') {
+          desc4.innerHTML = 'Solve any real-world problem with bold, cross-domain, open-ended ideas.';
+        }
+        const btn4Spans = mc4.querySelectorAll('.view-project-link span');
+        btn4Spans.forEach(span => {
+          if (span.innerHTML.trim() !== 'View track') {
+            span.innerHTML = 'View track';
+          }
+        });
+        const mbtn4 = mc4.querySelector('.view-project-link');
+        if (mbtn4) {
+          mbtn4.setAttribute('href', '/connect');
+          mbtn4.style.cursor = 'pointer';
+          mbtn4.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/connect';
+          };
+        }
+      }
+
       // Reconnect observer
       if (observer) {
         observer.observe(document.body, { childList: true, subtree: true });
@@ -367,72 +623,60 @@ export default function Home() {
                                 <div data-v-7abacc29="" className="wrapper">
                                     <div data-v-7abacc29="" className="case">
                                         <div data-v-7abacc29="" className="image-block">
-                                            <p data-v-7abacc29="" className="title-0 title">immersive</p><img
+                                            <p data-v-7abacc29="" className="title-0 title">FINTECH</p><img
                                                 data-v-7abacc29="" className="glass-t glass-t-0" src="/cases/glassT.png"
                                                 alt="image" />
                                         </div>
-                                        <p data-v-7abacc29="" className="name">Noomo Labs</p>
-                                        <p data-v-7abacc29="" className="desc">The Noomo Labs website is an interactive 3D
-                                            experience featuring a customizable jellyfish, showcasing Noomo Agency's
-                                            innovative experiments in immersive storytelling and cutting-edge web
-                                            technologies.</p><a data-v-7abacc29="" href="/work/noomo-labs-the-jellyfish"
-                                            className="view-project-link"><span className="">View project</span><img alt="arrow"
+                                        <p data-v-7abacc29="" className="name">FINTECH</p>
+                                        <p data-v-7abacc29="" className="desc">Reimagine payments, lending, and financial access with secure, scalable FinTech.</p><a data-v-7abacc29="" href="#"
+                                            className="view-project-link"><span className="">View track</span><img alt="arrow"
                                                 className="arrow" src="/icons/smallArrow.svg" />
-                                            <div className="hover-mask"><span className=""> View project </span><img alt="arrow"
+                                            <div className="hover-mask"><span className=""> View track </span><img alt="arrow"
                                                     className="arrow" src="/icons/smallArrowBlack.svg" /></div>
                                         </a>
                                     </div>
                                     <div data-v-7abacc29="" className="case">
                                         <div data-v-7abacc29="" className="image-block">
-                                            <p data-v-7abacc29="" className="title-1 title">Interactive</p><img
+                                            <p data-v-7abacc29="" className="title-1 title">WEB3</p><img
                                                 data-v-7abacc29="" className="glass-t glass-t-1" src="/cases/glassT.png"
                                                 alt="image" />
                                         </div>
-                                        <p data-v-7abacc29="" className="name">Coinbase and Golden State Warriors</p>
-                                        <p data-v-7abacc29="" className="desc">An immersive microsite for the Golden State
-                                            Warriors and Coinbase brought game-day excitement to life, allowing Bay Area
-                                            fans to mint exclusive NFTs while celebrating the team’s legacy through a
-                                            mobile-first, golden-themed digital experience.</p><a data-v-7abacc29=""
-                                            href="/work/microsite-golden-state-warriors-and-coinbase-collectible"
-                                            className="view-project-link"><span className="">View project</span><img alt="arrow"
+                                        <p data-v-7abacc29="" className="name">WEB3 & BLOCKCHAIN</p>
+                                        <p data-v-7abacc29="" className="desc">Build trustless apps with smart contracts, tokens, and decentralized rails.</p><a data-v-7abacc29=""
+                                            href="#"
+                                            className="view-project-link"><span className="">View track</span><img alt="arrow"
                                                 className="arrow" src="/icons/smallArrow.svg" />
-                                            <div className="hover-mask"><span className=""> View project </span><img alt="arrow"
+                                            <div className="hover-mask"><span className=""> View track </span><img alt="arrow"
                                                     className="arrow" src="/icons/smallArrowBlack.svg" /></div>
                                         </a>
                                     </div>
                                     <div data-v-7abacc29="" className="case">
                                         <div data-v-7abacc29="" className="image-block">
-                                            <p data-v-7abacc29="" className="title-2 title">enterprise</p><img
+                                            <p data-v-7abacc29="" className="title-2 title">EM-TECH</p><img
                                                 data-v-7abacc29="" className="glass-t glass-t-2" src="/cases/glassT.png"
                                                 alt="image" />
                                         </div>
-                                        <p data-v-7abacc29="" className="name">Salesforce 360 Platform </p>
-                                        <p data-v-7abacc29="" className="desc">Interactive 3D platform experience that turns
-                                            Salesforce’s complex AI ecosystem into a clear story for CIOs, developers,
-                                            and architects — using glassy 3D tiles and modular UX to show how every
-                                            product connects as one unified platform.</p><a data-v-7abacc29=""
-                                            href="/work/enterprise-3d-platform-website-salesforce/"
-                                            className="view-project-link"><span className="">View project</span><img alt="arrow"
+                                        <p data-v-7abacc29="" className="name">SUSTAINABILITY & EM-TECH</p>
+                                        <p data-v-7abacc29="" className="desc">Use tech to tackle climate challenges, design immersive AR/VR experiences, and prototype smart devices.</p><a data-v-7abacc29=""
+                                            href="#"
+                                            className="view-project-link"><span className="">View track</span><img alt="arrow"
                                                 className="arrow" src="/icons/smallArrow.svg" />
-                                            <div className="hover-mask"><span className=""> View project </span><img alt="arrow"
+                                            <div className="hover-mask"><span className=""> View track </span><img alt="arrow"
                                                     className="arrow" src="/icons/smallArrowBlack.svg" /></div>
                                         </a>
                                     </div>
                                     <div data-v-7abacc29="" className="case">
                                         <div data-v-7abacc29="" className="image-block">
-                                            <p data-v-7abacc29="" className="title-3 title">bespoke</p><img
+                                            <p data-v-7abacc29="" className="title-3 title">OPEN</p><img
                                                 data-v-7abacc29="" className="glass-t glass-t-3" src="/cases/glassT.png"
                                                 alt="image" />
                                         </div>
-                                        <p data-v-7abacc29="" className="name">Vision by Dandy</p>
-                                        <p data-v-7abacc29="" className="desc">Interactive product storytelling experience
-                                            that turns Vision by Dandy’s intraoral scanner into a clear, cinematic story
-                                            for modern dental practices — using high-end CG, UI, and scroll-based
-                                            narrative to show how every detail supports a fully digital workflow.</p><a
-                                            data-v-7abacc29="" href="/work/dandy-vision-storytelling-website"
-                                            className="view-project-link"><span className="">View project</span><img alt="arrow"
+                                        <p data-v-7abacc29="" className="name">OPEN INNOVATION</p>
+                                        <p data-v-7abacc29="" className="desc">Solve any real-world problem with bold, cross-domain, open-ended ideas.</p><a
+                                            data-v-7abacc29="" href="#"
+                                            className="view-project-link"><span className="">View track</span><img alt="arrow"
                                                 className="arrow" src="/icons/smallArrow.svg" />
-                                            <div className="hover-mask"><span className=""> View project </span><img alt="arrow"
+                                            <div className="hover-mask"><span className=""> View track </span><img alt="arrow"
                                                     className="arrow" src="/icons/smallArrowBlack.svg" /></div>
                                         </a>
                                     </div>
@@ -1383,105 +1627,88 @@ export default function Home() {
                         <div className="item orcad-text" style={{"pointerEvents":"none"}}>
                             <div className="left">
                                 <div className="tags"><span className="year tag font-10-black stag-tag"
-                                        style={{"opacity":"0"}}><span>Website</span></span>
-                                    <div><span className="tag font-10-black stag-tag" style={{"opacity":"0"}}>Immersive / 3D /
-                                            Interactive</span></div>
+                                        style={{"opacity":"0"}}><span>Track</span></span>
+                                    <div><span className="tag font-10-black stag-tag" style={{"opacity":"0"}}>Payments / Lending / Access</span></div>
                                 </div>
                             </div>
                             <div className="center stag-tag" style={{"opacity":"0"}}>
-                                <div className="view-project-link"><span className="">View project</span><img alt="arrow"
+                                <div className="view-project-link"><span className="">View track</span><img alt="arrow"
                                         className="arrow" src="/icons/smallArrow.svg" />
-                                    <div className="hover-mask"><span className=""> View project </span><img alt="arrow"
+                                    <div className="hover-mask"><span className=""> View track </span><img alt="arrow"
                                             className="arrow" src="/icons/smallArrowBlack.svg" /></div>
                                 </div>
                             </div>
                             <div className="right">
                                 <div>
                                     <p className="name font-neue-roman-14-bold"><strong className="stag-tag"
-                                            style={{"opacity":"0"}}>Noomo Labs</strong></p>
-                                    <p className="desc font-14-dark stag-tag" style={{"opacity":"0"}}>Immersive 3D web
-                                        experience with customizable jellyfish showcasing transformation and motion.
-                                        Real-time WebGL rendering, interactive storytelling, and experimental design
-                                        pushing boundaries of what's possible on the web.</p>
+                                            style={{"opacity":"0"}}>FINTECH</strong></p>
+                                    <p className="desc font-14-dark stag-tag" style={{"opacity":"0"}}>Reimagine payments, lending, and financial access with secure, scalable FinTech.</p>
                                 </div>
                             </div>
                         </div>
                         <div className="item middle-text" style={{"pointerEvents":"none"}}>
                             <div className="left">
                                 <div className="tags"><span className="year tag font-10-black stag-tag"
-                                        style={{"opacity":"0"}}><span>Website</span></span>
-                                    <div><span className="tag font-10-black stag-tag" style={{"opacity":"0"}}>Web 3 / Brand
-                                            Activation</span></div>
+                                        style={{"opacity":"0"}}><span>Track</span></span>
+                                    <div><span className="tag font-10-black stag-tag" style={{"opacity":"0"}}>Web3 / DApps / Solidity</span></div>
                                 </div>
                             </div>
                             <div className="center stag-tag" style={{"opacity":"0"}}>
-                                <div className="view-project-link"><span className="">View project</span><img alt="arrow"
+                                <div className="view-project-link"><span className="">View track</span><img alt="arrow"
                                         className="arrow" src="/icons/smallArrow.svg" />
-                                    <div className="hover-mask"><span className=""> View project </span><img alt="arrow"
+                                    <div className="hover-mask"><span className=""> View track </span><img alt="arrow"
                                             className="arrow" src="/icons/smallArrowBlack.svg" /></div>
                                 </div>
                             </div>
                             <div className="right">
                                 <div>
                                     <p className="name font-neue-roman-14-bold"><strong className="stag-tag"
-                                            style={{"opacity":"0"}}>Coinbase and Golden State Warriors</strong></p>
-                                    <p className="desc font-14-dark stag-tag" style={{"opacity":"0"}}>Mobile-first brand
-                                        activation microsite bringing game-day excitement to life through golden-hour
-                                        aesthetics and real-time NFT minting. Interactive storytelling experience
-                                        celebrating Warriors legacy through immersive 3D design.</p>
+                                            style={{"opacity":"0"}}>WEB3 & BLOCKCHAIN</strong></p>
+                                    <p className="desc font-14-dark stag-tag" style={{"opacity":"0"}}>Build trustless apps with smart contracts, tokens, and decentralized rails.</p>
                                 </div>
                             </div>
                         </div>
                         <div className="item space-text" style={{"pointerEvents":"none"}}>
                             <div className="left">
                                 <div className="tags"><span className="year tag font-10-black stag-tag"
-                                        style={{"opacity":"0"}}><span>Website</span></span>
-                                    <div><span className="tag font-10-black stag-tag" style={{"opacity":"0"}}>Enterprise /
-                                            Storytelling / 3D</span></div>
+                                        style={{"opacity":"0"}}><span>Track</span></span>
+                                    <div><span className="tag font-10-black stag-tag" style={{"opacity":"0"}}>Climate / IoT / Smart Tech</span></div>
                                 </div>
                             </div>
                             <div className="center stag-tag" style={{"opacity":"0"}}>
-                                <div className="view-project-link"><span className="">View project</span><img alt="arrow"
+                                <div className="view-project-link"><span className="">View track</span><img alt="arrow"
                                         className="arrow" src="/icons/smallArrow.svg" />
-                                    <div className="hover-mask"><span className=""> View project </span><img alt="arrow"
+                                    <div className="hover-mask"><span className=""> View track </span><img alt="arrow"
                                             className="arrow" src="/icons/smallArrowBlack.svg" /></div>
                                 </div>
                             </div>
                             <div className="right">
                                 <div>
                                     <p className="name font-neue-roman-14-bold"><strong className="stag-tag"
-                                            style={{"opacity":"0"}}>Salesforce 360 Platform</strong></p>
-                                    <p className="desc font-14-dark stag-tag" style={{"opacity":"0"}}>Enterprise website design
-                                        using interactive 3D elements to visualize Salesforce AI ecosystem. Glassy 3D
-                                        tiles, modular UX, and spatial storytelling make complex enterprise platform
-                                        accessible for CIOs, developers, and architects.</p>
+                                            style={{"opacity":"0"}}>SUSTAINABILITY & EM-TECH</strong></p>
+                                    <p className="desc font-14-dark stag-tag" style={{"opacity":"0"}}>Use tech to tackle climate challenges, design immersive AR/VR experiences, and prototype smart devices.</p>
                                 </div>
                             </div>
                         </div>
                         <div className="item bunny-text" style={{"pointerEvents":"none"}}>
                             <div className="left">
                                 <div className="tags"><span className="year tag font-10-black stag-tag"
-                                        style={{"opacity":"0"}}><span>Website</span></span>
-                                    <div><span className="tag font-10-black stag-tag" style={{"opacity":"0"}}>Storytelling / 3D
-                                            / Product</span></div>
+                                        style={{"opacity":"0"}}><span>Track</span></span>
+                                    <div><span className="tag font-10-black stag-tag" style={{"opacity":"0"}}>Cross-Domain / Open-Ended</span></div>
                                 </div>
                             </div>
                             <div className="center stag-tag" style={{"opacity":"0"}}>
-                                <div className="view-project-link"><span className="">View project</span><img alt="arrow"
+                                <div className="view-project-link"><span className="">View track</span><img alt="arrow"
                                         className="arrow" src="/icons/smallArrow.svg" />
-                                    <div className="hover-mask"><span className=""> View project </span><img alt="arrow"
+                                    <div className="hover-mask"><span className=""> View track </span><img alt="arrow"
                                             className="arrow" src="/icons/smallArrowBlack.svg" /></div>
                                 </div>
                             </div>
                             <div className="right">
                                 <div>
                                     <p className="name font-neue-roman-14-bold"><strong className="stag-tag"
-                                            style={{"opacity":"0"}}>Vision by Dandy</strong></p>
-                                    <p className="desc font-14-dark stag-tag" style={{"opacity":"0"}}>Interactive product
-                                        website transforming dental technology into cinematic narrative. High-end 3D
-                                        product visualization, scroll-based storytelling, and refined UI design showcase
-                                        intraoral scanner through craft-driven digital experience for modern practices.
-                                    </p>
+                                            style={{"opacity":"0"}}>OPEN INNOVATION</strong></p>
+                                    <p className="desc font-14-dark stag-tag" style={{"opacity":"0"}}>Solve any real-world problem with bold, cross-domain, open-ended ideas.</p>
                                 </div>
                             </div>
                         </div>
