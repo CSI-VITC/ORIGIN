@@ -564,7 +564,10 @@
     .home-info-block .wrapper .top .left .title-1 { margin-bottom: 40px }
 }
 
-.home-info-block .wrapper .top .right { flex: 0 0 263px }
+.home-info-block .wrapper .top .right {
+    flex: 0 0 480px;
+    max-width: 100%;
+}
 
 @media (max-width:1024px) {
     .home-info-block .wrapper .top .right { margin-top: 40px }
@@ -575,7 +578,8 @@
 .home-info-block .wrapper .bottom {
     display: flex;
     justify-content: space-between;
-    margin-top: 140px
+    gap: 30px;
+    margin-top: 80px;
 }
 
 @media (max-width:1024px) {

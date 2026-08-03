@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import SpotlightCard from '../components/SpotlightCard';
 
 // Configurable event start date/time (e.g. March 26, 2027 at 09:00 AM IST)
 const EVENT_START_DATE = '2027-03-26T09:00:00+05:30';
@@ -68,7 +69,7 @@ export default function Home() {
     dataScript.type = 'application/json';
     dataScript.id = '__NUXT_DATA__';
     dataScript.setAttribute('data-ssr', 'true');
-    dataScript.textContent = `[["Reactive",1],{"data":2,"state":334,"_errors":346,"serverRendered":345,"path":347,"prerenderedAt":348,"pinia":349},{"home_page":3,"award":129},{"id":4,"uid":5,"url":5,"type":6,"href":7,"tags":8,"first_publication_date":19,"last_publication_date":20,"slugs":21,"linked_documents":23,"lang":24,"alternate_languages":25,"data":26},"ZMJ35xAAACEAJonp",null,"home_page","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZMJ35xAAACEAJonp%22%29+%5D%5D",[9,10,11,12,13,14,15,16,17,18],"los angeles web design","website design los angeles","best interactive design agency","creative agency los angeles","storytelling website design","design agency los angeles","WebGL website design company","3d website design","top creative digital agency","3d storytelling videos","2023-07-27T14:00:01+0000","2026-01-29T04:01:40+0000",[22],"home-page",[],"en-us",[],{"hero_description":27,"enterprise_title":28,"enterprise_text":29,"enterprise_main_tag":30,"enterprise_tags":31,"interactive_title":32,"interactive_text":33,"interactive_main_tag":30,"interactive_tags":34,"iconic_title":35,"iconic_text":36,"iconic_main_tag":30,"iconic_tags":37,"immersive_title":38,"immersive_text":39,"immersive_main_tag":30,"immersive_tags":40,"main_text":41,"main_decription":42,"right_description":43,"item_title_1":44,"item_title_2":45,"item_title_3":46,"digital_products":47,"interactive_websites":48,"digital_branding":49,"reviews_description":50,"awards_list_title":51,"selected_news":52,"home_object_video_webm":104,"home_object_video_mp":106,"contact_form_title":113,"contact_form_description":114,"slices":115,"meta_description":116,"meta_image":117,"meta_title":128},"Award-winning design agency building websites, activations, and experiences that make people stop scrolling.","Noomo Labs","Immersive 3D web experience with customizable jellyfish showcasing transformation and motion. Real-time WebGL rendering, interactive storytelling, and experimental design pushing boundaries of what's possible on the web.","Website","Immersive  /  3D  /  Interactive","Coinbase and Golden State Warriors","Mobile-first brand activation microsite bringing game-day excitement to life through golden-hour aesthetics and real-time NFT minting. Interactive storytelling experience celebrating Warriors legacy through immersive 3D design.","Web 3  /  Brand Activation","Salesforce 360 Platform","Enterprise website design using interactive 3D elements to visualize Salesforce AI ecosystem. Glassy 3D tiles, modular UX, and spatial storytelling make complex enterprise platform accessible for CIOs, developers, and architects.","Enterprise  /  Storytelling  /  3D","Vision by Dandy","Interactive product website transforming dental technology into cinematic narrative. High-end 3D product visualization, scroll-based storytelling, and refined UI design showcase intraoral scanner through craft-driven digital experience for modern practices.","Storytelling  /  3D  /  Product","At Noomo, we create 3D storytelling websites and immersive digital experiences where craft and narrative become one.","From immersive 3D websites to cinematic brand videos, we let the story dictate the medium—whether that's real-time rendering, editorial design, or interactive experiences.","We partner with brands like Salesforce, AMD, Red Bull and Vogue Business who believe craft makes the difference.\\n\\nCompanies that value innovation, obsess over details, and understand great digital work requires time, trust, and true collaboration.","Services","Clients","♥‿♥","3D websites\\u003Cbr>\\nStorytelling websites\\u003Cbr>\\n3D storytelling videos\\u003Cbr>\\nImmersive web experiences \\u003Cbr>\\nWebGL development\\u003Cbr>\\nBrand activation microsites\\u003Cbr>\\nDigital event experiences\\u003Cbr>\\nInteractive website design\\u003Cbr>\\nAI-driven experiences\\u003Cbr>\\nDigital branding\\u003Cbr>","Salesforce\\u003Cbr> \\nAMD\\u003Cbr>\\nCoinbase\\u003Cbr>\\nRed Bull\\u003Cbr>\\nIntel | ai.io\\u003Cbr>\\nYolo Federal Credit Union\\u003Cbr>\\nPercipio Health\\u003Cbr>\\nDandy Vision\\u003Cbr>\\nVibrant Wellness\\u003Cbr>","Vogue Business\\u003Cbr>\\nSamsung\\u003Cbr>\\nCadence Design Systems\\u003Cbr>\\nSpace Needle\\u003Cbr>\\nOneLine Health\\u003Cbr>\\nMiddle Finance\\u003Cbr>\\nThe Art of Living\\u003Cbr>\\nLife House\\u003Cbr>\\nBattalion\\u003Cbr>","We work as one team with our clients. Through discovery workshops, we uncover your story and translate it into digital experiences that reflect your vision.\\n\\nOur agency combines storytelling craft with technical expertise to create work that connects emotionally and drives engagement.","Recognition for innovative work that pushes what's possible in digital design.",[53,65,74,83,92],{"news":54},{"id":55,"type":56,"tags":57,"lang":24,"slug":58,"first_publication_date":59,"last_publication_date":60,"uid":61,"link_type":62,"key":63,"isBroken":64},"aV8LtRIAACYAMZIE","news",[],"why-this-report-needed-a-new-universe.","2026-01-09T19:58:45+0000","2026-01-15T01:48:54+0000","vogue-business-gen-z-interactive-editorial-design","Document","30afc5ed-7c22-49ac-9620-c4989c74b7e1",false,{"news":66},{"id":67,"type":56,"tags":68,"lang":24,"slug":69,"first_publication_date":70,"last_publication_date":71,"uid":72,"link_type":62,"key":73,"isBroken":64},"aIQAxRcAACQARLF3",[],"why-storytelling-matters-in-digital-experiences","2025-07-25T23:00:32+0000","2026-02-12T17:20:22+0000","the-power-of-digital-storytelling","3d82a458-7a17-4294-ad09-dd79457057ee",{"news":75},{"id":76,"type":56,"tags":77,"lang":24,"slug":78,"first_publication_date":79,"last_publication_date":80,"uid":81,"link_type":62,"key":82,"isBroken":64},"aBNvrBEAACcAl6Gy",[],"it-all-starts-with-interactive-storytelling","2025-05-01T20:58:46+0000","2026-02-05T22:44:03+0000","noomo-valentime-immersive-storytelling","00c5bf51-d1f6-4ede-b055-f01a188030bb",{"news":84},{"id":85,"type":56,"tags":86,"lang":24,"slug":87,"first_publication_date":88,"last_publication_date":89,"uid":90,"link_type":62,"key":91,"isBroken":64},"Zyu_rxEAACkARJGG",[],"creating-a-personalized-3d-website-experience-for-immersive-brand-activation","2024-11-06T22:13:32+0000","2026-03-31T11:37:49+0000","ai-brand-activation-3d-music-case-study","c091019f-1908-4994-a2c3-362677c1b626",{"news":93},{"id":94,"type":56,"tags":95,"lang":24,"slug":99,"first_publication_date":100,"last_publication_date":101,"uid":102,"link_type":62,"key":103,"isBroken":64},"Zj0BohMAAGnyCCFJ",[96,97,98],"3d websites","immersive marketing","ar websites","brand-storytelling-websites-in-immersive-marketing","2024-05-09T21:58:54+0000","2026-02-17T21:40:14+0000","3d-websites-and-immersive-web-experiences-for-marketing","b947b7df-382a-4ad1-b217-a7f086c6eeca",{"link_type":105},"Media",{"link_type":105,"key":107,"kind":108,"id":109,"url":110,"name":111,"size":112},"f3dcd447-5b69-4951-8fda-8491aca93318","file","aHDVIEMqNJQqHyXy","https://noomo-website.cdn.prismic.io/noomo-website/aHDVIEMqNJQqHyXy_Showreel2025.mp4","Showreel2025.mp4","20927918","BUT WE'RE HERE NOT TO TALK ABOUT OURSELVES - WE'RE HERE TO TALK ABOUT YOU, YOUR COMPANY, YOUR PRODUCT, AND YOUR GOALS.","With us it happens.\\u003Cbr> We would love to hear from you.",[],"We create 3D storytelling websites and immersive digital experiences that make people stop scrolling. Los Angeles creative agency where story dictates the medium—whether that's WebGL, cinematic video, or interactive design.",{"dimensions":118,"alt":121,"copyright":5,"url":122,"id":123,"edit":124},{"width":119,"height":120},2400,1260,"Noomo Agency - Los Angeles 3D storytelling website design and immersive digital experiences","https://images.prismic.io/noomo-website/aXrLewIvOtkhCDc4_1300x630.png?auto=format,compress&rect=0,0,1200,630&w=2400&h=1260","aXrLewIvOtkhCDc4",{"x":125,"y":125,"zoom":126,"background":127},0,1,"transparent","Digital Storytelling & 3D Website Design Agency | Noomo",[130,171,205,221,238,295,318],{"id":131,"uid":132,"url":5,"type":133,"href":134,"tags":135,"first_publication_date":136,"last_publication_date":137,"slugs":138,"linked_documents":139,"lang":24,"alternate_languages":140,"data":141},"ZcuScxEAAFmB_fLB","fwa","award","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZcuScxEAAFmB_fLB%22%29+%5D%5D",[],"2024-02-13T16:02:09+0000","2026-01-29T23:39:44+0000",[132],[],[],{"title":142,"projects":143,"sort_order":5},"FWA",[144,148,151,153,156,157,160,162,164,165,167,170],{"name":145,"nomination":146,"year":147},"Vibrant Wellness","FWA of the day","2026",{"name":149,"nomination":146,"year":150},"Vogue Business | Archrival: Gen Z Broke The Marketing Funnel","2025",{"name":152,"nomination":146,"year":150},"Noomo Valentime",{"name":154,"nomination":155,"year":150},"Noomo Beat","FWA of the day - AI",{"name":154,"nomination":146,"year":150},{"name":158,"nomination":146,"year":159},"Intel | ai.io interactive AI experience for AWS re:Invent","2024",{"name":161,"nomination":146,"year":159},"Noomo Playground",{"name":28,"nomination":163,"year":159},"FWA of the day - Mobile",{"name":28,"nomination":146,"year":159},{"name":166,"nomination":146,"year":159},"The Silly Bunny",{"name":168,"nomination":146,"year":169},"Noomo Agency","2023",{"name":5,"nomination":5,"year":5},{"id":172,"uid":173,"url":5,"type":133,"href":174,"tags":175,"first_publication_date":176,"last_publication_date":177,"slugs":178,"linked_documents":179,"lang":24,"alternate_languages":180,"data":181},"ZLfAgBEAACIAzspq","the-webby-awards","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfAgBEAACIAzspq%22%29+%5D%5D",[],"2023-07-19T10:52:51+0000","2025-05-01T00:39:16+0000",[173],[],[],{"title":182,"projects":183,"sort_order":126},"The Webby Awards",[184,186,188,190,193,195,198,201],{"name":28,"nomination":185,"year":150},"Winner, Websites and Mobile Sites - Best Use of Animation or Motion Graphics",{"name":28,"nomination":187,"year":150},"Winner, Websites and Mobile Sites - Technical Achievement",{"name":154,"nomination":189,"year":150},"Winner, Websites and Mobile Sites - Best Use of AI",{"name":191,"nomination":192,"year":150},"Percipio Health","Winner, Websites and Mobile Sites - Web Services & Applications",{"name":154,"nomination":194,"year":150},"Nomination, AI, Immersive & Games - Media & Entertainment",{"name":196,"nomination":197,"year":150},"Jasmina Denner","Honors, Websites and Mobile Sites - Personal Blog/Website",{"name":199,"nomination":200,"year":169},"Middle","Winner, Financial Services/Banking",{"name":202,"nomination":203,"year":204},"ITG Digital","Nomination, Web Services & Applications","2020",{"id":206,"uid":207,"url":5,"type":133,"href":208,"tags":209,"first_publication_date":210,"last_publication_date":211,"slugs":212,"linked_documents":213,"lang":24,"alternate_languages":214,"data":215},"ZLfAWBEAACMAzsmp","red-dot-design-award","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfAWBEAACMAzsmp%22%29+%5D%5D",[],"2023-07-19T10:52:11+0000","2023-08-07T13:18:25+0000",[207],[],[],{"title":216,"projects":217,"sort_order":220},"Red Dot Design Award",[218],{"name":202,"nomination":219,"year":204},"Winner, Online platforms",2,{"id":222,"uid":223,"url":5,"type":133,"href":224,"tags":225,"first_publication_date":226,"last_publication_date":227,"slugs":228,"linked_documents":229,"lang":24,"alternate_languages":230,"data":231},"ZLfAnREAACIAzsr9","san-francisco-design-week","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfAnREAACIAzsr9%22%29+%5D%5D",[],"2023-07-19T10:53:19+0000","2023-08-07T13:18:43+0000",[223],[],[],{"title":232,"projects":233,"sort_order":237},"San Francisco Design Week",[234],{"name":235,"nomination":236,"year":204},"Crisis Clean Up","Honorable Mentions, Civic and Government",3,{"id":239,"uid":240,"url":5,"type":133,"href":241,"tags":242,"first_publication_date":243,"last_publication_date":244,"slugs":245,"linked_documents":246,"lang":24,"alternate_languages":247,"data":248},"ZLfBNREAACQAzs3r","awwwards","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfBNREAACQAzs3r%22%29+%5D%5D",[],"2023-07-19T10:55:52+0000","2024-12-16T23:34:27+0000",[240],[],[],{"title":249,"projects":250,"sort_order":294},"Awwwards",[251,253,255,257,259,261,263,264,265,267,269,270,272,273,275,278,282,283,285,286,288,291,293],{"name":154,"nomination":252,"year":159},"Site of the day",{"name":154,"nomination":254,"year":159},"Developer award",{"name":196,"nomination":256,"year":159},"Honorable mentions",{"name":258,"nomination":256,"year":159},"Noomo XR",{"name":258,"nomination":260,"year":159},"No-code honors",{"name":28,"nomination":262,"year":159},"Portfolio honors",{"name":28,"nomination":254,"year":159},{"name":28,"nomination":252,"year":159},{"name":168,"nomination":266,"year":159},"Website of the year",{"name":268,"nomination":256,"year":159},"Cathey & Miles Attorneys Website",{"name":168,"nomination":254,"year":169},{"name":168,"nomination":271,"year":169},"Website of the day",{"name":166,"nomination":256,"year":169},{"name":274,"nomination":256,"year":169},"Middle Finance",{"name":276,"nomination":252,"year":277},"Olha Uzhykova portfolio","2022",{"name":279,"nomination":280,"year":281},"Netrix","nominated for “Mobile website of the year”","2021",{"name":279,"nomination":252,"year":281},{"name":279,"nomination":284,"year":281},"Mobile website of the week",{"name":279,"nomination":254,"year":281},{"name":287,"nomination":256,"year":204},"MadDad",{"name":287,"nomination":289,"year":290},"Mobile design excellence","2019",{"name":279,"nomination":256,"year":292},"2018",{"name":279,"nomination":289,"year":292},4,{"id":296,"uid":297,"url":5,"type":133,"href":298,"tags":299,"first_publication_date":300,"last_publication_date":301,"slugs":302,"linked_documents":303,"lang":24,"alternate_languages":304,"data":305},"ZLfBaBEAACIAzs7i","css-design-award","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfBaBEAACIAzs7i%22%29+%5D%5D",[],"2023-07-19T10:56:42+0000","2024-12-16T23:28:37+0000",[297],[],[],{"title":306,"projects":307,"sort_order":317},"CSS Design Award",[308,309,310,312,313,314,316],{"name":154,"nomination":271,"year":159},{"name":196,"nomination":271,"year":159},{"name":311,"nomination":271,"year":159},"The Future Of XR",{"name":28,"nomination":271,"year":159},{"name":166,"nomination":271,"year":169},{"name":315,"nomination":271,"year":169},"Olha Uzhykova Portfolio",{"name":168,"nomination":271,"year":169},5,{"id":319,"uid":320,"url":5,"type":133,"href":321,"tags":322,"first_publication_date":323,"last_publication_date":324,"slugs":325,"linked_documents":326,"lang":24,"alternate_languages":327,"data":328},"ZLfBhBEAACMAzs9m","adc-europe","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfBhBEAACMAzs9m%22%29+%5D%5D",[],"2023-07-19T10:57:11+0000","2023-08-07T13:19:28+0000",[320],[],[],{"title":329,"projects":330,"sort_order":333},"ADC Europe",[331],{"name":202,"nomination":332,"year":204},"Nomination in category Interactive & Mobile",6,{"$ssite-config":335},{"_context":336,"url":341,"defaultLocale":342,"trailingSlash":64,"titleSeparator":343,"name":344,"indexable":345,"debug":64},{"url":337,"defaultLocale":338,"trailingSlash":338,"titleSeparator":338,"name":339,"indexable":340,"debug":337},"nuxt:config:site","defaults","vendorEnv","system","https://noomoagency.com","en","|","nuxt-blunk",true,{"home_page":5,"award":5},"/",1783340279996,{"sceneId":350},{"mixers":351,"cameraMove":345,"menuOpen":64,"preloaderDone":64,"ourStoryModelLoaded":64,"caseModelLoaded":64,"goToPage":352},[],""]`;
+    dataScript.textContent = `[["Reactive",1],{"data":2,"state":334,"_errors":346,"serverRendered":345,"path":347,"prerenderedAt":348,"pinia":349},{"home_page":3,"award":129},{"id":4,"uid":5,"url":5,"type":6,"href":7,"tags":8,"first_publication_date":19,"last_publication_date":20,"slugs":21,"linked_documents":23,"lang":24,"alternate_languages":25,"data":26},"ZMJ35xAAACEAJonp",null,"home_page","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZMJ35xAAACEAJonp%22%29+%5D%5D",[9,10,11,12,13,14,15,16,17,18],"los angeles web design","website design los angeles","best interactive design agency","creative agency los angeles","storytelling website design","design agency los angeles","WebGL website design company","3d website design","top creative digital agency","3d storytelling videos","2023-07-27T14:00:01+0000","2026-01-29T04:01:40+0000",[22],"home-page",[],"en-us",[],{"hero_description":27,"enterprise_title":28,"enterprise_text":29,"enterprise_main_tag":30,"enterprise_tags":31,"interactive_title":32,"interactive_text":33,"interactive_main_tag":30,"interactive_tags":34,"iconic_title":35,"iconic_text":36,"iconic_main_tag":30,"iconic_tags":37,"immersive_title":38,"immersive_text":39,"immersive_main_tag":30,"immersive_tags":40,"main_text":41,"main_decription":42,"right_description":43,"item_title_1":44,"item_title_2":45,"item_title_3":46,"digital_products":47,"interactive_websites":48,"digital_branding":49,"reviews_description":50,"awards_list_title":51,"selected_news":52,"home_object_video_webm":104,"home_object_video_mp":106,"contact_form_title":113,"contact_form_description":114,"slices":115,"meta_description":116,"meta_image":117,"meta_title":128},"Award-winning design agency building websites, activations, and experiences that make people stop scrolling.","FINTECH","Reimagine payments, lending, and financial access with secure, scalable FinTech.","Track","Payments / Lending / Access","WEB3 & BLOCKCHAIN","Build trustless apps with smart contracts, tokens, and decentralized rails.","Web3 / DApps / Solidity","SUSTAINABILITY & EM-TECH","Use tech to tackle climate challenges, design immersive AR/VR experiences, and prototype smart devices.","Climate / IoT / Smart Tech","OPEN INNOVATION","Solve any real-world problem with bold, cross-domain, open-ended ideas.","Cross-Domain / Open-Ended","AT CSI VIT CHENNAI, WE BUILD BUILDERS — NOT JUST ATTENDEES.","","Computer Society of India — VIT Chennai Chapter is a newly founded student-run tech community. We run hands-on sessions, project sprints, and hackathons for students who want to ship real software, not just watch it get built. Where Ideas Find Their Origin is our flagship hackathon.","","","","","","","We work as one team with our clients. Through discovery workshops, we uncover your story and translate it into digital experiences that reflect your vision.\\n\\nOur agency combines storytelling craft with technical expertise to create work that connects emotionally and drives engagement.","Recognition for innovative work that pushes what's possible in digital design.",[53,65,74,83,92],{"news":54},{"id":55,"type":56,"tags":57,"lang":24,"slug":58,"first_publication_date":59,"last_publication_date":60,"uid":61,"link_type":62,"key":63,"isBroken":64},"aV8LtRIAACYAMZIE","news",[],"why-this-report-needed-a-new-universe.","2026-01-09T19:58:45+0000","2026-01-15T01:48:54+0000","vogue-business-gen-z-interactive-editorial-design","Document","30afc5ed-7c22-49ac-9620-c4989c74b7e1",false,{"news":66},{"id":67,"type":56,"tags":68,"lang":24,"slug":69,"first_publication_date":70,"last_publication_date":71,"uid":72,"link_type":62,"key":73,"isBroken":64},"aIQAxRcAACQARLF3",[],"why-storytelling-matters-in-digital-experiences","2025-07-25T23:00:32+0000","2026-02-12T17:20:22+0000","the-power-of-digital-storytelling","3d82a458-7a17-4294-ad09-dd79457057ee",{"news":75},{"id":76,"type":56,"tags":77,"lang":24,"slug":78,"first_publication_date":79,"last_publication_date":80,"uid":81,"link_type":62,"key":82,"isBroken":64},"aBNvrBEAACcAl6Gy",[],"it-all-starts-with-interactive-storytelling","2025-05-01T20:58:46+0000","2026-02-05T22:44:03+0000","noomo-valentime-immersive-storytelling","00c5bf51-d1f6-4ede-b055-f01a188030bb",{"news":84},{"id":85,"type":56,"tags":86,"lang":24,"slug":87,"first_publication_date":88,"last_publication_date":89,"uid":90,"link_type":62,"key":91,"isBroken":64},"Zyu_rxEAACkARJGG",[],"creating-a-personalized-3d-website-experience-for-immersive-brand-activation","2024-11-06T22:13:32+0000","2026-03-31T11:37:49+0000","ai-brand-activation-3d-music-case-study","c091019f-1908-4994-a2c3-362677c1b626",{"news":93},{"id":94,"type":56,"tags":95,"lang":24,"slug":99,"first_publication_date":100,"last_publication_date":101,"uid":102,"link_type":62,"key":103,"isBroken":64},"Zj0BohMAAGnyCCFJ",[96,97,98],"3d websites","immersive marketing","ar websites","brand-storytelling-websites-in-immersive-marketing","2024-05-09T21:58:54+0000","2026-02-17T21:40:14+0000","3d-websites-and-immersive-web-experiences-for-marketing","b947b7df-382a-4ad1-b217-a7f086c6eeca",{"link_type":105},"Media",{"link_type":105,"key":107,"kind":108,"id":109,"url":110,"name":111,"size":112},"f3dcd447-5b69-4951-8fda-8491aca93318","file","aHDVIEMqNJQqHyXy","https://noomo-website.cdn.prismic.io/noomo-website/aHDVIEMqNJQqHyXy_Showreel2025.mp4","Showreel2025.mp4","20927918","BUT WE'RE HERE NOT TO TALK ABOUT OURSELVES - WE'RE HERE TO TALK ABOUT YOU, YOUR COMPANY, YOUR PRODUCT, AND YOUR GOALS.","With us it happens.\\u003Cbr> We would love to hear from you.",[],"We create 3D storytelling websites and immersive digital experiences that make people stop scrolling. Los Angeles creative agency where story dictates the medium—whether that's WebGL, cinematic video, or interactive design.",{"dimensions":118,"alt":121,"copyright":5,"url":122,"id":123,"edit":124},{"width":119,"height":120},2400,1260,"Noomo Agency - Los Angeles 3D storytelling website design and immersive digital experiences","https://images.prismic.io/noomo-website/aXrLewIvOtkhCDc4_1300x630.png?auto=format,compress&rect=0,0,1200,630&w=2400&h=1260","aXrLewIvOtkhCDc4",{"x":125,"y":125,"zoom":126,"background":127},0,1,"transparent","Digital Storytelling & 3D Website Design Agency | Noomo",[130,171,205,221,238,295,318],{"id":131,"uid":132,"url":5,"type":133,"href":134,"tags":135,"first_publication_date":136,"last_publication_date":137,"slugs":138,"linked_documents":139,"lang":24,"alternate_languages":140,"data":141},"ZcuScxEAAFmB_fLB","fwa","award","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZcuScxEAAFmB_fLB%22%29+%5D%5D",[],"2024-02-13T16:02:09+0000","2026-01-29T23:39:44+0000",[132],[],[],{"title":142,"projects":143,"sort_order":5},"FWA",[144,148,151,153,156,157,160,162,164,165,167,170],{"name":145,"nomination":146,"year":147},"Vibrant Wellness","FWA of the day","2026",{"name":149,"nomination":146,"year":150},"Vogue Business | Archrival: Gen Z Broke The Marketing Funnel","2025",{"name":152,"nomination":146,"year":150},"Noomo Valentime",{"name":154,"nomination":155,"year":150},"Noomo Beat","FWA of the day - AI",{"name":154,"nomination":146,"year":150},{"name":158,"nomination":146,"year":159},"Intel | ai.io interactive AI experience for AWS re:Invent","2024",{"name":161,"nomination":146,"year":159},"Noomo Playground",{"name":28,"nomination":163,"year":159},"FWA of the day - Mobile",{"name":28,"nomination":146,"year":159},{"name":166,"nomination":146,"year":159},"The Silly Bunny",{"name":168,"nomination":146,"year":169},"Noomo Agency","2023",{"name":5,"nomination":5,"year":5},{"id":172,"uid":173,"url":5,"type":133,"href":174,"tags":175,"first_publication_date":176,"last_publication_date":177,"slugs":178,"linked_documents":179,"lang":24,"alternate_languages":180,"data":181},"ZLfAgBEAACIAzspq","the-webby-awards","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfAgBEAACIAzspq%22%29+%5D%5D",[],"2023-07-19T10:52:51+0000","2025-05-01T00:39:16+0000",[173],[],[],{"title":182,"projects":183,"sort_order":126},"The Webby Awards",[184,186,188,190,193,195,198,201],{"name":28,"nomination":185,"year":150},"Winner, Websites and Mobile Sites - Best Use of Animation or Motion Graphics",{"name":28,"nomination":187,"year":150},"Winner, Websites and Mobile Sites - Technical Achievement",{"name":154,"nomination":189,"year":150},"Winner, Websites and Mobile Sites - Best Use of AI",{"name":191,"nomination":192,"year":150},"Percipio Health","Winner, Websites and Mobile Sites - Web Services & Applications",{"name":154,"nomination":194,"year":150},"Nomination, AI, Immersive & Games - Media & Entertainment",{"name":196,"nomination":197,"year":150},"Jasmina Denner","Honors, Websites and Mobile Sites - Personal Blog/Website",{"name":199,"nomination":200,"year":169},"Middle","Winner, Financial Services/Banking",{"name":202,"nomination":203,"year":204},"ITG Digital","Nomination, Web Services & Applications","2020",{"id":206,"uid":207,"url":5,"type":133,"href":208,"tags":209,"first_publication_date":210,"last_publication_date":211,"slugs":212,"linked_documents":213,"lang":24,"alternate_languages":214,"data":215},"ZLfAWBEAACMAzsmp","red-dot-design-award","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfAWBEAACMAzsmp%22%29+%5D%5D",[],"2023-07-19T10:52:11+0000","2023-08-07T13:18:25+0000",[207],[],[],{"title":216,"projects":217,"sort_order":220},"Red Dot Design Award",[218],{"name":202,"nomination":219,"year":204},"Winner, Online platforms",2,{"id":222,"uid":223,"url":5,"type":133,"href":224,"tags":225,"first_publication_date":226,"last_publication_date":227,"slugs":228,"linked_documents":229,"lang":24,"alternate_languages":230,"data":231},"ZLfAnREAACIAzsr9","san-francisco-design-week","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfAnREAACIAzsr9%22%29+%5D%5D",[],"2023-07-19T10:53:19+0000","2023-08-07T13:18:43+0000",[223],[],[],{"title":232,"projects":233,"sort_order":237},"San Francisco Design Week",[234],{"name":235,"nomination":236,"year":204},"Crisis Clean Up","Honorable Mentions, Civic and Government",3,{"id":239,"uid":240,"url":5,"type":133,"href":241,"tags":242,"first_publication_date":243,"last_publication_date":244,"slugs":245,"linked_documents":246,"lang":24,"alternate_languages":247,"data":248},"ZLfBNREAACQAzs3r","awwwards","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfBNREAACQAzs3r%22%29+%5D%5D",[],"2023-07-19T10:55:52+0000","2024-12-16T23:34:27+0000",[240],[],[],{"title":249,"projects":250,"sort_order":294},"Awwwards",[251,253,255,257,259,261,263,264,265,267,269,270,272,273,275,278,282,283,285,286,288,291,293],{"name":154,"nomination":252,"year":159},"Site of the day",{"name":154,"nomination":254,"year":159},"Developer award",{"name":196,"nomination":256,"year":159},"Honorable mentions",{"name":258,"nomination":256,"year":159},"Noomo XR",{"name":258,"nomination":260,"year":159},"No-code honors",{"name":28,"nomination":262,"year":159},"Portfolio honors",{"name":28,"nomination":254,"year":159},{"name":28,"nomination":252,"year":159},{"name":168,"nomination":266,"year":159},"Website of the year",{"name":268,"nomination":256,"year":159},"Cathey & Miles Attorneys Website",{"name":168,"nomination":254,"year":169},{"name":168,"nomination":271,"year":169},"Website of the day",{"name":166,"nomination":256,"year":169},{"name":274,"nomination":256,"year":169},"Middle Finance",{"name":276,"nomination":252,"year":277},"Olha Uzhykova portfolio","2022",{"name":279,"nomination":280,"year":281},"Netrix","nominated for “Mobile website of the year”","2021",{"name":279,"nomination":252,"year":281},{"name":279,"nomination":284,"year":281},"Mobile website of the week",{"name":279,"nomination":254,"year":281},{"name":287,"nomination":256,"year":204},"MadDad",{"name":287,"nomination":289,"year":290},"Mobile design excellence","2019",{"name":279,"nomination":256,"year":292},"2018",{"name":279,"nomination":289,"year":292},4,{"id":296,"uid":297,"url":5,"type":133,"href":298,"tags":299,"first_publication_date":300,"last_publication_date":301,"slugs":302,"linked_documents":303,"lang":24,"alternate_languages":304,"data":305},"ZLfBaBEAACIAzs7i","css-design-award","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfBaBEAACIAzs7i%22%29+%5D%5D",[],"2023-07-19T10:56:42+0000","2024-12-16T23:28:37+0000",[297],[],[],{"title":306,"projects":307,"sort_order":317},"CSS Design Award",[308,309,310,312,313,314,316],{"name":154,"nomination":271,"year":159},{"name":196,"nomination":271,"year":159},{"name":311,"nomination":271,"year":159},"The Future Of XR",{"name":28,"nomination":271,"year":159},{"name":166,"nomination":271,"year":169},{"name":315,"nomination":271,"year":169},"Olha Uzhykova Portfolio",{"name":168,"nomination":271,"year":169},5,{"id":319,"uid":320,"url":5,"type":133,"href":321,"tags":322,"first_publication_date":323,"last_publication_date":324,"slugs":325,"linked_documents":326,"lang":24,"alternate_languages":327,"data":328},"ZLfBhBEAACMAzs9m","adc-europe","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfBhBEAACMAzs9m%22%29+%5D%5D",[],"2023-07-19T10:57:11+0000","2023-08-07T13:19:28+0000",[320],[],[],{"title":329,"projects":330,"sort_order":333},"ADC Europe",[331],{"name":202,"nomination":332,"year":204},"Nomination in category Interactive & Mobile",6,{"$ssite-config":335},{"_context":336,"url":341,"defaultLocale":342,"trailingSlash":64,"titleSeparator":343,"name":344,"indexable":345,"debug":64},{"url":337,"defaultLocale":338,"trailingSlash":338,"titleSeparator":338,"name":339,"indexable":340,"debug":337},"nuxt:config:site","defaults","vendorEnv","system","https://noomoagency.com","en","|","nuxt-blunk",true,{"home_page":5,"award":5},"/",1783340279996,{"sceneId":350},{"mixers":351,"cameraMove":345,"menuOpen":64,"preloaderDone":64,"ourStoryModelLoaded":64,"caseModelLoaded":64,"goToPage":352},[],""]`;
     document.body.appendChild(dataScript);
 
     // Dynamically inject the Nuxt bundle entry script post-hydration
@@ -239,7 +240,11 @@ export default function Home() {
       if (desktopCases.length >= 4) {
         // Card 1: Fintech
         const c1 = desktopCases[0];
-        const tag1 = c1.querySelector('.tags .tag');
+        const year1 = c1.querySelector('.tags .year span') || c1.querySelector('.tags .year');
+        if (year1 && year1.innerHTML !== 'Track') {
+          year1.innerHTML = 'Track';
+        }
+        const tag1 = c1.querySelector('.tags div .tag') || c1.querySelector('.tags div span');
         if (tag1 && tag1.innerHTML !== 'Payments / Lending / Access') {
           tag1.innerHTML = 'Payments / Lending / Access';
         }
@@ -259,18 +264,22 @@ export default function Home() {
         });
         const btn1 = c1.querySelector('.view-project-link');
         if (btn1) {
-          btn1.setAttribute('href', '/connect');
+          btn1.setAttribute('href', '/work/noomo-labs-the-jellyfish');
           btn1.style.cursor = 'pointer';
           btn1.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            window.location.href = '/connect';
+            window.location.href = '/work/noomo-labs-the-jellyfish';
           };
         }
 
         // Card 2: Web3
         const c2 = desktopCases[1];
-        const tag2 = c2.querySelector('.tags .tag');
+        const year2 = c2.querySelector('.tags .year span') || c2.querySelector('.tags .year');
+        if (year2 && year2.innerHTML !== 'Track') {
+          year2.innerHTML = 'Track';
+        }
+        const tag2 = c2.querySelector('.tags div .tag') || c2.querySelector('.tags div span');
         if (tag2 && tag2.innerHTML !== 'Web3 / DApps / Solidity') {
           tag2.innerHTML = 'Web3 / DApps / Solidity';
         }
@@ -290,18 +299,22 @@ export default function Home() {
         });
         const btn2 = c2.querySelector('.view-project-link');
         if (btn2) {
-          btn2.setAttribute('href', '/connect');
+          btn2.setAttribute('href', '/work/microsite-golden-state-warriors-and-coinbase-collectible');
           btn2.style.cursor = 'pointer';
           btn2.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            window.location.href = '/connect';
+            window.location.href = '/work/microsite-golden-state-warriors-and-coinbase-collectible';
           };
         }
 
         // Card 3: Sustainability
         const c3 = desktopCases[2];
-        const tag3 = c3.querySelector('.tags .tag');
+        const year3 = c3.querySelector('.tags .year span') || c3.querySelector('.tags .year');
+        if (year3 && year3.innerHTML !== 'Track') {
+          year3.innerHTML = 'Track';
+        }
+        const tag3 = c3.querySelector('.tags div .tag') || c3.querySelector('.tags div span');
         if (tag3 && tag3.innerHTML !== 'Climate / IoT / Smart Tech') {
           tag3.innerHTML = 'Climate / IoT / Smart Tech';
         }
@@ -321,18 +334,22 @@ export default function Home() {
         });
         const btn3 = c3.querySelector('.view-project-link');
         if (btn3) {
-          btn3.setAttribute('href', '/connect');
+          btn3.setAttribute('href', '/work/enterprise-3d-platform-website-salesforce');
           btn3.style.cursor = 'pointer';
           btn3.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            window.location.href = '/connect';
+            window.location.href = '/work/enterprise-3d-platform-website-salesforce';
           };
         }
 
         // Card 4: Open Innovation
         const c4 = desktopCases[3];
-        const tag4 = c4.querySelector('.tags .tag');
+        const year4 = c4.querySelector('.tags .year span') || c4.querySelector('.tags .year');
+        if (year4 && year4.innerHTML !== 'Track') {
+          year4.innerHTML = 'Track';
+        }
+        const tag4 = c4.querySelector('.tags div .tag') || c4.querySelector('.tags div span');
         if (tag4 && tag4.innerHTML !== 'Cross-Domain / Open-Ended') {
           tag4.innerHTML = 'Cross-Domain / Open-Ended';
         }
@@ -352,12 +369,12 @@ export default function Home() {
         });
         const btn4 = c4.querySelector('.view-project-link');
         if (btn4) {
-          btn4.setAttribute('href', '/connect');
+          btn4.setAttribute('href', '/work/dandy-vision-storytelling-website');
           btn4.style.cursor = 'pointer';
           btn4.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            window.location.href = '/connect';
+            window.location.href = '/work/dandy-vision-storytelling-website';
           };
         }
       }
@@ -387,20 +404,20 @@ export default function Home() {
         });
         const mbtn1 = mc1.querySelector('.view-project-link');
         if (mbtn1) {
-          mbtn1.setAttribute('href', '/connect');
+          mbtn1.setAttribute('href', '/work/noomo-labs-the-jellyfish');
           mbtn1.style.cursor = 'pointer';
           mbtn1.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            window.location.href = '/connect';
+            window.location.href = '/work/noomo-labs-the-jellyfish';
           };
         }
 
         // Card 2
         const mc2 = mobileCases[1];
         const title2 = mc2.querySelector('.title');
-        if (title2 && title2.innerHTML !== 'WEB3') {
-          title2.innerHTML = 'WEB3';
+        if (title2 && title2.innerHTML !== 'WEB3 &amp; BLOCKCHAIN' && title2.innerHTML !== 'WEB3 & BLOCKCHAIN') {
+          title2.innerHTML = 'WEB3 &amp; BLOCKCHAIN';
         }
         const name2 = mc2.querySelector('.name');
         if (name2 && name2.innerHTML !== 'WEB3 &amp; BLOCKCHAIN' && name2.innerHTML !== 'WEB3 & BLOCKCHAIN') {
@@ -418,20 +435,20 @@ export default function Home() {
         });
         const mbtn2 = mc2.querySelector('.view-project-link');
         if (mbtn2) {
-          mbtn2.setAttribute('href', '/connect');
+          mbtn2.setAttribute('href', '/work/microsite-golden-state-warriors-and-coinbase-collectible');
           mbtn2.style.cursor = 'pointer';
           mbtn2.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            window.location.href = '/connect';
+            window.location.href = '/work/microsite-golden-state-warriors-and-coinbase-collectible';
           };
         }
 
         // Card 3
         const mc3 = mobileCases[2];
         const title3 = mc3.querySelector('.title');
-        if (title3 && title3.innerHTML !== 'EM-TECH') {
-          title3.innerHTML = 'EM-TECH';
+        if (title3 && title3.innerHTML !== 'SUSTAINABILITY &amp; EM-TECH' && title3.innerHTML !== 'SUSTAINABILITY & EM-TECH') {
+          title3.innerHTML = 'SUSTAINABILITY &amp; EM-TECH';
         }
         const name3 = mc3.querySelector('.name');
         if (name3 && name3.innerHTML !== 'SUSTAINABILITY &amp; EM-TECH' && name3.innerHTML !== 'SUSTAINABILITY & EM-TECH') {
@@ -449,20 +466,20 @@ export default function Home() {
         });
         const mbtn3 = mc3.querySelector('.view-project-link');
         if (mbtn3) {
-          mbtn3.setAttribute('href', '/connect');
+          mbtn3.setAttribute('href', '/work/enterprise-3d-platform-website-salesforce');
           mbtn3.style.cursor = 'pointer';
           mbtn3.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            window.location.href = '/connect';
+            window.location.href = '/work/enterprise-3d-platform-website-salesforce';
           };
         }
 
         // Card 4
         const mc4 = mobileCases[3];
         const title4 = mc4.querySelector('.title');
-        if (title4 && title4.innerHTML !== 'OPEN') {
-          title4.innerHTML = 'OPEN';
+        if (title4 && title4.innerHTML !== 'OPEN INNOVATION') {
+          title4.innerHTML = 'OPEN INNOVATION';
         }
         const name4 = mc4.querySelector('.name');
         if (name4 && name4.innerHTML !== 'OPEN INNOVATION') {
@@ -480,14 +497,104 @@ export default function Home() {
         });
         const mbtn4 = mc4.querySelector('.view-project-link');
         if (mbtn4) {
-          mbtn4.setAttribute('href', '/connect');
+          mbtn4.setAttribute('href', '/work/dandy-vision-storytelling-website');
           mbtn4.style.cursor = 'pointer';
           mbtn4.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            window.location.href = '/connect';
+            window.location.href = '/work/dandy-vision-storytelling-website';
           };
         }
+      }
+      // Patch the About Us support paragraph into a SpotlightCard to survive Vue client-side hydration
+      const aboutUsRight = document.querySelector('.home-info-block .wrapper .top .right');
+      if (aboutUsRight) {
+        let spotlightCard = aboutUsRight.querySelector('.card-spotlight');
+        const pTag = aboutUsRight.querySelector('p');
+        
+        if (!spotlightCard && pTag) {
+          spotlightCard = document.createElement('div');
+          spotlightCard.className = 'card-spotlight custom-spotlight-card';
+          pTag.style.margin = '0';
+          pTag.classList.add('card-text');
+          pTag.parentNode.insertBefore(spotlightCard, pTag);
+          spotlightCard.appendChild(pTag);
+        } else if (spotlightCard && pTag && !pTag.classList.contains('card-text')) {
+          pTag.classList.add('card-text');
+        }
+
+        if (spotlightCard && !spotlightCard.onmousemove) {
+          spotlightCard.onmousemove = (e) => {
+            const rect = spotlightCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            spotlightCard.style.setProperty('--mouse-x', `${x}px`);
+            spotlightCard.style.setProperty('--mouse-y', `${y}px`);
+            spotlightCard.style.setProperty('--spotlight-color', 'rgba(99, 102, 241, 0.3)');
+          };
+        }
+      }
+
+      // Patch the About Us bottom row to show three beautiful metric cards instead of the empty void
+      const aboutUsBottom = document.querySelector('.home-info-block .wrapper .bottom');
+      if (aboutUsBottom) {
+        aboutUsBottom.style.display = 'flex';
+        aboutUsBottom.style.marginTop = '80px';
+        aboutUsBottom.style.gap = '30px';
+        aboutUsBottom.style.flexWrap = 'wrap';
+        
+        let hasOldItems = aboutUsBottom.querySelector('.bottom-item');
+        let hasMetrics = aboutUsBottom.querySelector('.metric-card');
+        if (hasOldItems || !hasMetrics) {
+          aboutUsBottom.innerHTML = `
+            <div class="card-spotlight custom-spotlight-card metric-card" id="metric-card-1" style="flex: 1; min-width: 250px;">
+              <h3 class="metric-val">36 HOURS</h3>
+              <h4 class="metric-label">Non-stop Building</h4>
+              <p class="metric-desc">Collaborate, prototype, and build side-by-side with India's most ambitious student developers.</p>
+            </div>
+            <div class="card-spotlight custom-spotlight-card metric-card" id="metric-card-2" style="flex: 1; min-width: 250px;">
+              <h3 class="metric-val">4 TRACKS</h3>
+              <h4 class="metric-label">Diverse Innovation</h4>
+              <p class="metric-desc">Showcase your skills in FinTech, Web3 & Blockchain, Sustainability, or Open Innovation.</p>
+            </div>
+            <div class="card-spotlight custom-spotlight-card metric-card" id="metric-card-3" style="flex: 1; min-width: 250px;">
+              <h3 class="metric-val">₹1,00,000+</h3>
+              <h4 class="metric-label">Prize Pool</h4>
+              <p class="metric-desc">Compete for massive cash prizes, sponsor bounties, and exclusive swag.</p>
+            </div>
+          `;
+        }
+        
+        // Attach mousemove hover listeners to all metric cards
+        const metricCards = aboutUsBottom.querySelectorAll('.metric-card');
+        metricCards.forEach(card => {
+          if (!card.onmousemove) {
+            card.onmousemove = (e) => {
+              const rect = card.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              card.style.setProperty('--mouse-x', `${x}px`);
+              card.style.setProperty('--mouse-y', `${y}px`);
+              card.style.setProperty('--spotlight-color', 'rgba(99, 102, 241, 0.3)');
+            };
+          }
+        });
+      }
+
+      // Hide the floating white 3D letter "M" from Noomo branding in Three.js canvas
+      if (window.scene) {
+        window.scene.children.forEach(child => {
+          if (child.isGroup || child.type === 'Group' || child.type === 'Object3D') {
+            const pos = child.position;
+            if (pos && typeof pos.x === 'number') {
+              if (pos.y >= 13 && pos.y <= 18 && pos.x >= 23 && pos.x <= 41 && pos.z >= -17 && pos.z <= 1) {
+                if (child.children.length < 3) {
+                  child.visible = false;
+                }
+              }
+            }
+          }
+        });
       }
 
       // Reconnect observer
@@ -539,10 +646,63 @@ export default function Home() {
       customBurger.addEventListener('click', onBurgerClick);
     }
 
+    const handleGlobalClick = (e) => {
+      const btn = e.target.closest('.view-project-link');
+      if (btn) {
+        const item = btn.closest('.item');
+        const mobileCase = btn.closest('.case');
+        
+        if (item) {
+          const items = Array.from(document.querySelectorAll('.cases-texts .item'));
+          const index = items.indexOf(item);
+          if (index === 0) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/work/noomo-labs-the-jellyfish';
+          } else if (index === 1) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/work/microsite-golden-state-warriors-and-coinbase-collectible';
+          } else if (index === 2) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/work/enterprise-3d-platform-website-salesforce';
+          } else if (index === 3) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/work/dandy-vision-storytelling-website';
+          }
+        } else if (mobileCase) {
+          const cases = Array.from(document.querySelectorAll('.home-mobile-cases .case'));
+          const index = cases.indexOf(mobileCase);
+          if (index === 0) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/work/noomo-labs-the-jellyfish';
+          } else if (index === 1) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/work/microsite-golden-state-warriors-and-coinbase-collectible';
+          } else if (index === 2) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/work/enterprise-3d-platform-website-salesforce';
+          } else if (index === 3) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/work/dandy-vision-storytelling-website';
+          }
+        }
+      }
+    };
+
+    document.addEventListener('click', handleGlobalClick, true);
+
     return () => {
       observer.disconnect();
       clearInterval(interval);
       window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleGlobalClick, true);
       if (customBurger) {
         customBurger.removeEventListener('click', onBurgerClick);
       }
@@ -637,7 +797,7 @@ export default function Home() {
                                     </div>
                                     <div data-v-7abacc29="" className="case">
                                         <div data-v-7abacc29="" className="image-block">
-                                            <p data-v-7abacc29="" className="title-1 title">WEB3</p><img
+                                            <p data-v-7abacc29="" className="title-1 title">WEB3 & BLOCKCHAIN</p><img
                                                 data-v-7abacc29="" className="glass-t glass-t-1" src="/cases/glassT.png"
                                                 alt="image" />
                                         </div>
@@ -652,7 +812,7 @@ export default function Home() {
                                     </div>
                                     <div data-v-7abacc29="" className="case">
                                         <div data-v-7abacc29="" className="image-block">
-                                            <p data-v-7abacc29="" className="title-2 title">EM-TECH</p><img
+                                            <p data-v-7abacc29="" className="title-2 title">SUSTAINABILITY & EM-TECH</p><img
                                                 data-v-7abacc29="" className="glass-t glass-t-2" src="/cases/glassT.png"
                                                 alt="image" />
                                         </div>
@@ -667,7 +827,7 @@ export default function Home() {
                                     </div>
                                     <div data-v-7abacc29="" className="case">
                                         <div data-v-7abacc29="" className="image-block">
-                                            <p data-v-7abacc29="" className="title-3 title">OPEN</p><img
+                                            <p data-v-7abacc29="" className="title-3 title">OPEN INNOVATION</p><img
                                                 data-v-7abacc29="" className="glass-t glass-t-3" src="/cases/glassT.png"
                                                 alt="image" />
                                         </div>
@@ -686,75 +846,30 @@ export default function Home() {
                                 <div className="wrapper">
                                     <div className="top">
                                         <div className="left">
-                                            <h1 className="font-machina-60 title-1">At Noomo, we create 3D storytelling
-                                                websites and immersive digital experiences where craft and narrative
-                                                become one.</h1>
-                                            <h2 className="font-machina-60">From immersive 3D websites to cinematic brand
-                                                videos, we let the story dictate the medium—whether that's real-time
-                                                rendering, editorial design, or interactive experiences.</h2>
+                                            <h1 className="font-machina-60">AT CSI VIT CHENNAI, WE BUILD BUILDERS — NOT JUST ATTENDEES.</h1>
                                         </div>
                                         <div className="right">
-                                            <p className="font-neue-roman-16">We partner with brands like Salesforce, AMD,
-                                                Red Bull and Vogue Business who believe craft makes the difference.
-
-                                                Companies that value innovation, obsess over details, and understand
-                                                great digital work requires time, trust, and true collaboration.</p>
+                                            <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(99, 102, 241, 0.3)">
+                                                <p className="font-neue-roman-16 card-text" style={{ margin: 0 }}>Computer Society of India — VIT Chennai Chapter is a newly founded student-run tech community. We run hands-on sessions, project sprints, and hackathons for students who want to ship real software, not just watch it get built. Where Ideas Find Their Origin is our flagship hackathon.</p>
+                                            </SpotlightCard>
                                         </div>
                                     </div>
-                                    <div className="bottom">
-                                        <div className="left">
-                                            <div className="bottom-item">
-                                                <p className="tag">Services</p>
-                                                <p className="font-neue-roman-16 line">3D websites<br />
-                                                    Storytelling websites<br />
-                                                    3D storytelling videos<br />
-                                                    Immersive web experiences <br />
-                                                    WebGL development<br />
-                                                    Brand activation microsites<br />
-                                                    Digital event experiences<br />
-                                                    Interactive website design<br />
-                                                    AI-driven experiences<br />
-                                                    Digital branding<br /></p>
-                                            </div>
-                                            <div className="bottom-item show-m">
-                                                <p className="tag">♥‿♥</p>
-                                                <p className="font-neue-roman-16 line">Vogue Business<br />
-                                                    Samsung<br />
-                                                    Cadence Design Systems<br />
-                                                    Space Needle<br />
-                                                    OneLine Health<br />
-                                                    Middle Finance<br />
-                                                    The Art of Living<br />
-                                                    Life House<br />
-                                                    Battalion<br /></p>
-                                            </div>
-                                        </div>
-                                        <div className="right">
-                                            <div className="bottom-item">
-                                                <p className="tag">Clients</p>
-                                                <p className="font-neue-roman-16 line">Salesforce<br />
-                                                    AMD<br />
-                                                    Coinbase<br />
-                                                    Red Bull<br />
-                                                    Intel | ai.io<br />
-                                                    Yolo Federal Credit Union<br />
-                                                    Percipio Health<br />
-                                                    Dandy Vision<br />
-                                                    Vibrant Wellness<br /></p>
-                                            </div>
-                                            <div className="bottom-item item-margin hide-m">
-                                                <p className="tag">♥‿♥</p>
-                                                <p className="font-neue-roman-16 line">Vogue Business<br />
-                                                    Samsung<br />
-                                                    Cadence Design Systems<br />
-                                                    Space Needle<br />
-                                                    OneLine Health<br />
-                                                    Middle Finance<br />
-                                                    The Art of Living<br />
-                                                    Life House<br />
-                                                    Battalion<br /></p>
-                                            </div>
-                                        </div>
+                                    <div className="bottom" style={{ display: 'flex', marginTop: '80px', gap: '30px', flexWrap: 'wrap' }}>
+                                        <SpotlightCard className="custom-spotlight-card metric-card" spotlightColor="rgba(99, 102, 241, 0.3)">
+                                            <h3 className="metric-val">36 HOURS</h3>
+                                            <h4 className="metric-label">Non-stop Building</h4>
+                                            <p className="metric-desc">Collaborate, prototype, and build side-by-side with India's most ambitious student developers.</p>
+                                        </SpotlightCard>
+                                        <SpotlightCard className="custom-spotlight-card metric-card" spotlightColor="rgba(99, 102, 241, 0.3)">
+                                            <h3 className="metric-val">4 TRACKS</h3>
+                                            <h4 className="metric-label">Diverse Innovation</h4>
+                                            <p className="metric-desc">Showcase your skills in FinTech, Web3 & Blockchain, Sustainability, or Open Innovation.</p>
+                                        </SpotlightCard>
+                                        <SpotlightCard className="custom-spotlight-card metric-card" spotlightColor="rgba(99, 102, 241, 0.3)">
+                                            <h3 className="metric-val">₹1,00,000+</h3>
+                                            <h4 className="metric-label">Prize Pool</h4>
+                                            <p className="metric-desc">Compete for massive cash prizes, sponsor bounties, and exclusive swag.</p>
+                                        </SpotlightCard>
                                     </div>
                                 </div>
                             </div>

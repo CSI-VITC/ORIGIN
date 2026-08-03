@@ -1,0 +1,88 @@
+.card-spotlight {
+  position: relative;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  padding: 2.2rem;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgba(99, 102, 241, 0.3);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 80%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.card-spotlight:hover::before,
+.card-spotlight:focus-within::before {
+  opacity: 0.6;
+}
+
+.card-spotlight:hover {
+  border-color: rgba(99, 102, 241, 0.45);
+  background: rgba(255, 255, 255, 0.55);
+  transform: translateY(-2px);
+}
+
+.card-spotlight .card-text {
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  line-height: 1.6 !important;
+  color: #1e1b4b !important;
+  margin: 0 !important;
+}
+
+/* Metric Cards for empty space layout */
+.card-spotlight.metric-card {
+  flex: 1;
+  min-width: 250px;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(99, 102, 241, 0.15) !important;
+}
+
+.card-spotlight.metric-card:hover {
+  border-color: rgba(99, 102, 241, 0.35) !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.card-spotlight.metric-card .metric-val {
+  font-family: NeueMachina, sans-serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #1e1b4b;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.card-spotlight.metric-card .metric-label {
+  font-family: NeueRoman, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #4f46e5;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-spotlight.metric-card .metric-desc {
+  font-family: NeueRoman, sans-serif;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  color: #4b5563 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}

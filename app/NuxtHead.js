@@ -20,7 +20,7 @@ export default function NuxtHead() {
 
       {/* ── Nuxt layout / pages ── */}
       <link rel="modulepreload" as="script" crossOrigin="" href="/_nuxt/default.fc5a372c.js" />
-      <link rel="modulepreload" as="script" crossOrigin="" href="/_nuxt/index.ba499ee8.js" />
+      <link rel="modulepreload" as="script" crossOrigin="" href="/_nuxt/index.ba499ee8_v5.js" />
       <link rel="modulepreload" as="script" crossOrigin="" href="/_nuxt/index.93ffdf89.js" />
 
       {/* ── GSAP plugins ── */}
