@@ -10,6 +10,57 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Inject stylesheet to force pointer-events: auto on cases-texts and buttons,
+    // overriding Noomo's dynamic inline pointer-events: none resets.
+    const styleEl = document.createElement('style');
+    styleEl.innerHTML = `
+      .cases-texts, .cases-texts * {
+        pointer-events: auto !important;
+      }
+      .home-mobile-cases, .home-mobile-cases * {
+        pointer-events: auto !important;
+      }
+      .view-project-link, .view-project-link * {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+      }
+      .testimonails-text {
+        display: none !important;
+      }
+      .mobile-rev {
+        display: block !important;
+        padding: 80px 40px !important;
+        background: rgba(255, 255, 255, 0.01) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+      }
+      @media (min-width: 1025px) {
+        .mobile-rev .swiper-wrapper {
+          display: flex !important;
+          flex-wrap: wrap !important;
+          gap: 30px !important;
+          justify-content: center !important;
+          transform: none !important;
+        }
+        .mobile-rev .swiper-slide {
+          flex: 1 1 300px !important;
+          max-width: 380px !important;
+          margin-right: 0 !important;
+          background: rgba(255, 255, 255, 0.02) !important;
+          border: 1px solid rgba(255, 255, 255, 0.08) !important;
+          border-radius: 16px !important;
+          padding: 30px !important;
+          height: auto !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: space-between !important;
+          opacity: 1 !important;
+        }
+      }
+    `;
+    document.head.appendChild(styleEl);
+    window.__trackStyleEl = styleEl;
+
     // Suppress Vue hydration console mismatch warning
     const rawError = console.error;
     console.error = (...args) => {
@@ -69,7 +120,7 @@ export default function Home() {
     dataScript.type = 'application/json';
     dataScript.id = '__NUXT_DATA__';
     dataScript.setAttribute('data-ssr', 'true');
-    dataScript.textContent = `[["Reactive",1],{"data":2,"state":334,"_errors":346,"serverRendered":345,"path":347,"prerenderedAt":348,"pinia":349},{"home_page":3,"award":129},{"id":4,"uid":5,"url":5,"type":6,"href":7,"tags":8,"first_publication_date":19,"last_publication_date":20,"slugs":21,"linked_documents":23,"lang":24,"alternate_languages":25,"data":26},"ZMJ35xAAACEAJonp",null,"home_page","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZMJ35xAAACEAJonp%22%29+%5D%5D",[9,10,11,12,13,14,15,16,17,18],"los angeles web design","website design los angeles","best interactive design agency","creative agency los angeles","storytelling website design","design agency los angeles","WebGL website design company","3d website design","top creative digital agency","3d storytelling videos","2023-07-27T14:00:01+0000","2026-01-29T04:01:40+0000",[22],"home-page",[],"en-us",[],{"hero_description":27,"enterprise_title":28,"enterprise_text":29,"enterprise_main_tag":30,"enterprise_tags":31,"interactive_title":32,"interactive_text":33,"interactive_main_tag":30,"interactive_tags":34,"iconic_title":35,"iconic_text":36,"iconic_main_tag":30,"iconic_tags":37,"immersive_title":38,"immersive_text":39,"immersive_main_tag":30,"immersive_tags":40,"main_text":41,"main_decription":42,"right_description":43,"item_title_1":44,"item_title_2":45,"item_title_3":46,"digital_products":47,"interactive_websites":48,"digital_branding":49,"reviews_description":50,"awards_list_title":51,"selected_news":52,"home_object_video_webm":104,"home_object_video_mp":106,"contact_form_title":113,"contact_form_description":114,"slices":115,"meta_description":116,"meta_image":117,"meta_title":128},"Award-winning design agency building websites, activations, and experiences that make people stop scrolling.","FINTECH","Reimagine payments, lending, and financial access with secure, scalable FinTech.","Track","Payments / Lending / Access","WEB3 & BLOCKCHAIN","Build trustless apps with smart contracts, tokens, and decentralized rails.","Web3 / DApps / Solidity","SUSTAINABILITY & EM-TECH","Use tech to tackle climate challenges, design immersive AR/VR experiences, and prototype smart devices.","Climate / IoT / Smart Tech","OPEN INNOVATION","Solve any real-world problem with bold, cross-domain, open-ended ideas.","Cross-Domain / Open-Ended","AT CSI VIT CHENNAI, WE BUILD BUILDERS — NOT JUST ATTENDEES.","","Computer Society of India — VIT Chennai Chapter is a newly founded student-run tech community. We run hands-on sessions, project sprints, and hackathons for students who want to ship real software, not just watch it get built. Where Ideas Find Their Origin is our flagship hackathon.","","","","","","","We work as one team with our clients. Through discovery workshops, we uncover your story and translate it into digital experiences that reflect your vision.\\n\\nOur agency combines storytelling craft with technical expertise to create work that connects emotionally and drives engagement.","Recognition for innovative work that pushes what's possible in digital design.",[53,65,74,83,92],{"news":54},{"id":55,"type":56,"tags":57,"lang":24,"slug":58,"first_publication_date":59,"last_publication_date":60,"uid":61,"link_type":62,"key":63,"isBroken":64},"aV8LtRIAACYAMZIE","news",[],"why-this-report-needed-a-new-universe.","2026-01-09T19:58:45+0000","2026-01-15T01:48:54+0000","vogue-business-gen-z-interactive-editorial-design","Document","30afc5ed-7c22-49ac-9620-c4989c74b7e1",false,{"news":66},{"id":67,"type":56,"tags":68,"lang":24,"slug":69,"first_publication_date":70,"last_publication_date":71,"uid":72,"link_type":62,"key":73,"isBroken":64},"aIQAxRcAACQARLF3",[],"why-storytelling-matters-in-digital-experiences","2025-07-25T23:00:32+0000","2026-02-12T17:20:22+0000","the-power-of-digital-storytelling","3d82a458-7a17-4294-ad09-dd79457057ee",{"news":75},{"id":76,"type":56,"tags":77,"lang":24,"slug":78,"first_publication_date":79,"last_publication_date":80,"uid":81,"link_type":62,"key":82,"isBroken":64},"aBNvrBEAACcAl6Gy",[],"it-all-starts-with-interactive-storytelling","2025-05-01T20:58:46+0000","2026-02-05T22:44:03+0000","noomo-valentime-immersive-storytelling","00c5bf51-d1f6-4ede-b055-f01a188030bb",{"news":84},{"id":85,"type":56,"tags":86,"lang":24,"slug":87,"first_publication_date":88,"last_publication_date":89,"uid":90,"link_type":62,"key":91,"isBroken":64},"Zyu_rxEAACkARJGG",[],"creating-a-personalized-3d-website-experience-for-immersive-brand-activation","2024-11-06T22:13:32+0000","2026-03-31T11:37:49+0000","ai-brand-activation-3d-music-case-study","c091019f-1908-4994-a2c3-362677c1b626",{"news":93},{"id":94,"type":56,"tags":95,"lang":24,"slug":99,"first_publication_date":100,"last_publication_date":101,"uid":102,"link_type":62,"key":103,"isBroken":64},"Zj0BohMAAGnyCCFJ",[96,97,98],"3d websites","immersive marketing","ar websites","brand-storytelling-websites-in-immersive-marketing","2024-05-09T21:58:54+0000","2026-02-17T21:40:14+0000","3d-websites-and-immersive-web-experiences-for-marketing","b947b7df-382a-4ad1-b217-a7f086c6eeca",{"link_type":105},"Media",{"link_type":105,"key":107,"kind":108,"id":109,"url":110,"name":111,"size":112},"f3dcd447-5b69-4951-8fda-8491aca93318","file","aHDVIEMqNJQqHyXy","https://noomo-website.cdn.prismic.io/noomo-website/aHDVIEMqNJQqHyXy_Showreel2025.mp4","Showreel2025.mp4","20927918","BUT WE'RE HERE NOT TO TALK ABOUT OURSELVES - WE'RE HERE TO TALK ABOUT YOU, YOUR COMPANY, YOUR PRODUCT, AND YOUR GOALS.","With us it happens.\\u003Cbr> We would love to hear from you.",[],"We create 3D storytelling websites and immersive digital experiences that make people stop scrolling. Los Angeles creative agency where story dictates the medium—whether that's WebGL, cinematic video, or interactive design.",{"dimensions":118,"alt":121,"copyright":5,"url":122,"id":123,"edit":124},{"width":119,"height":120},2400,1260,"Noomo Agency - Los Angeles 3D storytelling website design and immersive digital experiences","https://images.prismic.io/noomo-website/aXrLewIvOtkhCDc4_1300x630.png?auto=format,compress&rect=0,0,1200,630&w=2400&h=1260","aXrLewIvOtkhCDc4",{"x":125,"y":125,"zoom":126,"background":127},0,1,"transparent","Digital Storytelling & 3D Website Design Agency | Noomo",[130,171,205,221,238,295,318],{"id":131,"uid":132,"url":5,"type":133,"href":134,"tags":135,"first_publication_date":136,"last_publication_date":137,"slugs":138,"linked_documents":139,"lang":24,"alternate_languages":140,"data":141},"ZcuScxEAAFmB_fLB","fwa","award","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZcuScxEAAFmB_fLB%22%29+%5D%5D",[],"2024-02-13T16:02:09+0000","2026-01-29T23:39:44+0000",[132],[],[],{"title":142,"projects":143,"sort_order":5},"FWA",[144,148,151,153,156,157,160,162,164,165,167,170],{"name":145,"nomination":146,"year":147},"Vibrant Wellness","FWA of the day","2026",{"name":149,"nomination":146,"year":150},"Vogue Business | Archrival: Gen Z Broke The Marketing Funnel","2025",{"name":152,"nomination":146,"year":150},"Noomo Valentime",{"name":154,"nomination":155,"year":150},"Noomo Beat","FWA of the day - AI",{"name":154,"nomination":146,"year":150},{"name":158,"nomination":146,"year":159},"Intel | ai.io interactive AI experience for AWS re:Invent","2024",{"name":161,"nomination":146,"year":159},"Noomo Playground",{"name":28,"nomination":163,"year":159},"FWA of the day - Mobile",{"name":28,"nomination":146,"year":159},{"name":166,"nomination":146,"year":159},"The Silly Bunny",{"name":168,"nomination":146,"year":169},"Noomo Agency","2023",{"name":5,"nomination":5,"year":5},{"id":172,"uid":173,"url":5,"type":133,"href":174,"tags":175,"first_publication_date":176,"last_publication_date":177,"slugs":178,"linked_documents":179,"lang":24,"alternate_languages":180,"data":181},"ZLfAgBEAACIAzspq","the-webby-awards","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfAgBEAACIAzspq%22%29+%5D%5D",[],"2023-07-19T10:52:51+0000","2025-05-01T00:39:16+0000",[173],[],[],{"title":182,"projects":183,"sort_order":126},"The Webby Awards",[184,186,188,190,193,195,198,201],{"name":28,"nomination":185,"year":150},"Winner, Websites and Mobile Sites - Best Use of Animation or Motion Graphics",{"name":28,"nomination":187,"year":150},"Winner, Websites and Mobile Sites - Technical Achievement",{"name":154,"nomination":189,"year":150},"Winner, Websites and Mobile Sites - Best Use of AI",{"name":191,"nomination":192,"year":150},"Percipio Health","Winner, Websites and Mobile Sites - Web Services & Applications",{"name":154,"nomination":194,"year":150},"Nomination, AI, Immersive & Games - Media & Entertainment",{"name":196,"nomination":197,"year":150},"Jasmina Denner","Honors, Websites and Mobile Sites - Personal Blog/Website",{"name":199,"nomination":200,"year":169},"Middle","Winner, Financial Services/Banking",{"name":202,"nomination":203,"year":204},"ITG Digital","Nomination, Web Services & Applications","2020",{"id":206,"uid":207,"url":5,"type":133,"href":208,"tags":209,"first_publication_date":210,"last_publication_date":211,"slugs":212,"linked_documents":213,"lang":24,"alternate_languages":214,"data":215},"ZLfAWBEAACMAzsmp","red-dot-design-award","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfAWBEAACMAzsmp%22%29+%5D%5D",[],"2023-07-19T10:52:11+0000","2023-08-07T13:18:25+0000",[207],[],[],{"title":216,"projects":217,"sort_order":220},"Red Dot Design Award",[218],{"name":202,"nomination":219,"year":204},"Winner, Online platforms",2,{"id":222,"uid":223,"url":5,"type":133,"href":224,"tags":225,"first_publication_date":226,"last_publication_date":227,"slugs":228,"linked_documents":229,"lang":24,"alternate_languages":230,"data":231},"ZLfAnREAACIAzsr9","san-francisco-design-week","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfAnREAACIAzsr9%22%29+%5D%5D",[],"2023-07-19T10:53:19+0000","2023-08-07T13:18:43+0000",[223],[],[],{"title":232,"projects":233,"sort_order":237},"San Francisco Design Week",[234],{"name":235,"nomination":236,"year":204},"Crisis Clean Up","Honorable Mentions, Civic and Government",3,{"id":239,"uid":240,"url":5,"type":133,"href":241,"tags":242,"first_publication_date":243,"last_publication_date":244,"slugs":245,"linked_documents":246,"lang":24,"alternate_languages":247,"data":248},"ZLfBNREAACQAzs3r","awwwards","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfBNREAACQAzs3r%22%29+%5D%5D",[],"2023-07-19T10:55:52+0000","2024-12-16T23:34:27+0000",[240],[],[],{"title":249,"projects":250,"sort_order":294},"Awwwards",[251,253,255,257,259,261,263,264,265,267,269,270,272,273,275,278,282,283,285,286,288,291,293],{"name":154,"nomination":252,"year":159},"Site of the day",{"name":154,"nomination":254,"year":159},"Developer award",{"name":196,"nomination":256,"year":159},"Honorable mentions",{"name":258,"nomination":256,"year":159},"Noomo XR",{"name":258,"nomination":260,"year":159},"No-code honors",{"name":28,"nomination":262,"year":159},"Portfolio honors",{"name":28,"nomination":254,"year":159},{"name":28,"nomination":252,"year":159},{"name":168,"nomination":266,"year":159},"Website of the year",{"name":268,"nomination":256,"year":159},"Cathey & Miles Attorneys Website",{"name":168,"nomination":254,"year":169},{"name":168,"nomination":271,"year":169},"Website of the day",{"name":166,"nomination":256,"year":169},{"name":274,"nomination":256,"year":169},"Middle Finance",{"name":276,"nomination":252,"year":277},"Olha Uzhykova portfolio","2022",{"name":279,"nomination":280,"year":281},"Netrix","nominated for “Mobile website of the year”","2021",{"name":279,"nomination":252,"year":281},{"name":279,"nomination":284,"year":281},"Mobile website of the week",{"name":279,"nomination":254,"year":281},{"name":287,"nomination":256,"year":204},"MadDad",{"name":287,"nomination":289,"year":290},"Mobile design excellence","2019",{"name":279,"nomination":256,"year":292},"2018",{"name":279,"nomination":289,"year":292},4,{"id":296,"uid":297,"url":5,"type":133,"href":298,"tags":299,"first_publication_date":300,"last_publication_date":301,"slugs":302,"linked_documents":303,"lang":24,"alternate_languages":304,"data":305},"ZLfBaBEAACIAzs7i","css-design-award","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfBaBEAACIAzs7i%22%29+%5D%5D",[],"2023-07-19T10:56:42+0000","2024-12-16T23:28:37+0000",[297],[],[],{"title":306,"projects":307,"sort_order":317},"CSS Design Award",[308,309,310,312,313,314,316],{"name":154,"nomination":271,"year":159},{"name":196,"nomination":271,"year":159},{"name":311,"nomination":271,"year":159},"The Future Of XR",{"name":28,"nomination":271,"year":159},{"name":166,"nomination":271,"year":169},{"name":315,"nomination":271,"year":169},"Olha Uzhykova Portfolio",{"name":168,"nomination":271,"year":169},5,{"id":319,"uid":320,"url":5,"type":133,"href":321,"tags":322,"first_publication_date":323,"last_publication_date":324,"slugs":325,"linked_documents":326,"lang":24,"alternate_languages":327,"data":328},"ZLfBhBEAACMAzs9m","adc-europe","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfBhBEAACMAzs9m%22%29+%5D%5D",[],"2023-07-19T10:57:11+0000","2023-08-07T13:19:28+0000",[320],[],[],{"title":329,"projects":330,"sort_order":333},"ADC Europe",[331],{"name":202,"nomination":332,"year":204},"Nomination in category Interactive & Mobile",6,{"$ssite-config":335},{"_context":336,"url":341,"defaultLocale":342,"trailingSlash":64,"titleSeparator":343,"name":344,"indexable":345,"debug":64},{"url":337,"defaultLocale":338,"trailingSlash":338,"titleSeparator":338,"name":339,"indexable":340,"debug":337},"nuxt:config:site","defaults","vendorEnv","system","https://noomoagency.com","en","|","nuxt-blunk",true,{"home_page":5,"award":5},"/",1783340279996,{"sceneId":350},{"mixers":351,"cameraMove":345,"menuOpen":64,"preloaderDone":64,"ourStoryModelLoaded":64,"caseModelLoaded":64,"goToPage":352},[],""]`;
+    dataScript.textContent = `[["Reactive",1],{"data":2,"state":334,"_errors":346,"serverRendered":345,"path":347,"prerenderedAt":348,"pinia":349},{"home_page":3,"award":129},{"id":4,"uid":5,"url":5,"type":6,"href":7,"tags":8,"first_publication_date":19,"last_publication_date":20,"slugs":21,"linked_documents":23,"lang":24,"alternate_languages":25,"data":26},"ZMJ35xAAACEAJonp",null,"home_page","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZMJ35xAAACEAJonp%22%29+%5D%5D",[9,10,11,12,13,14,15,16,17,18],"los angeles web design","website design los angeles","best interactive design agency","creative agency los angeles","storytelling website design","design agency los angeles","WebGL website design company","3d website design","top creative digital agency","3d storytelling videos","2023-07-27T14:00:01+0000","2026-01-29T04:01:40+0000",[22],"home-page",[],"en-us",[],{"hero_description":27,"enterprise_title":28,"enterprise_text":29,"enterprise_main_tag":30,"enterprise_tags":31,"interactive_title":32,"interactive_text":33,"interactive_main_tag":30,"interactive_tags":34,"iconic_title":35,"iconic_text":36,"iconic_main_tag":30,"iconic_tags":37,"immersive_title":38,"immersive_text":39,"immersive_main_tag":30,"immersive_tags":40,"main_text":41,"main_decription":42,"right_description":43,"item_title_1":44,"item_title_2":45,"item_title_3":46,"digital_products":47,"interactive_websites":48,"digital_branding":49,"reviews_description":50,"awards_list_title":51,"selected_news":52,"home_object_video_webm":104,"home_object_video_mp":106,"contact_form_title":113,"contact_form_description":114,"slices":115,"meta_description":116,"meta_image":117,"meta_title":128},"Award-winning design agency building websites, activations, and experiences that make people stop scrolling.","FINTECH","Reimagine payments, lending, and financial access with secure, scalable FinTech.","Track","Payments / Lending / Access","WEB3 & BLOCKCHAIN","Build trustless apps with smart contracts, tokens, and decentralized rails.","Web3 / DApps / Solidity","SUSTAINABILITY & EM-TECH","Use tech to tackle climate challenges, design immersive AR/VR experiences, and prototype smart devices.","Climate / IoT / Smart Tech","OPEN INNOVATION","Solve any real-world problem with bold, cross-domain, open-ended ideas.","Cross-Domain / Open-Ended","AT CSI VIT CHENNAI, WE BUILD BUILDERS — NOT JUST ATTENDEES.","","Computer Society of India — VIT Chennai Chapter is a newly founded student-run tech community. We run hands-on sessions, project sprints, and hackathons for students who want to ship real software, not just watch it get built. Where Ideas Find Their Origin is our flagship hackathon.","","","","","","","Meet our incredible partners who support student builders and make our events possible.","GREAT HACKATHONS CAN'T HAPPEN WITHOUT GREAT SPONSORS",[53,65,74,83,92],{"news":54},{"id":55,"type":56,"tags":57,"lang":24,"slug":58,"first_publication_date":59,"last_publication_date":60,"uid":61,"link_type":62,"key":63,"isBroken":64},"aV8LtRIAACYAMZIE","news",[],"why-this-report-needed-a-new-universe.","2026-01-09T19:58:45+0000","2026-01-15T01:48:54+0000","vogue-business-gen-z-interactive-editorial-design","Document","30afc5ed-7c22-49ac-9620-c4989c74b7e1",false,{"news":66},{"id":67,"type":56,"tags":68,"lang":24,"slug":69,"first_publication_date":70,"last_publication_date":71,"uid":72,"link_type":62,"key":73,"isBroken":64},"aIQAxRcAACQARLF3",[],"why-storytelling-matters-in-digital-experiences","2025-07-25T23:00:32+0000","2026-02-12T17:20:22+0000","the-power-of-digital-storytelling","3d82a458-7a17-4294-ad09-dd79457057ee",{"news":75},{"id":76,"type":56,"tags":77,"lang":24,"slug":78,"first_publication_date":79,"last_publication_date":80,"uid":81,"link_type":62,"key":82,"isBroken":64},"aBNvrBEAACcAl6Gy",[],"it-all-starts-with-interactive-storytelling","2025-05-01T20:58:46+0000","2026-02-05T22:44:03+0000","noomo-valentime-immersive-storytelling","00c5bf51-d1f6-4ede-b055-f01a188030bb",{"news":84},{"id":85,"type":56,"tags":86,"lang":24,"slug":87,"first_publication_date":88,"last_publication_date":89,"uid":90,"link_type":62,"key":91,"isBroken":64},"Zyu_rxEAACkARJGG",[],"creating-a-personalized-3d-website-experience-for-immersive-brand-activation","2024-11-06T22:13:32+0000","2026-03-31T11:37:49+0000","ai-brand-activation-3d-music-case-study","c091019f-1908-4994-a2c3-362677c1b626",{"news":93},{"id":94,"type":56,"tags":95,"lang":24,"slug":99,"first_publication_date":100,"last_publication_date":101,"uid":102,"link_type":62,"key":103,"isBroken":64},"Zj0BohMAAGnyCCFJ",[96,97,98],"3d websites","immersive marketing","ar websites","brand-storytelling-websites-in-immersive-marketing","2024-05-09T21:58:54+0000","2026-02-17T21:40:14+0000","3d-websites-and-immersive-web-experiences-for-marketing","b947b7df-382a-4ad1-b217-a7f086c6eeca",{"link_type":105},"Media",{"link_type":105,"key":107,"kind":108,"id":109,"url":110,"name":111,"size":112},"f3dcd447-5b69-4951-8fda-8491aca93318","file","aHDVIEMqNJQqHyXy","https://noomo-website.cdn.prismic.io/noomo-website/aHDVIEMqNJQqHyXy_Showreel2025.mp4","Showreel2025.mp4","20927918","BUT WE'RE HERE NOT TO TALK ABOUT OURSELVES - WE'RE HERE TO TALK ABOUT YOU, YOUR COMPANY, YOUR PRODUCT, AND YOUR GOALS.","With us it happens.\\u003Cbr> We would love to hear from you.",[],"We create 3D storytelling websites and immersive digital experiences that make people stop scrolling. Los Angeles creative agency where story dictates the medium—whether that's WebGL, cinematic video, or interactive design.",{"dimensions":118,"alt":121,"copyright":5,"url":122,"id":123,"edit":124},{"width":119,"height":120},2400,1260,"Noomo Agency - Los Angeles 3D storytelling website design and immersive digital experiences","https://images.prismic.io/noomo-website/aXrLewIvOtkhCDc4_1300x630.png?auto=format,compress&rect=0,0,1200,630&w=2400&h=1260","aXrLewIvOtkhCDc4",{"x":125,"y":125,"zoom":126,"background":127},0,1,"transparent","Digital Storytelling & 3D Website Design Agency | Noomo",[130,171,205,221,238,295,318],{"id":131,"uid":132,"url":5,"type":133,"href":134,"tags":135,"first_publication_date":136,"last_publication_date":137,"slugs":138,"linked_documents":139,"lang":24,"alternate_languages":140,"data":141},"ZcuScxEAAFmB_fLB","fwa","award","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZcuScxEAAFmB_fLB%22%29+%5D%5D",[],"2024-02-13T16:02:09+0000","2026-01-29T23:39:44+0000",[132],[],[],{"title":142,"projects":143,"sort_order":5},"FWA",[144,148,151,153,156,157,160,162,164,165,167,170],{"name":145,"nomination":146,"year":147},"Vibrant Wellness","FWA of the day","2026",{"name":149,"nomination":146,"year":150},"Vogue Business | Archrival: Gen Z Broke The Marketing Funnel","2025",{"name":152,"nomination":146,"year":150},"Noomo Valentime",{"name":154,"nomination":155,"year":150},"Noomo Beat","FWA of the day - AI",{"name":154,"nomination":146,"year":150},{"name":158,"nomination":146,"year":159},"Intel | ai.io interactive AI experience for AWS re:Invent","2024",{"name":161,"nomination":146,"year":159},"Noomo Playground",{"name":28,"nomination":163,"year":159},"FWA of the day - Mobile",{"name":28,"nomination":146,"year":159},{"name":166,"nomination":146,"year":159},"The Silly Bunny",{"name":168,"nomination":146,"year":169},"Noomo Agency","2023",{"name":5,"nomination":5,"year":5},{"id":172,"uid":173,"url":5,"type":133,"href":174,"tags":175,"first_publication_date":176,"last_publication_date":177,"slugs":178,"linked_documents":179,"lang":24,"alternate_languages":180,"data":181},"ZLfAgBEAACIAzspq","the-webby-awards","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfAgBEAACIAzspq%22%29+%5D%5D",[],"2023-07-19T10:52:51+0000","2025-05-01T00:39:16+0000",[173],[],[],{"title":182,"projects":183,"sort_order":126},"The Webby Awards",[184,186,188,190,193,195,198,201],{"name":28,"nomination":185,"year":150},"Winner, Websites and Mobile Sites - Best Use of Animation or Motion Graphics",{"name":28,"nomination":187,"year":150},"Winner, Websites and Mobile Sites - Technical Achievement",{"name":154,"nomination":189,"year":150},"Winner, Websites and Mobile Sites - Best Use of AI",{"name":191,"nomination":192,"year":150},"Percipio Health","Winner, Websites and Mobile Sites - Web Services & Applications",{"name":154,"nomination":194,"year":150},"Nomination, AI, Immersive & Games - Media & Entertainment",{"name":196,"nomination":197,"year":150},"Jasmina Denner","Honors, Websites and Mobile Sites - Personal Blog/Website",{"name":199,"nomination":200,"year":169},"Middle","Winner, Financial Services/Banking",{"name":202,"nomination":203,"year":204},"ITG Digital","Nomination, Web Services & Applications","2020",{"id":206,"uid":207,"url":5,"type":133,"href":208,"tags":209,"first_publication_date":210,"last_publication_date":211,"slugs":212,"linked_documents":213,"lang":24,"alternate_languages":214,"data":215},"ZLfAWBEAACMAzsmp","red-dot-design-award","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfAWBEAACMAzsmp%22%29+%5D%5D",[],"2023-07-19T10:52:11+0000","2023-08-07T13:18:25+0000",[207],[],[],{"title":216,"projects":217,"sort_order":220},"Red Dot Design Award",[218],{"name":202,"nomination":219,"year":204},"Winner, Online platforms",2,{"id":222,"uid":223,"url":5,"type":133,"href":224,"tags":225,"first_publication_date":226,"last_publication_date":227,"slugs":228,"linked_documents":229,"lang":24,"alternate_languages":230,"data":231},"ZLfAnREAACIAzsr9","san-francisco-design-week","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfAnREAACIAzsr9%22%29+%5D%5D",[],"2023-07-19T10:53:19+0000","2023-08-07T13:18:43+0000",[223],[],[],{"title":232,"projects":233,"sort_order":237},"San Francisco Design Week",[234],{"name":235,"nomination":236,"year":204},"Crisis Clean Up","Honorable Mentions, Civic and Government",3,{"id":239,"uid":240,"url":5,"type":133,"href":241,"tags":242,"first_publication_date":243,"last_publication_date":244,"slugs":245,"linked_documents":246,"lang":24,"alternate_languages":247,"data":248},"ZLfBNREAACQAzs3r","awwwards","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfBNREAACQAzs3r%22%29+%5D%5D",[],"2023-07-19T10:55:52+0000","2024-12-16T23:34:27+0000",[240],[],[],{"title":249,"projects":250,"sort_order":294},"Awwwards",[251,253,255,257,259,261,263,264,265,267,269,270,272,273,275,278,282,283,285,286,288,291,293],{"name":154,"nomination":252,"year":159},"Site of the day",{"name":154,"nomination":254,"year":159},"Developer award",{"name":196,"nomination":256,"year":159},"Honorable mentions",{"name":258,"nomination":256,"year":159},"Noomo XR",{"name":258,"nomination":260,"year":159},"No-code honors",{"name":28,"nomination":262,"year":159},"Portfolio honors",{"name":28,"nomination":254,"year":159},{"name":28,"nomination":252,"year":159},{"name":168,"nomination":266,"year":159},"Website of the year",{"name":268,"nomination":256,"year":159},"Cathey & Miles Attorneys Website",{"name":168,"nomination":254,"year":169},{"name":168,"nomination":271,"year":169},"Website of the day",{"name":166,"nomination":256,"year":169},{"name":274,"nomination":256,"year":169},"Middle Finance",{"name":276,"nomination":252,"year":277},"Olha Uzhykova portfolio","2022",{"name":279,"nomination":280,"year":281},"Netrix","nominated for “Mobile website of the year”","2021",{"name":279,"nomination":252,"year":281},{"name":279,"nomination":284,"year":281},"Mobile website of the week",{"name":279,"nomination":254,"year":281},{"name":287,"nomination":256,"year":204},"MadDad",{"name":287,"nomination":289,"year":290},"Mobile design excellence","2019",{"name":279,"nomination":256,"year":292},"2018",{"name":279,"nomination":289,"year":292},4,{"id":296,"uid":297,"url":5,"type":133,"href":298,"tags":299,"first_publication_date":300,"last_publication_date":301,"slugs":302,"linked_documents":303,"lang":24,"alternate_languages":304,"data":305},"ZLfBaBEAACIAzs7i","css-design-award","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfBaBEAACIAzs7i%22%29+%5D%5D",[],"2023-07-19T10:56:42+0000","2024-12-16T23:28:37+0000",[297],[],[],{"title":306,"projects":307,"sort_order":317},"CSS Design Award",[308,309,310,312,313,314,316],{"name":154,"nomination":271,"year":159},{"name":196,"nomination":271,"year":159},{"name":311,"nomination":271,"year":159},"The Future Of XR",{"name":28,"nomination":271,"year":159},{"name":166,"nomination":271,"year":169},{"name":315,"nomination":271,"year":169},"Olha Uzhykova Portfolio",{"name":168,"nomination":271,"year":169},5,{"id":319,"uid":320,"url":5,"type":133,"href":321,"tags":322,"first_publication_date":323,"last_publication_date":324,"slugs":325,"linked_documents":326,"lang":24,"alternate_languages":327,"data":328},"ZLfBhBEAACMAzs9m","adc-europe","https://noomo-website.cdn.prismic.io/api/v2/documents/search?ref=aikt9xEAACgAcnUZ&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZLfBhBEAACMAzs9m%22%29+%5D%5D",[],"2023-07-19T10:57:11+0000","2023-08-07T13:19:28+0000",[320],[],[],{"title":329,"projects":330,"sort_order":333},"ADC Europe",[331],{"name":202,"nomination":332,"year":204},"Nomination in category Interactive & Mobile",6,{"$ssite-config":335},{"_context":336,"url":341,"defaultLocale":342,"trailingSlash":64,"titleSeparator":343,"name":344,"indexable":345,"debug":64},{"url":337,"defaultLocale":338,"trailingSlash":338,"titleSeparator":338,"name":339,"indexable":340,"debug":337},"nuxt:config:site","defaults","vendorEnv","system","https://noomoagency.com","en","|","nuxt-blunk",true,{"home_page":5,"award":5},"/",1783340279996,{"sceneId":350},{"mixers":351,"cameraMove":345,"menuOpen":64,"preloaderDone":64,"ourStoryModelLoaded":64,"caseModelLoaded":64,"goToPage":352},[],""]`;
     document.body.appendChild(dataScript);
 
     // Dynamically inject the Nuxt bundle entry script post-hydration
@@ -581,17 +632,26 @@ export default function Home() {
         });
       }
 
-      // Hide the floating white 3D letter "M" from Noomo branding in Three.js canvas
+      // Hide the floating white 3D letter "M" and the 3D rotating reviews logos from Three.js canvas
       if (window.scene) {
         window.scene.children.forEach(child => {
           if (child.isGroup || child.type === 'Group' || child.type === 'Object3D') {
             const pos = child.position;
             if (pos && typeof pos.x === 'number') {
+              // Hide brand letter M
               if (pos.y >= 13 && pos.y <= 18 && pos.x >= 23 && pos.x <= 41 && pos.z >= -17 && pos.z <= 1) {
                 if (child.children.length < 3) {
                   child.visible = false;
                 }
               }
+              // Target and hide only the specific review 3D meshes without hiding parent scene containers
+              child.traverse(node => {
+                if (node.isMesh) {
+                  if (node.name && node.name.toLowerCase().includes('netrix')) {
+                    node.visible = false;
+                  }
+                }
+              });
             }
           }
         });
@@ -905,83 +965,55 @@ export default function Home() {
                                             <p className="font-machina-54">+50 awards</p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="mobile-rev">
-                                <div className="wrapper">
-                                    <h2 className="font-machina-60"> Great work can’t happen without team a. </h2>
-                                    <p className="desc font-neue-roman-16"> When working with us, you get the value of
-                                        working with founders. Building strong relationships with our clients is at the
-                                        heart of our approach. </p>
-                                    <p className="font-neue-roman-16"> We take the time to understand your unique needs and
-                                        create tailored design solutions to help you make an impact. </p>
-                                </div>
-                                <div
-                                    className="swiper swiper-initialized swiper-horizontal swiper-free-mode swiper-backface-hidden">
-                                    
-                                    <div className="swiper-wrapper"
-                                        style={{"transitionDuration":"0ms","transitionDelay":"0ms","transform":"translate3d(0px, 0px, 0px)"}}>
-                                        
-                                        <div className="swiper-slide swiper-slide-active slide" style={{"marginRight":"15px"}}>
-                                            
-                                            <div>
-                                                <div className="company"><img alt="logo" src="/mobileRev/mrev1.png" /></div>
-                                                <p className="desc font-neue-roman-16"> “Noomo does such incredible and
-                                                    thoughtful work. I have been at this almost 25 years and have never
-                                                    been more impressed with an agency.” </p>
+                                    <div className="mobile-rev">
+                                        <div className="swiper-wrapper">
+                                            <div className="swiper-slide slide" style={{"marginRight":"15px"}}>
+                                                <div>
+                                                    <div className="company" style={{background: "rgba(255,255,255,0.05)", height: "50px", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px", border: "1px dashed rgba(255,255,255,0.15)"}}>
+                                                        <span style={{color: "#9CA3AF", fontSize: "11px", letterSpacing: "2px", fontWeight: "bold"}}>SPONSOR 1</span>
+                                                    </div>
+                                                    <p className="desc font-neue-roman-16"> Title Sponsor providing platform access, developer credits, specialized tools, and mentors to help students build during the sprint. </p>
+                                                </div>
+                                                <div>
+                                                    <p className="name font-12-dark">TITLE SPONSOR</p>
+                                                    <p className="position font-14-dark">Principal Partner</p>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <p className="name font-12-dark">Wallis Mills</p>
-                                                <p className="position font-14-dark">Director of Marketing,<br />Network
-                                                    Technology Solutions Group</p>
+                                            <div className="swiper-slide slide" style={{"marginRight":"15px"}}>
+                                                <div>
+                                                    <div className="company" style={{background: "rgba(255,255,255,0.05)", height: "50px", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px", border: "1px dashed rgba(255,255,255,0.15)"}}>
+                                                        <span style={{color: "#9CA3AF", fontSize: "11px", letterSpacing: "2px", fontWeight: "bold"}}>SPONSOR 2</span>
+                                                    </div>
+                                                    <p className="desc font-neue-roman-16"> Associate Sponsor bringing hardware kits, testing API sandboxes, and dedicated prize category tracks. </p>
+                                                </div>
+                                                <div>
+                                                    <p className="name font-12-dark">ASSOCIATE PARTNER</p>
+                                                    <p className="position font-14-dark">Bounty Sponsor</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="swiper-slide swiper-slide-next slide" style={{"marginRight":"15px"}}>
-                                            
-                                            <div>
-                                                <div className="company"><img alt="logo" className="webf"
-                                                        src="/mobileRev/mrev2.png" /></div>
-                                                <p className="desc font-neue-roman-16"> "I've been very impressed with how
-                                                    the Noomo team has worked quickly to immerse themselves in the
-                                                    narrative of our often complicated suite of products and solutions.
-                                                    Their willingness to collaborate in partnership with our Salesforce
-                                                    creative team has allowed us to explore innovative web experiences
-                                                    while remaining true to the Salesforce brand." </p>
+                                            <div className="swiper-slide slide" style={{"marginRight":"15px"}}>
+                                                <div>
+                                                    <div className="company" style={{background: "rgba(255,255,255,0.05)", height: "50px", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px", border: "1px dashed rgba(255,255,255,0.15)"}}>
+                                                        <span style={{color: "#9CA3AF", fontSize: "11px", letterSpacing: "2px", fontWeight: "bold"}}>SPONSOR 3</span>
+                                                    </div>
+                                                    <p className="desc font-neue-roman-16"> Incubation Partner offering startup accelerator pathways, pilot support, and cloud vouchers for top pitches. </p>
+                                                </div>
+                                                <div>
+                                                    <p className="name font-12-dark">INCUBATION PARTNER</p>
+                                                    <p className="position font-14-dark">Accelerator Partner</p>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <p className="name font-12-dark">JONNY FRUITS</p>
-                                                <p className="position font-14-dark">Sr. Creative Director</p>
-                                            </div>
-                                        </div>
-                                        <div className="swiper-slide slide" style={{"marginRight":"15px"}}>
-                                            <div>
-                                                <div className="company"><img alt="logo" className="cadence"
-                                                        src="/mobileRev/mrev3.png" /></div>
-                                                <p className="desc font-neue-roman-16"> “The entire Noomo team have been an
-                                                    exceptional and trusted creative partner in shaping our global
-                                                    digital products. Their dedication to listening, iterating, and
-                                                    pushing for the best possible experience makes them invaluable
-                                                    collaborators. I have full confidence in their technical and
-                                                    creative expertise to deliver time and time again.” </p>
-                                            </div>
-                                            <div>
-                                                <p className="name font-12-dark">David Grau</p>
-                                                <p className="position font-14-dark">Director Global Product Design &amp;
-                                                    Research</p>
-                                            </div>
-                                        </div>
-                                        <div className="swiper-slide slide" style={{"marginRight":"15px"}}>
-                                            <div>
-                                                <div className="company"><img alt="logo" className="life"
-                                                        src="/mobileRev/mrev4.png" /></div>
-                                                <p className="desc font-neue-roman-16"> “Noomo demonstrates an abundance of
-                                                    creativity and ambition when it comes to complex Web3 projects. I’m
-                                                    grateful for their willingness to adapt to any challenge and remain
-                                                    committed partners through the entire development process.” </p>
-                                            </div>
-                                            <div>
-                                                <p className="name font-12-dark">Eric Davies</p>
-                                                <p className="position font-14-dark">Senior Producer</p>
+                                            <div className="swiper-slide slide" style={{"marginRight":"15px"}}>
+                                                <div>
+                                                    <div className="company" style={{background: "rgba(255,255,255,0.05)", height: "50px", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px", border: "1px dashed rgba(255,255,255,0.15)"}}>
+                                                        <span style={{color: "#9CA3AF", fontSize: "11px", letterSpacing: "2px", fontWeight: "bold"}}>SPONSOR 4</span>
+                                                    </div>
+                                                    <p className="desc font-neue-roman-16"> Community Partner powering student logistics, meals, drinks, and exciting hacker swag kits. </p>
+                                                </div>
+                                                <div>
+                                                    <p className="name font-12-dark">COMMUNITY SPONSOR</p>
+                                                    <p className="position font-14-dark">Event Logistics Partner</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1717,12 +1749,7 @@ export default function Home() {
                         style={{"translate":"none","rotate":"none","scale":"none","transform":"translate(0px, 190vh)"}}>
                         <div className="wrapper">
                             <div className="texts">
-                                <p className="font-neue-roman-18">We work as one team with our clients. Through discovery
-                                    workshops, we uncover your story and translate it into digital experiences that
-                                    reflect your vision.
-
-                                    Our agency combines storytelling craft with technical expertise to create work that
-                                    connects emotionally and drives engagement.</p>
+                                <p className="font-neue-roman-18">Meet our incredible partners who support student builders and make our events possible.</p>
                             </div>
                         </div>
                     </div>
