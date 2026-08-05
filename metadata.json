@@ -1,0 +1,6 @@
+{
+  "name": "CSI ORIGIN 2026",
+  "description": "24-Hour National Hackathon by Computer Society of India, VIT Chennai",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
