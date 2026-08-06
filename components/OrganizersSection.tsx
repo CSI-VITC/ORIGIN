@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import { gsap } from '@/lib/gsap';
 import SectionHeader from './SectionHeader';
 import AsciiBackground from './AsciiBackground';
-import CircularGallery from './reactbits/CircularGallery';
+import WheelCarousel from './WheelCarousel';
 
 interface Organizer { id: string; name: string; role: string; department: string; bio: string; image: string; }
 
@@ -24,12 +24,7 @@ export default function OrganizersSection() {
   ];
 
   useEffect(() => {
-    if (!sectionRef.current) return;
-    const ctx = gsap.context(() => {
-      gsap.timeline({ scrollTrigger: { trigger: sectionRef.current, start: 'top 85%', end: 'bottom 25%', scrub: 0.8 } })
-        .fromTo(galleryRef.current, { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.8 }, 0);
-    }, sectionRef.current);
-    return () => ctx.revert();
+    // Animations removed
   }, []);
 
   return (
@@ -37,16 +32,19 @@ export default function OrganizersSection() {
       <AsciiBackground variant="cube" opacity={0.08} />
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-12">
         <SectionHeader secCode="SEC-04" numeral="04" title="ORGANIZERS" subtitle="COMPUTER SOCIETY OF INDIA · VIT CHENNAI CORE EXECUTIVE TEAM" />
-        <div ref={galleryRef} style={{ height: '400px' }} className="hidden md:block mt-10 w-full">
-          <CircularGallery items={organizers.map(org => ({ image: org.image, text: org.name }))} bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} fontUrl="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" font="bold 30px Orbitron" />
-        </div>
-        {/* Mobile fallback: simple cards */}
-        <div className="md:hidden mt-8 grid grid-cols-2 gap-3">
+        
+        {/* Static Grid for all screens */}
+        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full">
           {organizers.map(org => (
-            <div key={org.id} className="p-3 bg-[#0A0A0A] border border-[#2A2A2A] rounded">
-              <div className="font-mono-custom text-[10px] text-[#FF4D1C] uppercase tracking-wider">{org.role}</div>
-              <div className="font-sans font-bold text-sm text-[#F2F0EB] mt-1">{org.name}</div>
-              <div className="font-mono-custom text-[9px] text-[#8A8A8A] mt-0.5">{org.department}</div>
+            <div key={org.id} className="bg-[#0A0A0A] border border-[#2A2A2A] rounded overflow-hidden group">
+              <div className="w-full aspect-[3/4] relative overflow-hidden border-b border-[#2A2A2A]">
+                <img src={org.image} alt={org.name} className="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
+              </div>
+              <div className="p-4 md:p-5 flex flex-col h-full">
+                <div className="font-mono-custom text-[10px] md:text-xs text-[#FF4D1C] uppercase tracking-wider mb-1">{org.role}</div>
+                <div className="font-sans font-bold text-sm md:text-base text-[#F2F0EB]">{org.name}</div>
+                <div className="font-mono-custom text-[9px] md:text-[10px] text-[#8A8A8A] mt-1">{org.department}</div>
+              </div>
             </div>
           ))}
         </div>

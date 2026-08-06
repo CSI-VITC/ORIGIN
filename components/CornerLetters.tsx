@@ -4,8 +4,9 @@ export default function CornerLetters() {
   return (
     <div className="pointer-events-none select-none">
       {/* Top Left: C */}
-      <div className="fixed top-6 left-6 z-40 font-display text-3xl md:text-5xl text-[#F2F0EB]/50 hover:text-[#FF4D1C] transition-colors pointer-events-auto cursor-pointer tracking-wider font-light">
-        C
+      <div className="fixed top-6 left-6 z-40 font-display text-3xl md:text-5xl text-[#F2F0EB]/50 hover:text-[#FF4D1C] transition-all duration-300 pointer-events-auto cursor-pointer tracking-wider font-light group flex items-center">
+        <span>C</span>
+        <span className="max-w-0 overflow-hidden opacity-0 group-hover:max-w-[100px] group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">SI</span>
       </div>
 
       {/* Top Right: S */}

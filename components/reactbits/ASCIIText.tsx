@@ -407,24 +407,18 @@ class CanvAscii {
   }
 
   render() {
-    const time = new Date().getTime() * 0.001;
-
     this.textCanvas.render();
     this.texture.needsUpdate = true;
 
     const mat = this.mesh.material as THREE.ShaderMaterial;
-    mat.uniforms.uTime.value = Math.sin(time);
+    mat.uniforms.uTime.value = 0; // Static time
 
-    this.updateRotation();
+    // this.updateRotation(); // Disabled mouse tracking
     this.filter.render(this.scene, this.camera);
   }
 
   updateRotation() {
-    const x = (Math as any).map(this.mouse.y, 0, this.height, 0.5, -0.5);
-    const y = (Math as any).map(this.mouse.x, 0, this.width, -0.5, 0.5);
-
-    this.mesh.rotation.x += (x - this.mesh.rotation.x) * 0.05;
-    this.mesh.rotation.y += (y - this.mesh.rotation.y) * 0.05;
+    // Disabled
   }
 
   clear() {

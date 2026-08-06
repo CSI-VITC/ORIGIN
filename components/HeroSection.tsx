@@ -1,9 +1,9 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { gsap } from '@/lib/gsap';
 import AsciiModelBackground from './AsciiModelBackground';
-import ASCIIText from './reactbits/ASCIIText';
 
 interface HeroSectionProps {
   onOpenDevfolio: () => void;
@@ -11,75 +11,194 @@ interface HeroSectionProps {
   onScrollToAbout: () => void;
 }
 
-export default function HeroSection({ onOpenDevfolio, onOpenWhatsApp, onScrollToAbout }: HeroSectionProps) {
+export default function HeroSection({
+  onOpenDevfolio,
+  onOpenWhatsApp,
+  onScrollToAbout,
+}: HeroSectionProps) {
+  const [isHovered, setIsHovered] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const dnaRef = useRef<HTMLDivElement>(null);
-  const auraRef = useRef<HTMLDivElement>(null);
-  const taglineRef = useRef<HTMLDivElement>(null);
-  const wordmarkRef = useRef<HTMLDivElement>(null);
-  const actionsRef = useRef<HTMLDivElement>(null);
-  const cueRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLHeadingElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+  const blurAmountRef = useRef(0);
+  const animationRef = useRef<number>(0);
+
+  const animateBlur = () => {
+    // Gradually increase blur (max 4px for subtle text blur)
+    blurAmountRef.current = Math.min(blurAmountRef.current + 0.05, 4);
+
+    if (overlayRef.current) {
+      overlayRef.current.style.filter = `blur(${blurAmountRef.current}px)`;
+      overlayRef.current.style.textShadow = `0 0 ${15 + blurAmountRef.current * 8}px rgba(255, 77, 28, ${0.15 + (blurAmountRef.current / 4) * 0.35})`;
+    }
+
+    if (blurAmountRef.current < 4) {
+      animationRef.current = requestAnimationFrame(animateBlur);
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current || !overlayRef.current) return;
+    
+    // Get mouse coordinates relative to the container
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Apply radial mask around cursor
+    const mask = `radial-gradient(circle 120px at ${x}px ${y}px, black 0%, transparent 100%)`;
+    overlayRef.current.style.webkitMaskImage = mask;
+    overlayRef.current.style.maskImage = mask;
+
+    cancelAnimationFrame(animationRef.current);
+    blurAmountRef.current = 0;
+    
+    if (overlayRef.current) {
+      overlayRef.current.style.transition = 'none';
+      overlayRef.current.style.filter = 'blur(0px)';
+      overlayRef.current.style.textShadow = '0 0 20px rgba(255, 77, 28, 0.5)';
+      overlayRef.current.style.opacity = '1';
+    }
+    
+    animationRef.current = requestAnimationFrame(animateBlur);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    cancelAnimationFrame(animationRef.current);
+    blurAmountRef.current = 0;
+    
+    if (overlayRef.current) {
+      overlayRef.current.style.transition = 'opacity 0.4s ease-out';
+      overlayRef.current.style.opacity = '0';
+    }
+  };
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsHovered(true);
+    handleMouseMove(e);
+  };
 
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+    return () => cancelAnimationFrame(animationRef.current);
+  }, []);
 
-    const mm = gsap.matchMedia();
-    mm.add('(min-width: 768px)', () => {
-      const tl = gsap.timeline({
-        scrollTrigger: { trigger: section, start: 'top top', end: '+=1500', pin: true, scrub: 1 }
+  useEffect(() => {
+    if (!sectionRef.current || !bgRef.current) return;
+    const ctx = gsap.context(() => {
+      gsap.to(bgRef.current, {
+        y: '40%', // Moves down 40% of its height while scrolling down, creating a slower parallax effect
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
       });
-      tl
-        .to(dnaRef.current, { y: -50, duration: 0.80 }, 0)
-        .to(cueRef.current, { opacity: 0, duration: 0.05 }, 0)
-        .to(taglineRef.current, { opacity: 0, duration: 0.06 }, 0.08)
-        .to(auraRef.current, { opacity: 0.6, scale: 1.05, duration: 0.20 }, 0.05)
-        .to(auraRef.current, { opacity: 0, scale: 1.1, duration: 0.40 }, 0.25)
-        .to(wordmarkRef.current, { opacity: 0, scale: 0.95, duration: 0.40 }, 0.20)
-        .to(actionsRef.current, { opacity: 0, y: -20, duration: 0.35 }, 0.35);
     });
-
-    return () => mm.revert();
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} id="hero" className="relative min-h-[100svh] w-full flex flex-col items-center justify-between px-4 md:px-6 py-8 md:py-12 overflow-hidden bg-[#070707] text-[#F2F0EB] select-none">
-      <div ref={dnaRef} className="absolute inset-0 z-0">
+    <section
+      id="hero"
+      ref={sectionRef}
+      className="relative min-h-screen w-full flex flex-col items-center justify-between px-6 py-12 overflow-hidden bg-[#070707] text-[#F2F0EB] select-none"
+    >
+      {/* 1. Dynamic 3D ASCII Model Background */}
+      <div ref={bgRef} className="absolute inset-0 z-0 w-full h-[120%] -top-[10%]">
         <AsciiModelBackground modelPath="/assets/dna.glb" />
       </div>
-      <div ref={auraRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[140px] sm:w-[500px] sm:h-[250px] md:w-[700px] md:h-[350px] bg-gradient-to-r from-[#FF4D1C]/15 via-[#FF4D1C]/08 to-transparent rounded-full blur-[80px] md:blur-[100px] pointer-events-none" />
-      <div ref={taglineRef} className="w-full pt-12 md:pt-16 flex justify-center items-center z-10 pointer-events-none">
-        <div className="font-mono-custom text-[9px] sm:text-xs text-[#8A8A8A] tracking-[0.3em] uppercase flex items-center gap-2 md:gap-3">
+
+      {/* Glow aura removed as requested */}
+
+      {/* Top Margin Spacer */}
+      <div className="w-full pt-16 flex justify-center items-center z-10 pointer-events-none">
+        <div className="font-mono-custom text-[10px] sm:text-xs text-[#8A8A8A] tracking-[0.3em] uppercase flex items-center gap-3">
           <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D1C]/80" />
           <span>CSI · VIT CHENNAI // 2026</span>
           <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D1C]/80" />
         </div>
       </div>
-      <div ref={wordmarkRef} className="relative z-20 my-auto w-full flex flex-col items-center justify-center">
-        <div className="w-full" style={{ height: 'clamp(80px, 20vw, 260px)', position: 'relative' }}>
-          <ASCIIText text="ORIGIN" enableWaves={true} asciiFontSize={8} textFontSize={160} planeBaseHeight={8} textColor="#FF4D1C" />
-        </div>
-        
+
+      {/* 3. Main Center Hero Wordmark */}
+      <div className="relative z-20 my-auto text-center max-w-7xl w-full flex flex-col items-center justify-center">
+        <motion.div
+          ref={containerRef}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onMouseMove={handleMouseMove}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative cursor-pointer group px-4 py-2"
+        >
+          {/* Base Sharp Text */}
+          <h1
+            className="font-sans font-light uppercase select-none text-transparent bg-clip-text bg-gradient-to-b from-[#FF6A3D] via-[#FF4D1C] to-[#8C1C00]"
+            style={{
+              fontSize: 'clamp(90px, 20vw, 250px)',
+              lineHeight: 1,
+              letterSpacing: '-0.01em',
+            }}
+          >
+            ORIGIN
+          </h1>
+
+          {/* Overlay Blurred Text (Masked to cursor) */}
+          <h1
+            ref={overlayRef}
+            className="absolute inset-0 px-4 py-2 font-sans font-light uppercase select-none text-transparent bg-clip-text bg-gradient-to-b from-[#FF6A3D] via-[#FF4D1C] to-[#8C1C00] pointer-events-none opacity-0"
+            style={{
+              fontSize: 'clamp(90px, 20vw, 250px)',
+              lineHeight: 1,
+              letterSpacing: '-0.01em',
+            }}
+          >
+            ORIGIN
+          </h1>
+        </motion.div>
+
         {/* Tagline */}
         <p className="font-mono-custom text-[10px] sm:text-xs text-[#8A8A8A] tracking-[0.25em] sm:tracking-[0.4em] uppercase mt-2 md:mt-4 select-none">
           Where ideas find their origin
         </p>
-        <div ref={actionsRef} className="mt-4 md:mt-6 flex flex-wrap items-center justify-center gap-4 md:gap-6 z-20">
-          <button onClick={onOpenDevfolio} className="font-mono-custom text-[10px] md:text-xs text-[#8A8A8A] hover:text-[#FF4D1C] border-b border-[#2A2A2A] hover:border-[#FF4D1C] pb-1 tracking-widest uppercase transition-all flex items-center gap-2 group">
+
+        {/* Minimal Actions - Single Line */}
+        <div className="mt-8 flex items-center justify-center gap-6 z-20">
+          <button
+            onClick={onOpenDevfolio}
+            className="font-mono-custom text-xs text-[#8A8A8A] hover:text-[#FF4D1C] border-b border-[#2A2A2A] hover:border-[#FF4D1C] pb-1 tracking-widest uppercase transition-all flex items-center gap-2 group"
+          >
             <span>APPLY WITH DEVFOLIO</span>
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </button>
-          <span className="text-[#2A2A2A] hidden sm:inline">•</span>
-          <button onClick={onOpenWhatsApp} className="font-mono-custom text-[10px] md:text-xs text-[#8A8A8A] hover:text-[#F2F0EB] tracking-widest uppercase transition-colors flex items-center gap-2">
+
+          <span className="text-[#2A2A2A]">•</span>
+
+          <button
+            onClick={onOpenWhatsApp}
+            className="font-mono-custom text-xs text-[#8A8A8A] hover:text-[#F2F0EB] tracking-widest uppercase transition-colors flex items-center gap-2"
+          >
             <span>COMMUNITY</span>
             <span>✦</span>
           </button>
         </div>
       </div>
-      <div ref={cueRef} className="w-full pb-2 md:pb-4 flex flex-col items-center justify-center gap-2 z-20">
-        <button onClick={onScrollToAbout} className="group flex flex-col items-center gap-1 md:gap-2 text-[#8A8A8A] hover:text-[#FF4D1C] transition-colors cursor-pointer">
+
+      {/* 4. Bottom Footer Cue */}
+      <div className="w-full pb-4 flex flex-col items-center justify-center gap-2 z-20">
+        <button
+          onClick={onScrollToAbout}
+          className="group flex flex-col items-center gap-2 text-[#8A8A8A] hover:text-[#FF4D1C] transition-colors cursor-pointer"
+        >
+          {/* Small glowing orange pulse dot at bottom center (exact match to screenshot) */}
           <div className="w-2 h-2 rounded-full bg-[#FF4D1C] shadow-[0_0_10px_#FF4D1C] group-hover:scale-150 transition-transform" />
-          <span className="font-mono-custom text-[8px] md:text-[9px] tracking-[0.25em] uppercase text-[#8A8A8A] group-hover:text-[#F2F0EB]">SCROLL TO EXPLORE</span>
+          <span className="font-mono-custom text-[9px] tracking-[0.25em] uppercase text-[#8A8A8A] group-hover:text-[#F2F0EB]">
+            SCROLL TO EXPLORE
+          </span>
         </button>
       </div>
     </section>

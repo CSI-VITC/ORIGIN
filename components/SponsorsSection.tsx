@@ -18,15 +18,7 @@ export default function SponsorsSection() {
   ];
 
   useEffect(() => {
-    if (!sectionRef.current) return;
-    const ctx = gsap.context(() => {
-      gsap.timeline({ scrollTrigger: { trigger: sectionRef.current, start: 'top 85%', end: 'bottom 30%', scrub: 0.8 } })
-        .fromTo(cardRefs.current[0], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3 }, 0)
-        .fromTo(cardRefs.current[1], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3 }, 0.2)
-        .fromTo(cardRefs.current[2], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3 }, 0.4)
-        .fromTo(cardRefs.current[3], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3 }, 0.6);
-    }, sectionRef.current);
-    return () => ctx.revert();
+    // Removed scroll reveal effect
   }, []);
 
   return (
