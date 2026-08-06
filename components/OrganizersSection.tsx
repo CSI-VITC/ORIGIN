@@ -4,7 +4,6 @@ import { useRef, useEffect } from 'react';
 import { gsap } from '@/lib/gsap';
 import SectionHeader from './SectionHeader';
 import AsciiBackground from './AsciiBackground';
-import WheelCarousel from './WheelCarousel';
 
 interface Organizer { id: string; name: string; role: string; department: string; bio: string; image: string; }
 
