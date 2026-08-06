@@ -8,10 +8,10 @@ import { Timeline } from '@/components/ui/timeline';
 
 const timelineData = [
   {
-    title: "1 Feb '26",
+    title: "2 Aug – 12 Aug",
     content: (
       <div>
-        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Registration Starts</h4>
+        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Registrations Open</h4>
         <p className="font-mono-custom text-[#8A8A8A] text-xs md:text-sm font-normal mb-8">
           The portal opens. Gather your team of innovators, developers, and designers.
         </p>
@@ -19,57 +19,82 @@ const timelineData = [
     ),
   },
   {
-    title: "7 Mar '26",
+    title: "10 Aug (tentative)",
     content: (
       <div>
-        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Registration Ends</h4>
+        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Release of the Tracks</h4>
         <p className="font-mono-custom text-[#8A8A8A] text-xs md:text-sm font-normal mb-8">
-          We stop accepting new entries. Time to review the profiles and GitHub repositories.
+          Release of the Tracks and PPT template.
         </p>
       </div>
     ),
   },
   {
-    title: "15 Mar '26",
+    title: "13 Aug – 14 Aug",
     content: (
       <div>
-        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Announcement of Shortlisted Teams</h4>
-        <p className="font-mono-custom text-[#8A8A8A] text-xs md:text-sm font-normal mb-4">
-          The best teams are selected to compete in the main event.
-        </p>
-        <div className="mb-8 font-mono-custom text-[#8A8A8A]">
-          <div className="flex gap-2 items-center text-xs md:text-sm mb-2">
-            <span className="text-[#FF4D1C]">✦</span> Official Invites Sent
-          </div>
-          <div className="flex gap-2 items-center text-xs md:text-sm mb-2">
-            <span className="text-[#FF4D1C]">✦</span> Devfolio Dashboard Updated
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: "17 Mar '26",
-    content: (
-      <div>
-        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Team RSVP</h4>
+        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">PPT Submission & Shortlisting Round</h4>
         <p className="font-mono-custom text-[#8A8A8A] text-xs md:text-sm font-normal mb-8">
-          Selected teams must confirm their attendance for the offline hackathon.
+          Submit your presentation and idea for the shortlisting phase.
         </p>
       </div>
     ),
   },
   {
-    title: "29 Mar '26",
+    title: "15 Aug – 16 Aug",
     content: (
       <div>
-        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Hackathon Ends</h4>
+        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Shortlist Announcement & RSVP Confirmation</h4>
         <p className="font-mono-custom text-[#8A8A8A] text-xs md:text-sm font-normal mb-8">
-          The 48-hour grind concludes. Final pitches and closing ceremony.
+          Shortlisted teams will be announced and required to confirm their participation.
         </p>
       </div>
     ),
   },
+  {
+    title: "17 Aug",
+    content: (
+      <div>
+        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Vit chennai EventHub Registration</h4>
+        <p className="font-mono-custom text-[#8A8A8A] text-xs md:text-sm font-normal mb-8">
+          Confirmed teams will complete their official event registration.
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "18 Aug",
+    content: (
+      <div>
+        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Check-in, Inauguration & Hackathon Kickoff</h4>
+        <p className="font-mono-custom text-[#8A8A8A] text-xs md:text-sm font-normal mb-8">
+          On-site registration, opening ceremony, and the start of the 24-hour build phase.
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "18 Aug – 19 Aug",
+    content: (
+      <div>
+        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">24-Hour Offline Hackathon</h4>
+        <p className="font-mono-custom text-[#8A8A8A] text-xs md:text-sm font-normal mb-8">
+          Build, innovate, and compete at CSI ORIGIN 2026.
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "19 Aug",
+    content: (
+      <div>
+        <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Final Presentations & Prize Distribution</h4>
+        <p className="font-mono-custom text-[#8A8A8A] text-xs md:text-sm font-normal mb-8">
+          Pitch your projects to the judges and celebrate the winners.
+        </p>
+      </div>
+    ),
+  }
 ];
 
 export default function TimelineSection() {
