@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import AsciiBackground from './AsciiBackground';
+import { useScrollState, SECTION_IDS } from '@/hooks/scroll-context';
 
 interface FloatingNavPillProps {
   onOpenRegister?: () => void;
@@ -20,6 +21,8 @@ const MENU_ITEMS = [
 
 export default function FloatingNavPill({ onOpenRegister }: FloatingNavPillProps) {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const { sectionIndex } = useScrollState();
+  const activeId = SECTION_IDS[sectionIndex] ?? 'hero';
 
   const scrollToSection = (id: string) => {
     setMenuOpen(false);
@@ -86,25 +89,33 @@ export default function FloatingNavPill({ onOpenRegister }: FloatingNavPillProps
                 transition={{ duration: 0.18, ease: 'easeOut' }}
                 className="mt-1 bg-[#050505] border border-[#222222] shadow-[0_25px_60px_rgba(0,0,0,0.95)] overflow-hidden font-mono-custom text-xs text-[#F2F0EB]"
               >
-                {/* Menu List Rows */}
+                 {/* Menu List Rows */}
                 <div className="flex flex-col">
-                  {MENU_ITEMS.map((item) => (
+                  {MENU_ITEMS.map((item) => {
+                    const isActive = item.id === activeId;
+                    return (
                     <button
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
                       className="group border-t border-[#181818] first:border-t-0 py-2.5 px-4 flex items-center hover:bg-[#111111] transition-colors cursor-pointer text-left"
                     >
                       {/* Faint Numeral */}
-                      <span className="font-mono-custom text-[11px] text-[#38BDF8]/60 group-hover:text-[#38BDF8] w-6 shrink-0 transition-colors">
+                      <span className={`font-mono-custom text-[11px] w-6 shrink-0 transition-colors ${isActive ? 'text-[#FF4D1C]' : 'text-[#38BDF8]/60 group-hover:text-[#38BDF8]'}`}>
                         {item.num}
                       </span>
 
-                      {/* Centered Title */}
-                      <span className="font-sans font-bold text-sm sm:text-base uppercase text-[#F2F0EB] tracking-wider text-center flex-1 group-hover:text-[#FF4D1C] transition-colors">
+                      {/* Title */}
+                      <span className={`font-sans font-bold text-sm sm:text-base uppercase tracking-wider text-center flex-1 transition-colors ${isActive ? 'text-[#FF4D1C]' : 'text-[#F2F0EB] group-hover:text-[#FF4D1C]'}`}>
                         {item.label}
                       </span>
+
+                      {/* Active dot */}
+                      {isActive && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D1C] shadow-[0_0_6px_#FF4D1C] ml-1" />
+                      )}
                     </button>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 {/* Embedded ASCII Canvas Matrix Block */}

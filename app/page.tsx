@@ -11,6 +11,7 @@ import PrizePoolSection from '@/components/PrizePoolSection';
 import TimelineSection from '@/components/TimelineSection';
 import OrganizersSection from '@/components/OrganizersSection';
 import SponsorsSection from '@/components/SponsorsSection';
+import CursorGridSection from '@/components/CursorGridSection';
 import FaqSection from '@/components/FaqSection';
 import CtaSection from '@/components/CtaSection';
 import InteractiveModals from '@/components/InteractiveModals';
@@ -66,6 +67,9 @@ export default function Home() {
 
         {/* 06 · Sponsors */}
         <SponsorsSection />
+
+        {/* Interactive Cursor Grid */}
+        <CursorGridSection />
 
         {/* 07 · FAQ */}
         <FaqSection />

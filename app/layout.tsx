@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { ScrollProvider } from '@/hooks/scroll-context';
 
 export const metadata: Metadata = {
   title: 'CSI ORIGIN 2026 | 24-Hour National Hackathon',
@@ -18,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="bg-[#0A0A0A] text-[#F2F0EB] antialiased selection:bg-[#FF4D1C] selection:text-[#0A0A0A] overflow-x-hidden font-serif" suppressHydrationWarning>
-        {children}
+        <ScrollProvider>{children}</ScrollProvider>
       </body>
     </html>
   );
