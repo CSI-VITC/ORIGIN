@@ -1,9 +1,7 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { motion } from 'motion/react';
-import AsciiBackground from './AsciiBackground';
 import AsciiModelBackground from './AsciiModelBackground';
+import ASCIIText from './reactbits/ASCIIText';
 
 interface HeroSectionProps {
   onOpenDevfolio: () => void;
@@ -16,71 +14,6 @@ export default function HeroSection({
   onOpenWhatsApp,
   onScrollToAbout,
 }: HeroSectionProps) {
-  const [isHovered, setIsHovered] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLHeadingElement>(null);
-  const blurAmountRef = useRef(0);
-  const animationRef = useRef<number>(0);
-
-  const animateBlur = () => {
-    // Gradually increase blur (max 4px for subtle text blur)
-    blurAmountRef.current = Math.min(blurAmountRef.current + 0.05, 4);
-
-    if (overlayRef.current) {
-      overlayRef.current.style.filter = `blur(${blurAmountRef.current}px)`;
-      overlayRef.current.style.textShadow = `0 0 ${15 + blurAmountRef.current * 8}px rgba(255, 77, 28, ${0.15 + (blurAmountRef.current / 4) * 0.35})`;
-    }
-
-    if (blurAmountRef.current < 4) {
-      animationRef.current = requestAnimationFrame(animateBlur);
-    }
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current || !overlayRef.current) return;
-    
-    // Get mouse coordinates relative to the container
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    // Apply radial mask around cursor
-    const mask = `radial-gradient(circle 80px at ${x}px ${y}px, black 0%, transparent 100%)`;
-    overlayRef.current.style.webkitMaskImage = mask;
-    overlayRef.current.style.maskImage = mask;
-
-    cancelAnimationFrame(animationRef.current);
-    blurAmountRef.current = 0;
-    
-    if (overlayRef.current) {
-      overlayRef.current.style.transition = 'none';
-      overlayRef.current.style.filter = 'blur(0px)';
-      overlayRef.current.style.textShadow = '0 0 15px rgba(255, 77, 28, 0.15)';
-      overlayRef.current.style.opacity = '1';
-    }
-    
-    animationRef.current = requestAnimationFrame(animateBlur);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    cancelAnimationFrame(animationRef.current);
-    blurAmountRef.current = 0;
-    
-    if (overlayRef.current) {
-      overlayRef.current.style.transition = 'opacity 0.4s ease-out';
-      overlayRef.current.style.opacity = '0';
-    }
-  };
-
-  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-    setIsHovered(true);
-    handleMouseMove(e);
-  };
-
-  useEffect(() => {
-    return () => cancelAnimationFrame(animationRef.current);
-  }, []);
 
   return (
     <section
@@ -92,8 +25,7 @@ export default function HeroSection({
 
       {/* 2. Central Warm Muted Radial Aura */}
       <div
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] sm:w-[700px] sm:h-[350px] bg-gradient-to-r from-[#FF4D1C]/15 via-[#FF4D1C]/08 to-transparent rounded-full blur-[100px] pointer-events-none transition-all duration-700 ${isHovered ? 'scale-110 opacity-80 blur-[120px]' : 'scale-100 opacity-40'
-          }`}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] sm:w-[700px] sm:h-[350px] bg-gradient-to-r from-[#FF4D1C]/15 via-[#FF4D1C]/08 to-transparent rounded-full blur-[100px] pointer-events-none scale-100 opacity-40"
       />
 
       {/* Top Margin Spacer */}
@@ -105,39 +37,18 @@ export default function HeroSection({
         </div>
       </div>
 
-      {/* 3. Main Center Hero Wordmark with Subtle Dark Hover Blur */}
-      <div className="relative z-20 my-auto text-center max-w-7xl w-full flex flex-col items-center justify-center">
-        <motion.div
-          ref={containerRef}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onMouseMove={handleMouseMove}
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative cursor-pointer group px-4 py-2"
-        >
-          {/* Base Sharp Text */}
-          <h1
-            className="uppercase text-[#FF4D1C] hero-title-clamp select-none"
-            style={{
-              textShadow: '0 0 15px rgba(255, 77, 28, 0.15)',
-            }}
-          >
-            ORIGIN
-          </h1>
-
-          {/* Overlay Blurred Text (Masked to cursor) */}
-          <h1
-            ref={overlayRef}
-            className="absolute inset-0 px-4 py-2 uppercase text-[#FF4D1C] hero-title-clamp select-none pointer-events-none opacity-0"
-            style={{
-              textShadow: '0 0 15px rgba(255, 77, 28, 0.15)',
-            }}
-          >
-            ORIGIN
-          </h1>
-        </motion.div>
+      {/* 3. ASCII Text Wordmark — 3D wavy ORIGIN with orange ASCII overlay */}
+      <div className="relative z-20 my-auto w-full flex flex-col items-center justify-center">
+        <div style={{ height: 'clamp(120px, 25vw, 300px)', width: '100%', position: 'relative' }}>
+          <ASCIIText
+            text="ORIGIN"
+            enableWaves={true}
+            asciiFontSize={10}
+            textFontSize={200}
+            planeBaseHeight={8}
+            textColor="#FF4D1C"
+          />
+        </div>
 
         {/* Minimal Actions - Single Line */}
         <div className="mt-6 flex items-center justify-center gap-6 z-20">

@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(npm:*)",
+      "powershell",
+      "Shell(Get-Content:*)",
+      "Shell(Select-Object:*)",
+      "Shell(curl -s http://localhost:3000 2 >& 1)",
+      "Shell(dir:*)",
+      "Shell(cd \"C:\\Users\\Ibhan Mukherjee\\Desktop\\newcsi\\ORIGIN\" && npm run dev > dev.log 2>&1)",
+      "Shell(cd \"C:\\Users\\Ibhan Mukherjee\\Desktop\\newcsi\\ORIGIN\" && rmdir /s /q .next 2>nul & echo cleared)",
+      "Shell(cd \"C:\\Users\\Ibhan Mukherjee\\Desktop\\newcsi\\ORIGIN\" && rmdir /s /q .next 2>nul & del /q dev.log 2>nul & echo cleared)",
+      "Shell(cd \"C:\\Users\\Ibhan Mukherjee\\Desktop\\newcsi\\ORIGIN\" && rmdir /s /q components\\reactbits components\\scroll hooks\\scroll-context.tsx hooks\\use-reduced-motion.ts 2>nul & echo deleted-new-files)",
+      "Shell(cd \"C:\\Users\\Ibhan Mukherjee\\Desktop\\newcsi\\ORIGIN\" && rmdir /s /q .next 2>nul & del /q dev.log 2>nul & echo cleaned)",
+      "Shell(cd \"C:\\Users\\Ibhan Mukherjee\\Desktop\\newcsi\\ORIGIN\" && rmdir /s /q node_modules\\@splinetool 2>nul & Test-Path node_modules\\@splinetool & echo done)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}

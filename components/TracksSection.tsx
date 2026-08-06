@@ -30,8 +30,7 @@ export default function TracksSection({ onSelectTrack }: TracksSectionProps) {
 
   return (
     <section id="tracks" className="py-24 md:py-32 border-b border-[#2A2A2A] relative overflow-hidden bg-[#070707]">
-      {/* Background ASCII particle stream */}
-      <AsciiBackground variant="stream" opacity={0.06} />
+      {/* Background removed as requested */}
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         <SectionHeader

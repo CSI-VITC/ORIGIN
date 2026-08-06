@@ -5,6 +5,7 @@ import CornerLetters from '@/components/CornerLetters';
 import FloatingNavPill from '@/components/FloatingNavPill';
 import HeroSection from '@/components/HeroSection';
 import TracksSection from '@/components/TracksSection';
+import PromoBannerSection from '@/components/PromoBannerSection';
 import AboutSection from '@/components/AboutSection';
 import PrizePoolSection from '@/components/PrizePoolSection';
 import TimelineSection from '@/components/TimelineSection';
@@ -47,6 +48,9 @@ export default function Home() {
 
         {/* 01 · Tracks Section (Directly after Hero) */}
         <TracksSection onSelectTrack={(track) => setSelectedTrackName(track)} />
+
+        {/* Kinetic Departure Board — Hype Banner */}
+        <PromoBannerSection />
 
         {/* 02 · About Us Section */}
         <AboutSection />

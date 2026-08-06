@@ -1,7 +1,7 @@
 'use client';
 
 import SectionHeader from './SectionHeader';
-import AsciiBackground from './AsciiBackground';
+import Cubes from './reactbits/Cubes';
 
 interface CtaSectionProps {
   onOpenRegister: () => void;
@@ -16,7 +16,21 @@ export default function CtaSection({
 }: CtaSectionProps) {
   return (
     <section id="cta" className="py-24 md:py-32 relative overflow-hidden bg-[#0A0A0A]">
-      <AsciiBackground variant="dots" opacity={0.12} />
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-30 overflow-hidden pointer-events-none">
+        <div className="w-full h-full flex items-center justify-center opacity-40">
+          <Cubes 
+            gridSize={14}
+            maxAngle={60}
+            radius={5}
+            borderStyle="1px solid #2A2A2A"
+            faceColor="#0A0A0A"
+            rippleColor="#FF4D1C"
+            rippleSpeed={1.5}
+            autoAnimate={true}
+            rippleOnClick={false}
+          />
+        </div>
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         <SectionHeader

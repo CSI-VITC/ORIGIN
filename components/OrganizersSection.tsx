@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import SectionHeader from './SectionHeader';
 import AsciiBackground from './AsciiBackground';
-import Image from 'next/image';
+import CircularGallery from './reactbits/CircularGallery';
 
 interface Organizer {
   id: string;
@@ -15,7 +15,6 @@ interface Organizer {
 }
 
 export default function OrganizersSection() {
-  const [activeBio, setActiveBio] = useState<string | null>(null);
 
   const organizers: Organizer[] = [
     {
@@ -96,87 +95,17 @@ export default function OrganizersSection() {
           subtitle="COMPUTER SOCIETY OF INDIA · VIT CHENNAI CORE EXECUTIVE TEAM"
         />
 
-        {/* 4-Column Grid of Photo Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
-          {organizers.map((org) => {
-            const isHighlighted = activeBio === org.id;
-
-            return (
-              <div
-                key={org.id}
-                onClick={() => setActiveBio(activeBio === org.id ? null : org.id)}
-                className={`group relative border transition-all duration-300 cursor-pointer overflow-hidden aspect-[3/4] flex flex-col justify-between p-6 ${
-                  isHighlighted
-                    ? 'bg-[#FF4D1C] border-[#FF4D1C] text-[#0A0A0A]'
-                    : 'bg-[#121212] border-[#2A2A2A] text-[#F2F0EB] hover:border-[#FF4D1C]'
-                }`}
-              >
-                {/* Background Photo with Grayscale Filter */}
-                {!isHighlighted && (
-                  <div className="absolute inset-0 z-0 opacity-40 group-hover:opacity-60 transition-opacity grayscale contrast-125">
-                    <Image
-                      src={org.image}
-                      alt={org.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 25vw"
-                      className="object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/60 to-transparent" />
-                  </div>
-                )}
-
-                {/* Top Corner Compass Icon (4-dot / plus) */}
-                <div className="relative z-10 flex justify-between items-center">
-                  <span
-                    className={`font-mono-custom text-[10px] tracking-widest ${
-                      isHighlighted ? 'text-[#0A0A0A]/70' : 'text-[#8A8A8A]'
-                    }`}
-                  >
-                    {org.department}
-                  </span>
-                  {/* Small orange 4-dot / plus icon */}
-                  <div
-                    className={`font-mono-custom text-xs ${
-                      isHighlighted ? 'text-[#0A0A0A]' : 'text-[#FF4D1C]'
-                    }`}
-                  >
-                    ✦
-                  </div>
-                </div>
-
-                {/* Center / Hover Overlay Bio Content */}
-                <div className="relative z-10 mt-auto">
-                  {isHighlighted ? (
-                    <div className="space-y-3">
-                      <div className="font-mono-custom text-[10px] font-bold tracking-widest text-[#0A0A0A] uppercase flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 bg-[#0A0A0A]"></span>
-                        SHOW BIO
-                      </div>
-                      <h4 className="font-mono-custom font-bold text-lg text-[#0A0A0A] leading-tight">
-                        {org.name}
-                      </h4>
-                      <p className="font-mono-custom text-xs font-semibold text-[#0A0A0A]/80 border-b border-[#0A0A0A]/20 pb-2">
-                        {org.role}
-                      </p>
-                      <p className="font-body-custom text-xs text-[#0A0A0A]/90 leading-normal">
-                        {org.bio}
-                      </p>
-                    </div>
-                  ) : (
-                    <div>
-                      <h4 className="font-mono-custom text-base font-semibold text-[#F2F0EB] group-hover:text-[#FF4D1C] transition-colors uppercase">
-                        {org.name}
-                      </h4>
-                      <p className="font-mono-custom text-xs text-[#8A8A8A] mt-1">
-                        {org.role}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
+        {/* Circular Gallery of Organizers */}
+        <div style={{ height: '600px', position: 'relative' }} className="mt-12 w-full">
+          <CircularGallery
+            items={organizers.map((org) => ({ image: org.image, text: org.name }))}
+            bend={3}
+            textColor="#ffffff"
+            borderRadius={0.05}
+            scrollEase={0.02}
+            fontUrl="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
+            font="bold 30px Orbitron"
+          />
         </div>
       </div>
     </section>
