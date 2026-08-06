@@ -59,6 +59,11 @@ export default function HeroSection({ onOpenDevfolio, onOpenWhatsApp, onScrollTo
         <div className="w-full" style={{ height: 'clamp(80px, 20vw, 260px)', position: 'relative' }}>
           <ASCIIText text="ORIGIN" enableWaves={true} asciiFontSize={8} textFontSize={160} planeBaseHeight={8} textColor="#FF4D1C" />
         </div>
+        
+        {/* Tagline */}
+        <p className="font-mono-custom text-[10px] sm:text-xs text-[#8A8A8A] tracking-[0.25em] sm:tracking-[0.4em] uppercase mt-2 md:mt-4 select-none">
+          Where ideas find their origin
+        </p>
         <div ref={actionsRef} className="mt-4 md:mt-6 flex flex-wrap items-center justify-center gap-4 md:gap-6 z-20">
           <button onClick={onOpenDevfolio} className="font-mono-custom text-[10px] md:text-xs text-[#8A8A8A] hover:text-[#FF4D1C] border-b border-[#2A2A2A] hover:border-[#FF4D1C] pb-1 tracking-widest uppercase transition-all flex items-center gap-2 group">
             <span>APPLY WITH DEVFOLIO</span>

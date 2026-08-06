@@ -61,7 +61,7 @@ export default function CtaSection({ onOpenRegister, onOpenWhatsApp, onScrollToT
         <footer ref={footerRef} className="mt-20 md:mt-32 pt-12 md:pt-16 border-t border-[#2A2A2A] text-center relative z-10">
           <div className="font-display text-2xl sm:text-4xl md:text-6xl italic uppercase tracking-wide text-[#F2F0EB]">
             <DecryptedText
-              text="EVERY BREAKTHROUGH HAS AN ORIGIN. YOURS MIGHT BE HERE."
+              text="WHERE IDEAS FIND THEIR ORIGIN."
               animateOn="view"
               sequential
               revealDirection="center"
