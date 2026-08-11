@@ -9,7 +9,6 @@ import PromoBannerSection from '@/components/PromoBannerSection';
 import AboutSection from '@/components/AboutSection';
 import PrizePoolSection from '@/components/PrizePoolSection';
 import TimelineSection from '@/components/TimelineSection';
-import OrganizersSection from '@/components/OrganizersSection';
 import SponsorsSection from '@/components/SponsorsSection';
 import CursorGridSection from '@/components/CursorGridSection';
 import FaqSection from '@/components/FaqSection';
@@ -68,10 +67,7 @@ export default function Home() {
         {/* 04 · Timeline */}
         <TimelineSection />
 
-        {/* 05 · Organizers */}
-        <OrganizersSection />
-
-        {/* 06 · Sponsors */}
+        {/* 05 · Sponsors */}
         <SponsorsSection />
 
         {/* Interactive Cursor Grid */}
