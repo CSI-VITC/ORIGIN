@@ -89,8 +89,11 @@ const asciiInnovation = `+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++`;
 
 const TRACKS_DATA = [
-  { code: 'TRACK-01', category: 'FINTECH', name: 'FINTECH', desc: 'Architect next-generation decentralized payments, automated clearinghouses, cross-chain liquidity rails, and algorithmic financial instruments.', ascii: asciiFintech },
-  { code: 'TRACK-02', category: 'OPEN INNOVATION', name: 'OPEN INNOVATION', desc: 'Solve unconstrained challenges across any domain. Build innovative SaaS platforms, secure systems, or revolutionary AI architectures.', ascii: asciiInnovation },
+  { code: 'TRACK-01', category: 'FINTECH', name: 'Agentic Finance', desc: 'Build autonomous AI-powered financial systems capable of reasoning, planning, and executing complex financial workflows.', ascii: asciiFintech },
+  { code: 'TRACK-02', category: 'FINTECH', name: 'Web3 & DeFi', desc: 'Build decentralized and programmable financial solutions using blockchain, smart contracts, or decentralized infrastructure.', ascii: asciiFintech },
+  { code: 'TRACK-03', category: 'FINTECH', name: 'Supply Chain Finance', desc: 'Build intelligent financial solutions for supply chains, addressing credit, trade finance, working capital, payments, or supplier risk.', ascii: asciiFintech },
+  { code: 'TRACK-04', category: 'FINTECH', name: 'FinSec & Cyber Finance', desc: 'Build solutions that detect, prevent, investigate, or respond to financial cyber threats, fraud, and digital risks.', ascii: asciiFintech },
+  { code: 'TRACK-05', category: 'OPEN INNOVATION', name: 'Open Innovation in FinTech', desc: 'Build an innovative solution that reimagines any financial problem, process, product, or ecosystem.', ascii: asciiInnovation },
 ];
 
 export default function TracksSection({ onSelectTrack }: TracksSectionProps) {
@@ -104,8 +107,12 @@ export default function TracksSection({ onSelectTrack }: TracksSectionProps) {
       const tl = gsap.timeline({
         scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', end: 'bottom 30%', scrub: 0.8 }
       });
-      tl.fromTo(cardRefs.current[0], { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.8 }, 0)
-        .fromTo(cardRefs.current[1], { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.8 }, 0.3);
+      cardRefs.current.forEach((el, index) => {
+        if (el) {
+          const direction = index % 2 === 0 ? -40 : 40;
+          tl.fromTo(el, { opacity: 0, x: direction }, { opacity: 1, x: 0, duration: 0.8 }, index * 0.1);
+        }
+      });
     }, sectionRef.current);
     return () => ctx.revert();
   }, []);

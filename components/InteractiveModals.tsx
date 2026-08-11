@@ -8,6 +8,14 @@ interface ModalsProps {
   onCloseTrack: () => void;
 }
 
+const TRACK_DETAILS: Record<string, string> = {
+  'Agentic Finance': 'Must demonstrate Reason → Plan → Act, execute at least one meaningful financial action, and include appropriate human oversight or safety mechanisms. Simple AI chatbots do not qualify.',
+  'Web3 & DeFi': 'Must include meaningful on-chain financial logic and address relevant security, trust, or economic considerations. Wallet/token-only projects do not qualify.',
+  'Supply Chain Finance': 'Must involve at least 3 stakeholders and demonstrate a meaningful financial decision, optimization, or risk assessment. Simple invoice/OCR solutions do not qualify.',
+  'FinSec & Cyber Finance': 'Must demonstrate Threat → Detection → Response, using simulated, public, or authorized data. Simple fraud-classification models do not qualify.',
+  'Open Innovation in FinTech': 'The solution must address a meaningful financial problem, demonstrate a clear innovation beyond existing solutions, and deliver a functional end-to-end prototype. Generic applications, basic CRUD systems, or simple API/LLM wrappers do not qualify.'
+};
+
 export default function InteractiveModals({
   selectedTrackName,
   onCloseTrack,
@@ -58,23 +66,21 @@ export default function InteractiveModals({
                 </h3>
 
                 <div className="p-4 bg-[#0A0A0A] border border-[#2A2A2A] space-y-3">
-                  <div className="text-[#FF4D1C] uppercase font-bold">KEY TECHNICAL DOMAINS:</div>
-                  <ul className="space-y-1.5 text-[#F2F0EB]">
-                    <li>• Smart Contract Architecture & Verification</li>
-                    <li>• Real-Time Data Streaming & Order Matching</li>
-                    <li>• High-Frequency Risk Engines & Algorithmic Execution</li>
-                    <li>• Cryptographic Proof Generation (zk-SNARKs / STARKs)</li>
-                  </ul>
+                  <div className="text-[#FF4D1C] uppercase font-bold">TRACK SPECIFIC CONSTRAINTS:</div>
+                  <p className="text-[#F2F0EB]">
+                    {TRACK_DETAILS[selectedTrackName] || "Refer to the official track details on Devfolio."}
+                  </p>
                 </div>
 
-                <div className="space-y-2">
-                  <div className="text-[#8A8A8A] uppercase">EVALUATION CRITERIA (100 PTS):</div>
-                  <div className="grid grid-cols-2 gap-2 text-[11px]">
-                    <div className="p-2 bg-[#0A0A0A] border border-[#2A2A2A]">Technical Complexity (30 pts)</div>
-                    <div className="p-2 bg-[#0A0A0A] border border-[#2A2A2A]">Production Readiness (25 pts)</div>
-                    <div className="p-2 bg-[#0A0A0A] border border-[#2A2A2A]">Innovation & Originality (25 pts)</div>
-                    <div className="p-2 bg-[#0A0A0A] border border-[#2A2A2A]">Pitch & Presentation (20 pts)</div>
-                  </div>
+                <div className="p-4 bg-[#0A0A0A] border border-[#2A2A2A] space-y-3">
+                  <div className="text-[#8A8A8A] uppercase font-bold">COMMON CONSTRAINTS:</div>
+                  <ul className="space-y-1.5 text-[#F2F0EB]">
+                    <li>• Must solve a real or meaningful financial problem.</li>
+                    <li>• Must deliver a working prototype with an end-to-end workflow.</li>
+                    <li>• Public, open-source, or synthetic data only.</li>
+                    <li>• API/LLM wrappers and basic CRUD applications do not qualify.</li>
+                    <li>• Solutions must consider security, privacy, scalability, and real-world constraints.</li>
+                  </ul>
                 </div>
 
                 <div className="pt-4 flex gap-4">
