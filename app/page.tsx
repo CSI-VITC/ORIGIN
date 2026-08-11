@@ -79,7 +79,6 @@ export default function Home() {
         {/* 08 · CTA + Footer */}
         <CtaSection
           onOpenRegister={handleOpenDevfolio}
-          onOpenWhatsApp={handleOpenWhatsApp}
           onScrollToTimeline={() => scrollToSection('timeline')}
         />
       </main>

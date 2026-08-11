@@ -6,7 +6,7 @@ import SectionHeader from './SectionHeader';
 import Cubes from './reactbits/Cubes';
 import DecryptedText from './reactbits/DecryptedText';
 
-interface CtaSectionProps { onOpenRegister: () => void; onOpenWhatsApp: () => void; onScrollToTimeline: () => void; }
+interface CtaSectionProps { onOpenRegister: () => void; onScrollToTimeline: () => void; }
 
 const asciiRegister = `                                                                                                                                                      
                                                                                                                                                       
@@ -166,7 +166,7 @@ const asciiCommunity = `
                                                                                                     
                                                                                                     `;
 
-export default function CtaSection({ onOpenRegister, onOpenWhatsApp, onScrollToTimeline }: CtaSectionProps) {
+export default function CtaSection({ onOpenRegister, onScrollToTimeline }: CtaSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const cubesRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -197,7 +197,7 @@ export default function CtaSection({ onOpenRegister, onOpenWhatsApp, onScrollToT
           {[
             { num: '01', title: 'REGISTER NOW', subtitle: 'DEVFOLIO PLATFORM', action: onOpenRegister, btnLabel: 'VIEW', ascii: asciiRegister },
             { num: '02', title: 'EVENT TIMELINE', subtitle: 'FULL SCHEDULE & ROADMAP', action: onScrollToTimeline, btnLabel: 'BROWSE', ascii: asciiEvent },
-            { num: '03', title: 'JOIN COMMUNITY', subtitle: 'WHATSAPP GROUP', action: onOpenWhatsApp, btnLabel: 'JOIN', ascii: asciiCommunity },
+            { num: '03', title: 'SUBMIT PPT', subtitle: 'SUBMIT YOUR IDEA', action: () => window.open('https://forms.gle/P3iF8CEu6zazQ6kN9', '_blank'), btnLabel: 'SUBMIT', ascii: asciiCommunity },
           ].map((card, idx) => (
             <div key={idx} ref={el => { cardRefs.current[idx] = el; }} className="bg-[#0A0A0A] border border-[#2A2A2A] hover:border-[#FF4D1C] transition-all flex flex-col justify-between p-5 md:p-8 min-h-[300px] md:min-h-[420px] relative group overflow-hidden">
               <div className="flex justify-between items-start"><span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#FF4D1C] shadow-[0_0_6px_#FF4D1C] md:shadow-[0_0_8px_#FF4D1C]" /><span className="font-mono-custom text-[10px] md:text-xs text-[#8A8A8A]">{card.num}</span></div>
@@ -235,7 +235,7 @@ export default function CtaSection({ onOpenRegister, onOpenWhatsApp, onScrollToT
           <div className="mt-4 md:mt-8 font-mono-custom text-[9px] md:text-xs text-[#8A8A8A] tracking-widest uppercase">COMPUTER SOCIETY OF INDIA · VIT CHENNAI CHAPTER // 2026</div>
           <div className="mt-6 md:mt-8 flex flex-wrap justify-center gap-4 md:gap-8 font-mono-custom text-[10px] md:text-xs text-[#8A8A8A]">
             <button onClick={onOpenRegister} className="hover:text-[#FF4D1C] transition-colors">[ DEVFOLIO ]</button>
-            <button onClick={onOpenWhatsApp} className="hover:text-[#FF4D1C] transition-colors">[ WHATSAPP ]</button>
+            <button onClick={() => window.open('https://forms.gle/P3iF8CEu6zazQ6kN9', '_blank')} className="hover:text-[#FF4D1C] transition-colors">[ SUBMIT PPT ]</button>
             <a href="https://www.instagram.com/csi.vitc/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF4D1C] transition-colors">[ INSTAGRAM ]</a>
             <a href="https://www.linkedin.com/company/csi-student-chapter-vitc/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF4D1C] transition-colors">[ LINKEDIN ]</a>
             <a href="mailto:csi.vitc@gmail.com" className="hover:text-[#FF4D1C] transition-colors">[ EMAIL US ]</a>

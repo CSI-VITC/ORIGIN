@@ -8,7 +8,7 @@ import { Timeline } from '@/components/ui/timeline';
 
 const timelineData = [
   {
-    title: "2 Aug – 12 Aug",
+    title: "2 Aug – 10 Aug",
     content: (
       <div>
         <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Registrations Open</h4>
@@ -19,7 +19,7 @@ const timelineData = [
     ),
   },
   {
-    title: "10 Aug (tentative)",
+    title: "12 Aug",
     content: (
       <div>
         <h4 className="font-display text-2xl mb-2 text-[#F2F0EB] uppercase">Release of the Tracks</h4>
